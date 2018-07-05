@@ -40,18 +40,17 @@ CREATE TABLE `showtime_schema`.`booking` (
 
 #create event
 
-CREATE TABLE `showtime_schema`.`event` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(200) NOT NULL,
-  `vendor` INT NOT NULL,
-  `typeOfEvent` VARCHAR(200) NOT NULL,
-  `charges` DOUBLE NOT NULL,
-  `venue` VARCHAR(200) NOT NULL,
-  `capacity` INT NULL,
+CREATE TABLE `event` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(200) NOT NULL,
+  `vendor` int(11) NOT NULL,
+  `typeOfEvent` varchar(200) NOT NULL,
+  `charges` double NOT NULL,
+  `venue` varchar(200) NOT NULL,
+  `capacity` int(11) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  INDEX `vendor_event_fk_idx` (`vendor` ASC),
-  CONSTRAINT `vendor_event_fk`
-    FOREIGN KEY (`vendor`)
-    REFERENCES `showtime_schema`.`vendor` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE);
+  KEY `vendor_event_fk_idx` (`vendor`),
+  CONSTRAINT `vendor_event_fk` FOREIGN KEY (`vendor`) REFERENCES `vendor` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+

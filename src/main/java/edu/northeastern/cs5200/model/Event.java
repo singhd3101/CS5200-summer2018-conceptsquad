@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.Model;
+package edu.northeastern.cs5200.model;
 
 public class Event {
 
@@ -10,10 +10,18 @@ public class Event {
 	private double price;
 	private Vendor vendor;
 	
-	
 	public Event() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+	
+	@Override
+	public String toString() {
+		return "Name: " + name +
+				" Type: " + type +
+				" Description: " + description +
+				" Venue: " + venue + 
+				" Capacity: " + capacity +
+				" Price: " + price ;
 	}
 	
 	public Event(String name, String type, String description, String venue, int capacity, double price,
@@ -27,6 +35,16 @@ public class Event {
 		this.price = price;
 		this.vendor = vendor;
 	}
+	
+	public Event(String name, String type, String description, String venue, int capacity, double price) {
+		this.name = name;
+		this.type = type;
+		this.description = description;
+		this.venue = venue;
+		this.capacity = capacity;
+		this.price = price;
+	}
+	
 	public String getName() {
 		return name;
 	}

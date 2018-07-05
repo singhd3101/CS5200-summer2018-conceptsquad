@@ -1,4 +1,4 @@
-package edu.northeastern.cs5200.Model;
+package edu.northeastern.cs5200.model;
 
 import java.sql.Date;
 

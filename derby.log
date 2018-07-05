@@ -1,7 +1,7 @@
 ----------------------------------------------------------------
-Wed Jul 04 23:35:55 EDT 2018:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0164-6882-bb9a-000004293490 
-on database directory memory:E:\Eclipse Workspace\CS5200-summer2018-conceptsquad\testdb with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
+Thu Jul 05 16:47:09 EDT 2018:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.1.0 - (1808820): instance a816c00e-0164-6c32-d9e6-0000080adb10 
+on database directory memory:E:\Eclipse Workspace\CS5200-summer2018-conceptsquad\testdb with class loader sun.misc.Launcher$AppClassLoader@6d06d69c 
 Loaded from file:/C:/Users/Tarik/.m2/repository/org/apache/derby/derby/10.14.1.0/derby-10.14.1.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_152-b16
