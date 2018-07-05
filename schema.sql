@@ -9,7 +9,7 @@ CREATE TABLE `showtime_schema`.`person` (
   `fname` VARCHAR(45) NOT NULL,
   `lname` VARCHAR(45) NOT NULL,
   `username` VARCHAR(45) NOT NULL,
-  `mobile` INT NULL,
+  `mobile` VARCHAR(12) NULL,
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
