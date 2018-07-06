@@ -36,46 +36,7 @@ public class EventDao {
 	}
 
 	private EventDao() {}
-
-	public int createEvent(int vendorId, Event event) {
-		int eventId = 0;
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet results = null;
-		try {
-			Class.forName(JDBC_DRIVER);
-			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = INSERT_EVENT;
-			statement = connection.prepareStatement(sql);
-			statement.setString(1, event.getName());
-			statement.setInt(2, vendorId);
-			statement.setString(3, event.getType());
-			statement.setDouble(4, event.getPrice());
-			statement.setString(5, event.getVenue());
-			statement.setInt(6, event.getCapacity());
-			statement.setString(7, event.getDescription());
-			statement.executeUpdate();
-			results =  statement.executeQuery("SELECT LAST_INSERT_ID()");
-			if(results.next()) {
-				eventId = results.getInt(1);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		finally {
-			try {
-				connection.close();
-				results.close();
-				statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return eventId;
-	}
-
+	
 	public List<Event> findAllEvents() {	
 		List<Event> events = new ArrayList<Event>();
 		Connection connection = null;
@@ -115,7 +76,7 @@ public class EventDao {
 		}
 		return events;
 	}
-
+	
 	public Event findEventById(int eventId) {
 		Event event = null;
 		Connection connection = null;
@@ -155,6 +116,98 @@ public class EventDao {
 		}
 		return event;
 	}
+
+	public List<Event> findEventByName(String eventName) {
+		System.out.println("%");
+		List<Event> events = new ArrayList<Event>();
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		try {
+			Class.forName(JDBC_DRIVER);
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			String sql = FIND_EVENT_BY_NAME;
+			statement = connection.prepareStatement(sql);
+			statement.setString(1,"%"+eventName+"%");
+			System.out.println("statement: "+statement);
+			results = statement.executeQuery();
+			while(results.next()) {
+				int id = results.getInt("id");
+				String name = results.getString("name");
+				String vendor = results.getString("vendor");
+				String typeOfEvent = results.getString("typeOfEvent");
+				Double charges = results.getDouble("charges");
+				String venue = results.getString("venue");
+				int capacity = results.getInt("capacity");
+				String description = results.getString("description");
+				Event event = new Event(name, typeOfEvent, description, venue, capacity, charges);
+				events.add(event);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		finally {
+			try {
+				connection.close();
+				results.close();
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return events;
+	}
+	
+	
+	
+	
+	
+	
+	
+	public int createEvent(int vendorId, Event event) {
+		int eventId = 0;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+		try {
+			Class.forName(JDBC_DRIVER);
+			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+			String sql = INSERT_EVENT;
+			statement = connection.prepareStatement(sql);
+			statement.setString(1, event.getName());
+			statement.setInt(2, vendorId);
+			statement.setString(3, event.getType());
+			statement.setDouble(4, event.getPrice());
+			statement.setString(5, event.getVenue());
+			statement.setInt(6, event.getCapacity());
+			statement.setString(7, event.getDescription());
+			statement.executeUpdate();
+			results =  statement.executeQuery("SELECT LAST_INSERT_ID()");
+			if(results.next()) {
+				eventId = results.getInt(1);
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				connection.close();
+				results.close();
+				statement.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return eventId;
+	}
+
+	
+
+	
 	
 	public int deleteEvent(int eventId) {
 		Connection connection = null;
@@ -224,48 +277,9 @@ public class EventDao {
 		return events;
 	}
 
-	public List<Event> findEventByName(String eventName) {
-		System.out.println("%");
-		List<Event> events = new ArrayList<Event>();
-		Connection connection = null;
-		PreparedStatement statement = null;
-		ResultSet results = null;
-		try {
-			Class.forName(JDBC_DRIVER);
-			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = FIND_EVENT_BY_NAME;
-			statement = connection.prepareStatement(sql);
-			statement.setString(1,"%"+eventName+"%");
-			System.out.println("statement: "+statement);
-			results = statement.executeQuery();
-			while(results.next()) {
-				int id = results.getInt("id");
-				String name = results.getString("name");
-				String vendor = results.getString("vendor");
-				String typeOfEvent = results.getString("typeOfEvent");
-				Double charges = results.getDouble("charges");
-				String venue = results.getString("venue");
-				int capacity = results.getInt("capacity");
-				String description = results.getString("description");
-				Event event = new Event(name, typeOfEvent, description, venue, capacity, charges);
-				events.add(event);
-			}
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} 
-		finally {
-			try {
-				connection.close();
-				results.close();
-				statement.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-		}
-		return events;
-	}
+	
+	
+	
 
 	public int updateEvent(int eventId, Event event) {
 		Connection connection = null;
