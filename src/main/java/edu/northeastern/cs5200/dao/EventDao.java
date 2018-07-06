@@ -24,6 +24,9 @@ public class EventDao {
     static final String FIND_EVENT_BY_ID = "select e.id, e.name, e.vendor, e.typeOfEvent, e.charges, e.venue, e.capacity, e.description from event e where e.id = ?";
 	static final String INSERT_EVENT = "INSERT INTO event (name, vendor, typeOfEvent, charges, venue, capacity, description) VALUES (?,?,?,?,?,?,?)";
     static final String DELETE_EVENT = "delete from event where id = ?";
+    static final String FIND_EVENT_BY_VENDOR = "select e.id, e.name, e.vendor, e.typeOfEvent, e.charges, e.venue, e.capacity, e.description from event e where e.vendor = ?";
+	static final String FIND_EVENT_BY_NAME = "select e.id, e.name, e.vendor, e.typeOfEvent, e.charges, e.venue, e.capacity, e.description from event e where e.name like ?";
+    static final String UPDATE_EVENT = "update event e set e.name = ?, e.typeOfEvent = ?, e.charges = ?, e.venue = ?, e.capacity = ?, e.description = ? where e.id = ?";
 	
 	public static EventDao getInstance() {
 		if (instance == null) {
@@ -180,39 +183,35 @@ public class EventDao {
 		return rows;
 	}
 
-	/*public Developer findDeveloperByUsername(String username) {
-		Developer developer = null;
+	public List<Event> findEventByVendor(int vendorId) {
+		List<Event> events = new ArrayList<Event>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;
 		try {
 			Class.forName(JDBC_DRIVER);
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = "select p.id, d.DeveloperKey, p.FirstName, p.LastName, p.Username, p.Password, p.Dob, p.Email from developer d, person p where d.id = p.id and p.Username = ?";
+			String sql = FIND_EVENT_BY_VENDOR;
 			statement = connection.prepareStatement(sql);
-			statement.setString(1,username);
+			statement.setInt(1,vendorId);
 			results = statement.executeQuery();
-			if(results.next()) {
+			while(results.next()) {
 				int id = results.getInt("id");
-				String developerKey = results.getString("DeveloperKey");
-				String firstName = results.getString("FirstName");
-				String lastName = results.getString("LastName");
-				String uname = results.getString("Username");
-				String password = results.getString("Password");
-				String dob = results.getString("Dob");
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				Date inputDate = dateFormat.parse(dob);
-				String email = results.getString("Email");
-				developer = new Developer(developerKey,id,firstName,lastName,uname,email,password,inputDate);
+				String name = results.getString("name");
+				String vendor = results.getString("vendor");
+				String typeOfEvent = results.getString("typeOfEvent");
+				Double charges = results.getDouble("charges");
+				String venue = results.getString("venue");
+				int capacity = results.getInt("capacity");
+				String description = results.getString("description");
+				Event event = new Event(name, typeOfEvent, description, venue, capacity, charges);
+				events.add(event);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		finally {
 			try {
 				connection.close();
@@ -222,41 +221,40 @@ public class EventDao {
 				e.printStackTrace();
 			}
 		}
-		return developer;
+		return events;
 	}
 
-	public Developer findDeveloperByCredentials(String username, String password) {
+	public List<Event> findEventByName(String eventName) {
+		System.out.println("%");
+		List<Event> events = new ArrayList<Event>();
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;
 		try {
 			Class.forName(JDBC_DRIVER);
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = "select p.id, d.DeveloperKey, p.FirstName, p.LastName, p.Username, p.Password, p.Dob, p.Email from developer d, person p where d.id = p.id and p.Username = ? and p.Password = ?";
+			String sql = FIND_EVENT_BY_NAME;
 			statement = connection.prepareStatement(sql);
-			statement.setString(1,username);
-			statement.setString(2,password);
+			statement.setString(1,"%"+eventName+"%");
+			System.out.println("statement: "+statement);
 			results = statement.executeQuery();
-			if(results.next()) {
+			while(results.next()) {
 				int id = results.getInt("id");
-				String developerKey = results.getString("DeveloperKey");
-				String firstName = results.getString("FirstName");
-				String lastName = results.getString("LastName");
-				String uname = results.getString("Username");
-				String pword = results.getString("Password");
-				String dob = results.getString("Dob");
-				DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-				Date inputDate = dateFormat.parse(dob);
-				String email = results.getString("Email");
-				developer = new Developer(developerKey,id,firstName,lastName,uname,email,pword,inputDate);
+				String name = results.getString("name");
+				String vendor = results.getString("vendor");
+				String typeOfEvent = results.getString("typeOfEvent");
+				Double charges = results.getDouble("charges");
+				String venue = results.getString("venue");
+				int capacity = results.getInt("capacity");
+				String description = results.getString("description");
+				Event event = new Event(name, typeOfEvent, description, venue, capacity, charges);
+				events.add(event);
 			}
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		} 
 		finally {
 			try {
 				connection.close();
@@ -266,26 +264,25 @@ public class EventDao {
 				e.printStackTrace();
 			}
 		}
-		return developer;
+		return events;
 	}
 
-	public int updateDeveloper(int developerId, Developer developer) {
+	public int updateEvent(int eventId, Event event) {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		int rows = 0;
 		try {
 			Class.forName(JDBC_DRIVER);
 			connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-			String sql = "update developer d, person p set d.DeveloperKey = ?, p.FirstName = ?, p.LastName = ?, p.Username = ?, p.Password = ?, p.Dob = ? , p.Email = ? where p.id = d.id and d.id = ?";
+			String sql = UPDATE_EVENT;
 			statement = connection.prepareStatement(sql);
-			statement.setString(1, developer.getDeveloperKey());
-			statement.setString(2, developer.getFirstName());
-			statement.setString(3, developer.getLastName());
-			statement.setString(4, developer.getUsername());
-			statement.setString(5, developer.getPassword());
-			statement.setDate(6, new java.sql.Date(developer.getDob().getTime()));
-			statement.setString(7, developer.getEmail());
-			statement.setInt(8, developerId);
+			statement.setString(1, event.getName());
+			statement.setString(2, event.getType());
+			statement.setDouble(3, event.getPrice());
+			statement.setString(4, event.getVenue());
+			statement.setInt(5, event.getCapacity());
+			statement.setString(6, event.getDescription());
+			statement.setInt(7, eventId);
 			rows = statement.executeUpdate();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -295,13 +292,12 @@ public class EventDao {
 		finally {
 			try {
 				connection.close();
-				results.close();
 				statement.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
 		}
 		return rows;
-	}*/
+	}
 
 }
