@@ -1,0 +1,22 @@
+<div class="container-fluid">
+    <h4 class="text-center">Movies around you</h4>
+</div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Title</th>
+            <th scope="col">Image</th>
+        </tr>
+        </thead>
+        <tbody ng-repeat="movie in allShowtimes.movies">
+        <td>{{movie.id}}</td>
+        <td>{{movie.slug}}</td>
+        <td>{{movie.title}}</td>
+        <td><img src="{{movie.poster_image_thumbnail}}"></td>
+        </tbody>
+    </table>
+    </div>
+</div>

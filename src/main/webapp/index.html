@@ -1,8 +1,24 @@
-<html>
+<!DOCTYPE html>
+<html ng-app="ShowtimeApp" lang="en">
 	<head>
 		<title>Concept Squad</title>
-	</head>
+		<meta charset="UTF-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"/>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    	<script src="app.js"></script>
+    	<script src="main.controller.js"></script>
+    	<script src="templates/display/findAllShowtime.controller.js"></script>
+    </head>
 	<body>
 		<h1>Landing Page</h1>
+		<br/>		
+		<div class="container-fluid">
+
+        <div ng-view></div>
+
+    </div>
 	</body>
 </html>
