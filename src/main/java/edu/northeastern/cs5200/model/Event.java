@@ -1,5 +1,8 @@
 package edu.northeastern.cs5200.model;
 
+import javax.persistence.Entity;
+
+@Entity(name = "Event")
 public class Event {
 
 	private String name;

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import edu.northeastern.cs5200.dao.EventDao;
 import edu.northeastern.cs5200.model.Event;
+import edu.northeastern.cs5200.repositories.EventDao;
 
 @RestController
 @CrossOrigin(origins = "*")
