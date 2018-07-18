@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Event;
-import edu.northeastern.cs5200.repositories.EventDao;
+
 
 @RestController
 @CrossOrigin(origins = "*")
 public class EventService {
 	
-	@RequestMapping("/api/event")
+/*	@RequestMapping("/api/event")
 	public List<Event> findAllEvents() {
 		EventDao dao = EventDao.getInstance();
 		return dao.findAllEvents();
@@ -50,6 +50,6 @@ public class EventService {
 	public int deleteEvent(@PathVariable(name="eventId") int eventId) {
 		EventDao dao = EventDao.getInstance();
 		return dao.deleteEvent(eventId);
-	}
+	}*/
 }
 
