@@ -12,7 +12,12 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import edu.northeastern.cs5200.model.Address;
+import edu.northeastern.cs5200.model.Contact;
 import edu.northeastern.cs5200.model.Person;
+import edu.northeastern.cs5200.repositories.AddressRepository;
+import edu.northeastern.cs5200.repositories.ContactRepository;
 import edu.northeastern.cs5200.repositories.PersonRepository;
 
 @RestController
@@ -20,6 +25,12 @@ public class PersonService {
 
 	@Autowired
 	PersonRepository personRepository;
+	
+	@Autowired
+	AddressRepository addressRepository;
+	
+	@Autowired
+	ContactRepository contactRepository;
 	
 	@PostMapping("api/person")
 	public Person createPerson(@RequestBody Person person) {
@@ -74,5 +85,53 @@ public class PersonService {
 	@DeleteMapping("/api/person/{personId}")
 	public void deletePerson(@PathVariable("personId") int id) {
 		personRepository.deleteById(id);
+	}
+	
+	@PutMapping("/api/person/{personId}/personAddresses/{addressId}")
+	public void personAddresses(
+			@PathVariable("personId") int personId,
+			@PathVariable("addressId") int addressId) {
+		Optional<Person> operson = personRepository.findById(personId);
+		Optional<Address> oaddress   = addressRepository.findById(addressId);
+		if(operson.isPresent() && oaddress.isPresent()) {
+			Person person = operson.get();
+			Address address = oaddress.get();
+			address.setPerson(person);
+			addressRepository.save(address);
+			
+			person.addresses(address);
+			personRepository.save(person);
+		}
+	}
+	
+	@GetMapping("/api/person/{addressId}/addressesAdded")
+	public Iterable<Address> findAddressesAdded(
+			@PathVariable("personId") int personId) {
+		Optional<Person> operson = personRepository.findById(personId);
+		return operson.get().getAddresses();
+	}
+	
+	@PutMapping("/api/person/{personId}/personContacts/{contactId}")
+	public void personContacts(
+			@PathVariable("personId") int personId,
+			@PathVariable("contactId") int contactId) {
+		Optional<Person> operson = personRepository.findById(personId);
+		Optional<Contact> ocontact   = contactRepository.findById(contactId);
+		if(operson.isPresent() && ocontact.isPresent()) {
+			Person person = operson.get();
+			Contact contact = ocontact.get();
+			contact.setPerson(person);
+			contactRepository.save(contact);
+			
+			person.contacts(contact);
+			personRepository.save(person);
+		}
+	}
+	
+	@GetMapping("/api/person/{personId}/contactsAdded")
+	public Iterable<Contact> findContactsAdded(
+			@PathVariable("personId") int personId) {
+		Optional<Person> operson = personRepository.findById(personId);
+		return operson.get().getContacts();
 	}
 }

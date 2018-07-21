@@ -21,27 +21,12 @@ public class Address {
 	private String state;
 	private long zip;
 	private Boolean primaryAdd;
-	public Address(int id, String street1, String street2, String city, String state, long zip, Boolean primaryAdd,
-			Person person) {
-		super();
-		this.id = id;
-		this.street1 = street1;
-		this.street2 = street2;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
-		this.primaryAdd = primaryAdd;
-		this.person = person;
-	}
 	@Override
 	public String toString() {
 		return "Address [id=" + id + ", street1=" + street1 + ", street2=" + street2 + ", city=" + city + ", state="
 				+ state + ", zip=" + zip + ", primaryAdd=" + primaryAdd + ", person=" + person + "]";
 	}
-	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+	
 	@ManyToOne
 	@JsonIgnore
 	private Person person;
