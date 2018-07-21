@@ -16,6 +16,7 @@ public class Person {
 	@GeneratedValue
 	(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private String FirstName;
 	private String LastName;
 	private String UserName;
@@ -61,15 +62,7 @@ public class Person {
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
 	}
-	public Person(int id, String firstName, String lastName, String userName, String password, Date dob) {
-		super();
-		this.id = id;
-		FirstName = firstName;
-		LastName = lastName;
-		UserName = userName;
-		Password = password;
-		Dob = dob;
-	}
+	
 	public int getId() {
 		return id;
 	}

@@ -32,15 +32,6 @@ public class Vendor extends Person{
 		this.eventsAdded = eventsAdded;
 	}
 
-	public Vendor(int id, String firstName, String lastName, String userName, String password, Date dob) {
-		super(id, firstName, lastName, userName, password, dob);
-		// TODO Auto-generated constructor stub
-	}
-
-	public Vendor(int id, String firstName, String lastName, String userName, String password, Date dob, String type) {
-		super(id, firstName, lastName, userName, password, dob);
-		this.type = type;
-	}
 
 	public String getType() {
 		return type;
