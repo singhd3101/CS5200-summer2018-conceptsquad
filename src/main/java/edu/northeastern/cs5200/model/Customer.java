@@ -2,6 +2,9 @@ package edu.northeastern.cs5200.model;
 
 import java.sql.Date;
 
+import javax.persistence.Entity;
+
+@Entity
 public class Customer extends Person {
 
 	private int booking;

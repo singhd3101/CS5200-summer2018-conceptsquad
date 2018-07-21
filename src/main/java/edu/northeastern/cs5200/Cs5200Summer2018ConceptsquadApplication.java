@@ -17,4 +17,4 @@ public class Cs5200Summer2018ConceptsquadApplication extends SpringBootServletIn
 		SpringApplication.run(Cs5200Summer2018ConceptsquadApplication.class, args);
 	}
 
-}
+	}

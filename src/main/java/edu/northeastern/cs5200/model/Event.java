@@ -1,17 +1,49 @@
 package edu.northeastern.cs5200.model;
 
-import javax.persistence.Entity;
+import java.sql.Date;
 
-@Entity(name = "Event")
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Event {
 
+	@Id
+	@GeneratedValue
+	(strategy=GenerationType.IDENTITY)
+	private int id;
 	private String name;
 	private String type;
 	private String description;
 	private String venue;
 	private int capacity;
 	private double price;
+	@ManyToOne
+	@JsonIgnore
 	private Vendor vendor;
+	private Date eventDate;
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(Date eventDate) {
+		this.eventDate = eventDate;
+	}
+
 	
 	public Event() {
 		super();
@@ -19,17 +51,15 @@ public class Event {
 	
 	@Override
 	public String toString() {
-		return "Name: " + name +
-				" Type: " + type +
-				" Description: " + description +
-				" Venue: " + venue + 
-				" Capacity: " + capacity +
-				" Price: " + price ;
+		return "Event [id=" + id + ", name=" + name + ", type=" + type + ", description=" + description + ", venue="
+				+ venue + ", capacity=" + capacity + ", price=" + price + ", vendor=" + vendor + ", eventDate="
+				+ eventDate + "]";
 	}
 	
-	public Event(String name, String type, String description, String venue, int capacity, double price,
-			Vendor vendor) {
+	public Event(int id, String name, String type, String description, String venue, int capacity, double price,
+			Vendor vendor, Date eventDate) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.type = type;
 		this.description = description;
@@ -37,17 +67,10 @@ public class Event {
 		this.capacity = capacity;
 		this.price = price;
 		this.vendor = vendor;
+		this.eventDate = eventDate;
 	}
-	
-	public Event(String name, String type, String description, String venue, int capacity, double price) {
-		this.name = name;
-		this.type = type;
-		this.description = description;
-		this.venue = venue;
-		this.capacity = capacity;
-		this.price = price;
-	}
-	
+
+
 	public String getName() {
 		return name;
 	}
