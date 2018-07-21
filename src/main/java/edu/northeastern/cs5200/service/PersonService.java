@@ -26,7 +26,7 @@ public class PersonService {
 		return personRepository.save(person);
 	}
 	
-	@GetMapping("/person/{personId}")
+	@GetMapping("/api/person/{personId}")
 	public Optional<Person> findPersonById(@PathVariable("personId") int id) {
 		return personRepository.findById(id);
 	}
