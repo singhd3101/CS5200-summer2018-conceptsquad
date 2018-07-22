@@ -10,7 +10,6 @@
 
 	<name>CS5200-summer2018-conceptsquad</name>
 	<description>Movie/Event Ticketing System</description>
-
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>

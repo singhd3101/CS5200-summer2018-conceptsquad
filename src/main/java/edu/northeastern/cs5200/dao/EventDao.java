@@ -13,7 +13,7 @@ import edu.northeastern.cs5200.model.Event;
 public class EventDao {
 
 	public static EventDao instance = null;
-	private final String PASS = "";
+	private final String PASS = "password";
 	
 	String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	String URL = "jdbc:mysql://localhost:3306/showtime_schema";
