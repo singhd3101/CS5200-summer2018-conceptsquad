@@ -1,43 +1,50 @@
 package edu.northeastern.cs5200.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Contact {
 
-	private int id;
-	private boolean primary;
-	private int phone;
-	private String email;
-	private Person person;
-	
 	public Contact() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Contact(int id, boolean primary, int phone, String email, Person person) {
+	public Contact(int id, String email, long phone, Boolean primaryContact, Person person) {
 		super();
 		this.id = id;
-		this.primary = primary;
-		this.phone = phone;
 		this.email = email;
+		this.phone = phone;
+		this.primaryContact = primaryContact;
 		this.person = person;
 	}
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", primaryContact=" + primaryContact
+				+ ", person=" + person + "]";
+	}
+	@Id
+	@GeneratedValue
+	(strategy=GenerationType.IDENTITY)
+	private int id;
+	private String email;
+	private long phone;
+	private Boolean primaryContact;
+	@ManyToOne
+	@JsonIgnore
+	private Person person;
+	
+	
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public boolean isPrimary() {
-		return primary;
-	}
-	public void setPrimary(boolean primary) {
-		this.primary = primary;
-	}
-	public int getPhone() {
-		return phone;
-	}
-	public void setPhone(int phone) {
-		this.phone = phone;
 	}
 	public String getEmail() {
 		return email;
@@ -51,6 +58,17 @@ public class Contact {
 	public void setPerson(Person person) {
 		this.person = person;
 	}
-	
+	public long getPhone() {
+		return phone;
+	}
+	public void setPhone(long phone) {
+		this.phone = phone;
+	}
+	public Boolean getPrimaryContact() {
+		return primaryContact;
+	}
+	public void setPrimaryContact(Boolean primaryContact) {
+		this.primaryContact = primaryContact;
+	}
 	
 }
