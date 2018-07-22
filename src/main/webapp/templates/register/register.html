@@ -3,16 +3,14 @@
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
         <label for="firstName">First Name</label>
         <input id="firstName" ng-model="firstName" class="form-control" placeholder="Alice" required="" autofocus="" type="text">
-        <label for="username">Username</label>
+        <label for="lastName">Last Name</label>
         <input id="lastName" ng-model="lastName" class="form-control" placeholder="Wonder" required="" type="text">
-        <label for="username">Username</label>
-        <input id="username" ng-model="username" class="form-control" placeholder="Username" required="" type="text">
+        <label for="username">Username/Email</label>
+        <input id="username" ng-model="username" class="form-control" placeholder="alice@example.com" required="" type="text">
         <label for="password">Password</label>
         <input id="password" ng-model="password" class="form-control" placeholder="Password" required="" type="password">
         <label for="password">Password</label>
-        <input id="password" ng-model="password" class="form-control" placeholder="Password" required="" type="password">
-        <label for="username">Username</label>
-        <input id="username" ng-model="username" class="form-control" placeholder="Username" required="" autofocus="" type="text">
+        <input id="cpassword" ng-model="cpassword" class="form-control" placeholder="Password" required="" type="password">
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.register(username, password)">Register</button>
     </form>
 </div>

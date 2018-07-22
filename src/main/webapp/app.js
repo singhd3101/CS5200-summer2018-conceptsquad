@@ -19,6 +19,16 @@
                 controller : 'LoginController',
                 controllerAs : 'model'
             })
+            .when('/adminHome' , {
+                templateUrl : 'templates/adminHome/adminHome.html',
+                controller : 'AdminHomeController',
+                controllerAs : 'model'
+            })
+            .when('/custHome' , {
+                templateUrl : 'templates/custHome/custHome.html',
+                controller : 'CustHomeController',
+                controllerAs : 'model'
+            })
             .when('/register' , {
                 templateUrl : 'templates/register/register.html',
                 controller : 'RegisterController',

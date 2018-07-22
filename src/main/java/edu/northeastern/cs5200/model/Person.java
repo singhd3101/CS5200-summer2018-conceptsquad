@@ -22,6 +22,7 @@ public class Person {
 	private String UserName;
 	private String Password;
 	private Date Dob;
+	
 	@OneToMany(mappedBy="person")
 	private List<Address> addresses;
 	
