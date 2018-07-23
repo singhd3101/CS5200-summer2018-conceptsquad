@@ -5,7 +5,7 @@
 
     function FindAllShowtimeController($scope, $location, $http) {    
         function init() {
-            $http.get('https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+            $http.get('https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=').
             then(function(response) {
                 console.log(response.data);
                 $scope.allShowtimes = response.data;
