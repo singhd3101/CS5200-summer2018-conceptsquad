@@ -29,24 +29,27 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <h4 class="text-center">Movies around you</h4>
+    <h4 class="text-center"></h4>
 </div>
 <div class="container">
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Slug</th>
-            <th scope="col">Title</th>
-            <th scope="col">Image</th>
-        </tr>
-        </thead>
-        <tbody ng-repeat="movie in allShowtimes.movies">
-        <td>{{movie.id}}</td>
-        <td>{{movie.slug}}</td>
-        <td>{{movie.title}}</td>
-        <td><img src="{{movie.poster_image_thumbnail}}"></td>
-        </tbody>
-    </table>
-    </div>
+    <div class="align-content-md-center">
+    <form class="form-control">
+        <h1 class="h3 mb-3 font-weight-normal">Event Details</h1>
+        <label for="name" class="font-weight-bold">Name</label>
+        {{eventDetails.name}} <br/>
+        <label for="type" class="font-weight-bold">Event Type</label>
+        {{eventDetails.type}} <br/>
+        <label for="description" class="font-weight-bold">Description</label>
+        {{eventDetails.description}} <br/>
+        <label for="venue" class="font-weight-bold">Venue</label>
+        {{eventDetails.venue}} <br/>
+        <label for="capacity" class="font-weight-bold">Capacity</label>
+        {{eventDetails.capacity}} <br/>
+        <label for="price" class="font-weight-bold">Price</label>
+        ${{eventDetails.price}} <br/>
+        <label for="date" class="font-weight-bold">Date</label>
+        {{eventDetails.eventDate}}
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.book()">Book Tickets</button>
+    </form>
+</div>
 </div>

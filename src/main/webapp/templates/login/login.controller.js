@@ -11,7 +11,7 @@
         function login(username, password) {            
              $http.get("/api/person?username="+username+"&password="+password)
                 .then(function (response) {
-                    if (response.data[0].userName==="Administrator"){
+                	if (response.data[0].userName === "Administrator"){
                         console.log("validated");
                         $location.url('/adminHome/');
                     }

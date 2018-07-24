@@ -53,6 +53,7 @@ public class PersonService {
 		} 	else if(username != null) {
 			return (List<Person>) personRepository.findPersonByUsername(username);
 		}
+			System.out.println("in person service");
 			return (List<Person>) personRepository.findAll();
 	}
 	

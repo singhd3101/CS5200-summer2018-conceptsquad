@@ -29,6 +29,21 @@
                 controller : 'CustHomeController',
                 controllerAs : 'model'
             })
+            .when('/displayEvents' , {
+                templateUrl : 'templates/displayEvents/displayEvents.html',
+                controller : 'DisplayEventsController',
+                controllerAs : 'model'
+            })
+            .when('/eventDetails' , {
+                templateUrl : 'templates/eventDetails/eventDetails.html',
+                controller : 'EventDetailsController',
+                controllerAs : 'model'
+            })
+            .when('/eventDetails/:id' , {
+                templateUrl : 'templates/eventDetails/eventDetails.html',
+                controller : 'EventDetailsController',
+                controllerAs : 'model'
+            })
             .when('/register' , {
                 templateUrl : 'templates/register/register.html',
                 controller : 'RegisterController',
