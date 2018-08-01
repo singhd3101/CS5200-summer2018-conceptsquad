@@ -7,26 +7,51 @@ package edu.northeastern.cs5200.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
 public class Booking {
-	
+
+	@Id
+	@Column(name="ID")
+	@GeneratedValue
+	(strategy=GenerationType.IDENTITY)
 	private int id;
+	
 	private int noOfTickets;
 	private Date date;
 	private float totalCost;
-	private int historicalBooking = 0;
+	
+	@OneToOne
+	@JoinColumn(name = "hist_id")
+    private Booking historicalBooking;
+	
+	@OneToOne(mappedBy="historicalBooking")
+    private Booking currentBooking;
+	
+	@ManyToOne
+	@JsonIgnore
 	private Customer customer;
 	
-	//manyToOne with customer
-	private List<Customer> customerList;
 	
-	public Booking(int noOfTickets, Date date, float totalCost, int historicalBooking, Customer customer) {
+
+	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, Customer customer) {
 		this.noOfTickets = noOfTickets;
 		this.date = date;
 		this.totalCost = totalCost;
 		this.historicalBooking = historicalBooking;
 		this.customer = customer;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "id: " + id +
@@ -69,11 +94,11 @@ public class Booking {
 		this.totalCost = totalCost;
 	}
 
-	public int getHistoricalBooking() {
+	public Booking getHistoricalBooking() {
 		return historicalBooking;
 	}
 
-	public void setHistoricalBooking(int historicalBooking) {
+	public void setHistoricalBooking(Booking historicalBooking) {
 		this.historicalBooking = historicalBooking;
 	}
 
@@ -85,12 +110,4 @@ public class Booking {
 		this.customer = customer;
 	}
 
-	public List<Customer> getCustomerList() {
-		return customerList;
-	}
-
-	public void setCustomerList(List<Customer> customerList) {
-		this.customerList = customerList;
-	}
-	
 }
