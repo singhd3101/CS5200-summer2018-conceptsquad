@@ -31,24 +31,24 @@
 <div class="container-fluid">
     <h4 class="text-center">Previous Bookings</h4>
 </div>
-<div><button class="btn btn-primary">Profile</button></div>
+<div><button class="btn btn-primary" ng-click="model.profile()">Profile</button></div>
 <div class="container">
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Venue</th>
-            <th scope="col">Price</th>
+            <th scope="col">Id</th>
+            <th scope="col">Tickets</th>
             <th scope="col">Date</th>
+            <th scope="col">Amount</th>
             <th scope="col">Details</th>
         </tr>
         </thead>
-        <tbody>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td><button class="btn btn-success">Details</button></td>
+        <tbody ng-repeat="booking in allBookings">
+        <td>{{booking.id}}</td>
+        <td>{{booking.noOfTickets}}</td>
+        <td>{{booking.date}}</td>
+        <td>${{booking.totalCost}}</td>
+        <td><button class="btn btn-success" ng-click="model.bookingDetails(booking.id)">Details</button></td>
         </tbody>
     </table>
     </div>

@@ -37,6 +37,8 @@ public class Booking {
 	@JsonIgnore
 	private Customer customer;
 	
+	public Booking() {}
+	
 	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, Customer customer) {
 		this.noOfTickets = noOfTickets;
 		this.date = date;

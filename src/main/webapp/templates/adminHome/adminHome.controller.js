@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('ShowtimeApp')
-        .controller('CustHomeController', CustHomeController);
+        .controller('AdminHomeController', AdminHomeController);
 
-    function CustHomeController($scope, $location, $http, $window) {
+    function AdminHomeController($scope, $location, $http, $window) {
         this.profile = profile;
        
         var baseUrl = new $window.URL($location.absUrl()).origin + "/#!";

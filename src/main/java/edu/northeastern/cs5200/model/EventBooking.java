@@ -13,6 +13,8 @@ public class EventBooking extends Booking{
 	@ManyToOne
 	@JsonIgnore
 	private Event event;
+	
+	public EventBooking( ) {}
 
 	public EventBooking(int noOfTickets, Date date, float totalCost,
 			Booking historicalBooking, Customer customer) {
