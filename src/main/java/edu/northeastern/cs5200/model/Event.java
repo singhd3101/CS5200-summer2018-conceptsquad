@@ -1,12 +1,16 @@
 package edu.northeastern.cs5200.model;
 
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -23,27 +27,14 @@ public class Event {
 	private String venue;
 	private int capacity;
 	private double price;
+	
 	@ManyToOne
 	@JsonIgnore
 	private Vendor vendor;
 	private Date eventDate;
 	
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Date getEventDate() {
-		return eventDate;
-	}
-
-	public void setEventDate(Date eventDate) {
-		this.eventDate = eventDate;
-	}
-
+	@OneToMany(mappedBy="event", cascade=CascadeType.ALL)
+	private List<EventBooking> eventsBooked = new ArrayList<EventBooking>();
 	
 	public Event() {
 		super();
@@ -70,7 +61,22 @@ public class Event {
 		this.eventDate = eventDate;
 	}
 
+	public int getId() {
+		return id;
+	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Date getEventDate() {
+		return eventDate;
+	}
+
+	public void setEventDate(Date eventDate) {
+		this.eventDate = eventDate;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -112,6 +118,14 @@ public class Event {
 	}
 	public void setVendor(Vendor vendor) {
 		this.vendor = vendor;
+	}
+
+	public List<EventBooking> getEventsBooked() {
+		return eventsBooked;
+	}
+
+	public void setEventsBooked(List<EventBooking> eventsBooked) {
+		this.eventsBooked = eventsBooked;
 	}
 	
 	

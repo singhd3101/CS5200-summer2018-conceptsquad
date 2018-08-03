@@ -1,7 +1,3 @@
-/**
- * Booking table struc - id,no of tickets, dat of event/movie, total cost, historicalbooking, customerid, 
- * extended by movie booking and event booking with fields - movie/event id
- */
 package edu.northeastern.cs5200.model;
 
 import java.util.Date;
@@ -42,8 +38,6 @@ public class Booking {
 	@JsonIgnore
 	private Customer customer;
 	
-	
-
 	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, Customer customer) {
 		this.noOfTickets = noOfTickets;
 		this.date = date;

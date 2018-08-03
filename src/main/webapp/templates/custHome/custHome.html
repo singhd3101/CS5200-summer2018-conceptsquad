@@ -1,3 +1,55 @@
-<div class="align-content-md-center">
-    <h1>Welcome Customer</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Its Showtime</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Theaters</a>
+            </li>
+            <li class="nav-itemn">
+                <a class="nav-link" href="#">Movies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!displayEvents">Events</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input  class="form-control bg-dark text-white" placeholder="search" ng-model="movieName"/>
+            <button class="btn btn-primary invisible"  ng-click="model.searchMovie(movieName)">Search</button>
+        </form>
+        <li class="nav-link">
+            <a class="nav-link"  href="#!login">Log In</a>
+        </li>
+        <li class="nav-link">
+            <a class="nav-link"  href="#!register">Register</a>
+        </li>
+    </div>
+</nav>
+<div class="container-fluid">
+    <h4 class="text-center">Previous Bookings</h4>
+</div>
+<div><button class="btn btn-primary">Profile</button></div>
+<div class="container">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Venue</th>
+            <th scope="col">Price</th>
+            <th scope="col">Date</th>
+            <th scope="col">Details</th>
+        </tr>
+        </thead>
+        <tbody>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><button class="btn btn-success">Details</button></td>
+        </tbody>
+    </table>
+    </div>
 </div>
