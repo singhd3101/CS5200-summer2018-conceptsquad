@@ -41,7 +41,7 @@ public class EventService {
 	}
 	
 	@PutMapping("/api/event/{eventId}")
-	public Event updatePerson(@PathVariable("eventId") int id, @RequestBody Event newEvent) {
+	public Event updateEvent(@PathVariable("eventId") int id, @RequestBody Event newEvent) {
 		
 		Optional<Event> optional = eventRepository.findById(id);
 		if(optional.isPresent()) {
@@ -72,7 +72,6 @@ public class EventService {
 				event.setVendor(newEvent.getVendor());
 			}
 			return eventRepository.save(event);
-			
 		}
 		return null;
 	}

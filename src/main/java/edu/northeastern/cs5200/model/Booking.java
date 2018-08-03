@@ -1,7 +1,6 @@
 package edu.northeastern.cs5200.model;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
