@@ -1,9 +1,9 @@
 package edu.northeastern.cs5200.repositories;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
 
 import edu.northeastern.cs5200.model.Vendor;
 
-public interface VendorRepository extends JpaRepository <Vendor, Integer>{
+public interface VendorRepository extends CrudRepository <Vendor, Integer>{
 
 }

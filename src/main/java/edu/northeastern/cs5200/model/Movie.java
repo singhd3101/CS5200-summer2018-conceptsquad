@@ -17,28 +17,35 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class Movie {
-	
+
 	@Id
 	@GeneratedValue
 	(strategy=GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
+
 	private float rating;
-	
+
 	private float duration;
-	
+
 	@ManyToMany
 	@JoinTable(name="Movie2Theatre", 
 	joinColumns=@JoinColumn(name="MOVIE_ID", referencedColumnName="ID"),
 	inverseJoinColumns=@JoinColumn(name="THEATRE_ID", referencedColumnName="ID"))
 	@JsonIgnore
 	private List<Theatre> hostingTheatres;
-	
+
 	@OneToMany(mappedBy="movie", cascade=CascadeType.ALL)
 	@JsonIgnore
 	private List<MovieBooking> moviesBooked = new ArrayList<MovieBooking>();
+
+	public void bookedMovie(MovieBooking movieBooking) {
+		this.moviesBooked.add(movieBooking);
+		if(movieBooking.getMovie() != this) {
+			movieBooking.setMovie(this);
+		}
+	}
 
 	public int getId() {
 		return id;
@@ -95,5 +102,5 @@ public class Movie {
 	public void setMoviesBooked(List<MovieBooking> moviesBooked) {
 		this.moviesBooked = moviesBooked;
 	}	
-	
+
 }

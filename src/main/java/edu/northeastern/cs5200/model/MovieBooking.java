@@ -25,8 +25,8 @@ public class MovieBooking extends Booking{
 
 	public void setMovie(Movie movie) {
 		this.movie = movie;
+		if(!movie.getMoviesBooked().contains(this)) {
+			movie.getMoviesBooked().add(this);
+		}
 	}
-	
-	
-
 }

@@ -60,6 +60,13 @@ public class Event {
 		this.vendor = vendor;
 		this.eventDate = eventDate;
 	}
+	
+	public void bookedEvent(EventBooking eventbooking) {
+		this.eventsBooked.add(eventbooking);
+		if(eventbooking.getEvent() != this) {
+			eventbooking.setEvent(this);
+		}
+	}
 
 	public int getId() {
 		return id;
