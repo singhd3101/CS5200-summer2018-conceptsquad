@@ -17,8 +17,8 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <input  class="form-control bg-dark text-white" placeholder="search" ng-model="cinemaName"/>
-            <button class="btn btn-primary invisible"  ng-click="model.searchCinema(cinemaName)">Search</button>
+            <input  class="form-control bg-dark text-white" placeholder="search" ng-model="showTimes"/>
+            <button class="btn btn-primary invisible"  ng-click="model.searchShwotimes(showtimesName)">Search</button>
         </form>
         <li class="nav-link">
             <a class="nav-link"  href="#!login">Log In</a>
@@ -42,12 +42,12 @@
             <th scope="col">Showtimes</th>
         </tr>
         </thead>
-        <tbody ng-repeat="cinema in allCinemas.cinemas">
-        <td>{{cinema.name}}</td>
-        <td>{{cinema.location.address.display_text}}</td>
-        <td>{{cinema.telephone}}</td>
-        <td>{{cinema.location.lat}},{{cinema.location.lon}}</td>
-        <td><a href ="#!findAllShowtimes/cinemaId={{cinema.id}}">Show timings</a></td>
+        <tbody ng-repeat="showtime in allShowtimes.showtimes">
+        <td>{{showtime.cinema_id}}</td>
+        <td>{{showtime.movie_id}}</td>
+        <td>{{showtime.booking_link}}</td>
+        <td>{{showtime.start_at}}</td>
+        <td><a href =""></a></td>
         </tbody>
     </table>
     </div>

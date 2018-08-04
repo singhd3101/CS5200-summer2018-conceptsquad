@@ -53,6 +53,11 @@
                 templateUrl : 'templates/cinemas/findAllCinemas.html',
                 controller : 'FindAllCinemasController',
                 controllerAs : 'model'
+            })
+            .when('/findAllShowtimes/:cinemaId' , {
+                templateUrl : 'templates/showtimes/findAllShowtimes.html',
+                controller : 'FindAllShowtimesController',
+                controllerAs : 'model'
             });
     }
 })();

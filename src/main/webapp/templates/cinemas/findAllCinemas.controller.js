@@ -35,6 +35,8 @@
                 $scope.allCinemas = response.data;
             });
         }
+        
+        
         init();
     }
 })();
