@@ -9,6 +9,8 @@
     	var long;
     	var loct;
     	var cinemaUrl;
+    	this.showtimeAtCinema = showtimeAtCinema;
+    		
         function init() {
         	
         	if (navigator.geolocation) {
@@ -36,7 +38,13 @@
             });
         }
         
-        
         init();
+        
+        function showtimeAtCinema(cinemaId){
+        	console.log("in showtimecinema function");
+        	console.log(cinemaId);
+        	$location.url('/findAllShowtimes/:'+cinemaId);
+        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        }
     }
 })();

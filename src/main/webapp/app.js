@@ -54,6 +54,11 @@
                 controller : 'FindAllCinemasController',
                 controllerAs : 'model'
             })
+            .when('/findAllShowtimes' , {
+                templateUrl : 'templates/showtimes/findAllShowtimes.html',
+                controller : 'FindAllShowtimesController',
+                controllerAs : 'model'
+            })
             .when('/findAllShowtimes/:cinemaId' , {
                 templateUrl : 'templates/showtimes/findAllShowtimes.html',
                 controller : 'FindAllShowtimesController',

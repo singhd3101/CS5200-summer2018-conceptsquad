@@ -35,19 +35,19 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Address</th>
-            <th scope="col">Telephone</th>
-            <th scope="col">Location</th>
+            <th scope="col">Id</th>
+            <th scope="col">Slug</th>
+            <th scope="col">Title</th>
+            <th scope="col">Poster</th>
             <th scope="col">Showtimes</th>
         </tr>
         </thead>
-        <tbody ng-repeat="showtime in allShowtimes.showtimes">
-        <td>{{showtime.cinema_id}}</td>
-        <td>{{showtime.movie_id}}</td>
-        <td>{{showtime.booking_link}}</td>
-        <td>{{showtime.start_at}}</td>
-        <td><a href =""></a></td>
+        <tbody ng-repeat="showtime in allShowtimes.movies">
+        <td>{{showtime.id}}</td>
+        <td>{{showtime.slug}}</td>
+        <td>{{showtime.title}}</td>
+        <td><img src={{showtime.poster_image_thumbnail}}></td>
+        <td><a href ="#">Book</a></td>
         </tbody>
     </table>
     </div>

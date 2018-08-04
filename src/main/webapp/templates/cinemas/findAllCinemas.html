@@ -47,7 +47,7 @@
         <td>{{cinema.location.address.display_text}}</td>
         <td>{{cinema.telephone}}</td>
         <td>{{cinema.location.lat}},{{cinema.location.lon}}</td>
-        <td><a href ="#!findAllShowtimes/cinemaId={{cinema.id}}">Show timings</a></td>
+        <td><button class="btn btn-block btn-primary" ng-click="model.showtimeAtCinema(cinema.id)">Show timings</button></td>
         </tbody>
     </table>
     </div>
