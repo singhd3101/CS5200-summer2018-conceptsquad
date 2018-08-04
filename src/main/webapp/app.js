@@ -5,13 +5,13 @@
     function Config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl:'templates/display/findAllShowtime.html',
-                controller:'FindAllShowtimeController',
+                templateUrl:'templates/movies/findAllMovies.html',
+                controller:'FindAllMoviesController',
                 controllerAs:'model'
             })
             .when('/displayAll', {
-                templateUrl: 'templates/display/findAllShowtime.html',
-                controller: 'FindAllShowtimeController',
+                templateUrl: 'templates/movies/findAllMovies.html',
+                controller: 'FindAllMoviesController',
                 controllerAs:'model'
             })
             .when('/login' , {
@@ -47,6 +47,11 @@
             .when('/register' , {
                 templateUrl : 'templates/register/register.html',
                 controller : 'RegisterController',
+                controllerAs : 'model'
+            })
+            .when('/cinemas' , {
+                templateUrl : 'templates/cinemas/findAllCinemas.html',
+                controller : 'FindAllCinemasController',
                 controllerAs : 'model'
             });
     }
