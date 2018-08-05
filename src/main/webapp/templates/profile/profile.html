@@ -1,0 +1,18 @@
+<div class="align-content-md-center">
+    <form class="form-control">
+        <h1 class="h3 mb-3 font-weight-normal">Profile</h1>
+        <label for="firstName">First Name</label>
+        <input id="firstName" ng-model="firstName" class="form-control" required="" autofocus="" type="text" ng-value="user.firstName">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" ng-model="lastName" class="form-control" required="" type="text" ng-value="user.lastName">
+        <label for="username">Username/Email</label>
+        <input id="username" ng-model="username" class="form-control" required="" type="text" ng-value="user.userName">
+        <label for="password">Password</label>
+        <input id="password" ng-model="password" class="form-control" required="" type="password" ng-value="user.password">
+  		<label for="phone">Mobile</label>
+        <input id="phone" ng-model="phone" class="form-control" required="" type="number">
+        <label for="dob">Date of Birth</label>
+        <input id="dob" ng-model="dob" class="form-control" required="" type="text" ng-value="user.dob">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob)">Update</button>
+    </form>
+</div>

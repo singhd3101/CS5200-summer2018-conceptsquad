@@ -11,6 +11,12 @@
     
         function init () {
 		custId = $routeParams.id.substring(1,$routeParams.id.length);
+		$http.get("/api/person/" + custId)
+        .then(function(response) {
+        	$scope.user = response.data;
+        	console.log(response.data);
+        });
+		$scope.cid = custId;
         	$http.get("/api/moviebooking/" + custId)
             .then(function(response) {
             	$scope.allmovieBookings = response.data;
@@ -22,8 +28,9 @@
         };
         init();
         
-        function profile() {
-        	 console.log("navigate to update profile section");
+        function profile(id) {
+        	 //console.log($scope.user.firstName);
+        	 $location.url('/profile/:'+custId);
         };
         
         function movieDetails(bookingId) {

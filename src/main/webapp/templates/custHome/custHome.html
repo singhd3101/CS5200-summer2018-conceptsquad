@@ -20,15 +20,15 @@
             <input  class="form-control bg-dark text-white" placeholder="search" ng-model="movieName"/>
             <button class="btn btn-primary invisible"  ng-click="model.searchMovie(movieName)">Search</button>
         </form>
+        <span class="text-light">Welcome {{user.firstName}}!</span>
         <li class="nav-link">
-            <a class="nav-link"  href="#!login">Log In</a>
+            <a class="nav-link" href ng-click="model.profile()">Profile</a>
         </li>
         <li class="nav-link">
-            <a class="nav-link"  href="#!register">Register</a>
+            <a class="nav-link"  href="#">Logout</a>
         </li>
     </div>
 </nav>
-<div><button class="btn btn-primary" ng-click="model.profile()">Profile</button></div>
 <div class="container-fluid">
     <h4 class="text-center">Movie Bookings</h4>
 </div>

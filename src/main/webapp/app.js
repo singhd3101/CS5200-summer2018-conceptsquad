@@ -9,6 +9,21 @@
                 controller:'FindAllMoviesController',
                 controllerAs:'model'
             })
+            .when('/profile', {
+                templateUrl:'templates/profile/profile.html',
+                controller:'ProfileController',
+                controllerAs:'model'
+            })
+            .when('/profile/:custId', {
+                templateUrl:'templates/profile/profile.html',
+                controller:'ProfileController',
+                controllerAs:'model'
+            })
+            .when('/logout', {
+                templateUrl:'templates/movies/findAllMovies.html',
+                controller:'FindAllMoviesController',
+                controllerAs:'model'
+            })
             .when('/displayAll', {
                 templateUrl: 'templates/movies/findAllMovies.html',
                 controller: 'FindAllMoviesController',
