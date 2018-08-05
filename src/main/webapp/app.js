@@ -29,6 +29,11 @@
                 controller : 'CustHomeController',
                 controllerAs : 'model'
             })
+	    .when('/custHome/:id' , {
+                templateUrl : 'templates/custHome/custHome.html',
+                controller : 'CustHomeController',
+                controllerAs : 'model'
+            })
             .when('/displayEvents' , {
                 templateUrl : 'templates/displayEvents/displayEvents.html',
                 controller : 'DisplayEventsController',

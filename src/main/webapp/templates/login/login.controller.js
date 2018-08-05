@@ -11,13 +11,14 @@
         function login(username, password) {            
              $http.get("/api/person?username="+username+"&password="+password)
                 .then(function (response) {
+			id=response.data[0].id;
                 	if (response.data[0].userName === "Administrator"){
                         console.log("validated");
                         $location.url('/adminHome/');
                     }
                     else {
                         console.log("not validated");
-                        $location.url('/custHome/');
+                        $location.url('/custHome/:'+id);
                     }
                 })   
         }
