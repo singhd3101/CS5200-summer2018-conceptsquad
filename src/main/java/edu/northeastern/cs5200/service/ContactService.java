@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+
 import edu.northeastern.cs5200.model.Contact;
+import edu.northeastern.cs5200.repositories.BookingRepository;
 import edu.northeastern.cs5200.repositories.ContactRepository;
 
 @RestController
@@ -19,6 +21,9 @@ public class ContactService {
 
 	@Autowired
 	ContactRepository contactRepository;
+	
+	@Autowired
+	BookingRepository bookingRepository;
 	
 	@PostMapping("/api/contact")
 	public Contact createContact(@RequestBody Contact contact) {

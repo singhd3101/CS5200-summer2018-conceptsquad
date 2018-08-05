@@ -20,8 +20,16 @@ public class CustomerService {
 	
 	@GetMapping("/api/customer")
 	public Iterable<Customer> findAllCustomer() {
-		
 		return customerRepository.findAll();
+	}
+	
+	@GetMapping("/api/customer/{custId}")
+	public Customer findCustomerById(@PathVariable("custId") int id) {
+		Optional<Customer> optional = customerRepository.findById(id);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/customer/{custId}/booking")

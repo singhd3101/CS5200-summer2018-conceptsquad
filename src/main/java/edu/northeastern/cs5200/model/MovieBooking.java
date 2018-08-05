@@ -14,6 +14,8 @@ public class MovieBooking extends Booking{
 	@JsonIgnore
 	private Movie movie;
 
+	public MovieBooking() {}
+	
 	public MovieBooking(int noOfTickets, Date date, float totalCost,
 			Booking historicalBooking, Customer customer) {
 		super(noOfTickets, date, totalCost, historicalBooking, customer);

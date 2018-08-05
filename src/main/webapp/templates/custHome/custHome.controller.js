@@ -5,24 +5,20 @@
 
     function CustHomeController($scope, $location, $http, $routeParams) {    
     	this.profile = profile;
-    	this.bookingDetails = bookingDetails;
-	var custId;
+    	this.movieDetails = movieDetails;
+    	this.eventDetails = eventDetails;
+    	var custId;
     
         function init () {
 		custId = $routeParams.id.substring(1,$routeParams.id.length);
-        	console.log("in init custhome");
-        	//$http.get("/api/customer/" + custId + "/movieBooking")
-            //.then(function(response) {
-            //	console.log("movie booking");
-            //    console.log(response.data);
-            //    $scope.movieBookings = response.data;
-            //});
-            //$http.get("/api/customer/" + custId + "/eventBooking")
-            //.then(function(response) {
-            //	console.log("event booking");
-            //    console.log(response.data);
-            //    $scope.eventBookings = response.data;
-            //});
+        	$http.get("/api/moviebooking/" + custId)
+            .then(function(response) {
+            	$scope.allmovieBookings = response.data;
+            });
+        	$http.get("/api/eventbooking/" + custId)
+            .then(function(response) {
+            	$scope.alleventBookings = response.data;
+            });
         };
         init();
         
@@ -30,9 +26,20 @@
         	 console.log("navigate to update profile section");
         };
         
-        function bookingDetails(bookingId) {
-        	console.log(bookingId);
-        	// $location.url('/bookingDetails/:'+bookingId);
+        function movieDetails(bookingId) {
+        	alert("in movie details" + bookingId);
+        	$http.get("/api/moviebooking/"+bookingId+"/movie")
+        	.then(function(response){
+                console.log(response.data);
+        	});
+        };
+        
+        function eventDetails(bookingId) {
+        	alert("in event details" + bookingId);
+        	$http.get("/api/eventbooking/"+bookingId+"/event")
+        	.then(function(response){
+                console.log(response.data);
+        	});
         };
     }
 })();
