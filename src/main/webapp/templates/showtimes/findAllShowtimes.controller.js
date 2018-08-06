@@ -1,4 +1,4 @@
-(function () {
+	(function () {
     angular
         .module('ShowtimeApp')
         .controller('FindAllShowtimesController',FindAllShowtimesController);
@@ -10,6 +10,7 @@
     	var loct;
     	var cinemaUrl;
     	var cinemaId;
+    	var id;
     	
         function init() {
         	
@@ -23,12 +24,20 @@
         	console.log("inshowtimes controller");
         	console.log(cinemaId);
         	
+        	
         	$http.get(url4).
         	then(function(response) {
                 console.log(response.data);
                 $scope.allShowtimes = response.data;
             });
-        }
+            
+        	
+           $http.get('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=30668&movie_id=39081&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+           then(function(response) {
+                console.log(response.data);
+              $scope.allMovieShowtimes = response.data;
+          });
+        };
         init();
     }
 })();

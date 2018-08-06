@@ -29,7 +29,7 @@
     </div>
 </nav>
 <div class="container-fluid">
-    <h4 class="text-center">Theatres around you</h4>
+    <h4 class="text-center">Movies at</h4>
 </div>
 <div class="container">
     <table class="table table-hover">
@@ -40,13 +40,15 @@
             <th scope="col">Title</th>
             <th scope="col">Poster</th>
             <th scope="col">Showtimes</th>
+            <th scope="col">Book</th>
         </tr>
         </thead>
         <tbody ng-repeat="showtime in allShowtimes.movies">
         <td>{{showtime.id}}</td>
         <td>{{showtime.slug}}</td>
         <td>{{showtime.title}}</td>
-        <td><img src={{showtime.poster_image_thumbnail}}></td>
+         <td><img src={{showtime.poster_image_thumbnail}}></td>
+        <td>{{showtime.showtimes}}</td>
         <td><a href ="#">Book</a></td>
         </tbody>
     </table>
