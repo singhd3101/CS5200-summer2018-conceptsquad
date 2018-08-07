@@ -12,11 +12,12 @@
     	var cinemaId;
     	var id;
     	var movieId;
-    	$scope.finalArray = [];
+    	var finalArray = [];
     	var allMovies;
     	var allShowtimes;
     	var allCinemas;
     	this.movieDetails = movieDetails;
+    	var count;
     	
         function init() {
         	
@@ -34,15 +35,20 @@
         	$http.get(url4).
         	then(function(response) {
                allMovies = response.data.movies;
+               console.log(allMovies);
                allShowtimes = response.data.showtimes;
+               console.log(allShowtimes);
                allCinemas = response.data.cinemas;
+               console.log(allCinemas);
+              // $scope.cinemaName = 
                angular.forEach(allMovies, function(movie) {
             	    angular.forEach(allShowtimes, function(showtime) {
             	      if(movie.id ==showtime.movie_id) {
             	          var test = {
             	            movieId : showtime.movie_id,
             	            movieName: movie.slug,
-            	            start_at: showtime.start_at
+            	            start_at: showtime.start_at,
+            	            count:showtime.movie_id.count
             	          }
             	          finalArray.push(test);
             	          
@@ -50,8 +56,9 @@
             	  });
             	    
             	});
-               $scope.allShowtimes = finalArray[0];
-               console.log("HI "+$scope.allShowtimes);
+               $scope.allShowtimes = finalArray;
+               console.log(finalArray);
+              
             });
             
         };

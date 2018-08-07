@@ -1,4 +1,4 @@
-nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Its Showtime</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@ nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <h4 class="text-center">Movies at</h4>
 </div>
 <div class="container">
-    <table class="table table-hover">
+    <table id="example" class="table table-hover">
         <thead>
         <tr>
             <th scope="col">Id</th>
@@ -40,20 +40,23 @@ nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <th scope="col">Title</th>
 
             <th scope="col">Showtimes</th>
+           
 
         </tr>
         </thead>
-        <tbody ng-repeat="showtime in allShowtimes">
-        <td>{{showtimes}}</td>
+        <!-- <tbody ng-repeat="showtime in allShowtimes | groupBy:'-movieName'"> -->
+        <tbody ng-repeat="showtime in allShowtimes | orderBy:'-movieName'"> 
+        <td>{{showtime.movieId}}</td>
         <td>{{showtime.movieName}}</td>
         <td>{{showtime.start_at}}</td>
-
+		
 
         <td></td>
         </tbody>
-        </tbody>
+      
         
     </table>
     </div>
 
 </div>
+

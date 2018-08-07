@@ -8,6 +8,8 @@
     	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" crossorigin="anonymous" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"/>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular-route.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.min.js"></script>
     	<script src="app.js"></script>
     	<script src="main.controller.js"></script>
     	<script src="templates/movies/findAllMovies.controller.js"></script>
@@ -19,6 +21,16 @@
     	<script src="templates/cinemas/findAllCinemas.controller.js"></script>
     	<script src="templates/showtimes/findAllShowtimes.controller.js"></script>
     	<script src="templates/profile/profile.controller.js"></script>
+<script src="https://code.jquery.com/jquery-1.12.1.min.js"></script>
+<script src="templates/js/jquery.rowspanizer.min.js"></script>
+<script src="templates/js/jquery.rowspanizer.js"></script>
+
+<script>
+$('#action').on('load', function() {
+	console.log("hi");
+  $("#example").rowspanizer({vertical_align: 'middle'});
+});
+</script>
     </head>
 	<body>
 		<div class="container-fluid">
