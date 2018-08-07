@@ -3,10 +3,12 @@ package edu.northeastern.cs5200.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 @Entity
+@DiscriminatorValue("Customer")
 public class Customer extends Person {
 
 	private int booking;

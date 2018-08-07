@@ -43,8 +43,10 @@ public class CustomerService {
 		return null;
 	}
 	
-	@PostMapping("/api/customer")
+
+	@PostMapping("api/customer")
 	public Customer createCustomer(@RequestBody Customer customer) {
+		System.out.println(customer.getFirstName());
 		return customerRepository.save(customer);
 	}
 }

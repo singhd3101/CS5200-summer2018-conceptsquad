@@ -2,11 +2,13 @@ package edu.northeastern.cs5200.model;
 
 import java.util.List;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
 
 @Entity
+@DiscriminatorValue("Vendor")
 public class Vendor extends Person{
 
 	private String type;

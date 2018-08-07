@@ -32,6 +32,7 @@ public class Person {
 				+ ", Password=" + Password + ", Dob=" + Dob + ", addresses=" + addresses + ", contacts=" + contacts
 				+ "]";
 	}
+	
 	@OneToMany(mappedBy="person")
 	private List<Contact> contacts;
 	
