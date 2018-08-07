@@ -1,6 +1,6 @@
 (function () {
     angular
-        .module("ShowtimeApp",['ngRoute'])
+        .module("ShowtimeApp",['ngRoute','angular.filter'])
         .config(Config);
     function Config($routeProvider) {
         $routeProvider

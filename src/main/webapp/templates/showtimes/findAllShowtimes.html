@@ -1,62 +1,68 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Its Showtime</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-filter/0.5.17/angular-filter.min.js"></script>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Theaters</a>
-            </li>
-            <li class="nav-itemn">
-                <a class="nav-link" href="#">Movies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#!displayEvents">Events</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input  class="form-control bg-dark text-white" placeholder="search" ng-model="showTimes"/>
-            <button class="btn btn-primary invisible"  ng-click="model.searchShowtimes(showtimesName)">Search</button>
-        </form>
-        <li class="nav-link">
-            <a class="nav-link"  href="#!login">Log In</a>
-        </li>
-        <li class="nav-link">
-            <a class="nav-link"  href="#!register">Register</a>
-        </li>
-    </div>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Its Showtime</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="#">Theaters</a>
+			</li>
+			<li class="nav-itemn"><a class="nav-link" href="#">Movies</a></li>
+			<li class="nav-item"><a class="nav-link" href="#!displayEvents">Events</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control bg-dark text-white" placeholder="search"
+				ng-model="showTimes" />
+			<button class="btn btn-primary invisible"
+				ng-click="model.searchShowtimes(showtimesName)">Search</button>
+		</form>
+		<li class="nav-link"><a class="nav-link" href="#!login">Log
+				In</a></li>
+		<li class="nav-link"><a class="nav-link" href="#!register">Register</a>
+		</li>
+	</div>
 </nav>
 <div class="container-fluid">
-    <h4 class="text-center">Movies at</h4>
+	<h4 class="text-center">Movies at</h4>
 </div>
 <div class="container">
-    <table id="example" class="table table-hover">
-        <thead>
-        <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Slug</th>
-            <th scope="col">Title</th>
+	<ul ng-repeat="(key, value) in allShowtimes | groupBy: 'movieName'">
+		<span class="font-weight-bold">Movie name: {{ key }}</span>
+		<li ng-repeat="showtime in value">
+			Id: {{ showtime.movieId }} Showtime: {{ showtime.start_at }}
+		</li>
+	</ul>
+	<table id="example" class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Showtime</th>
 
-            <th scope="col">Showtimes</th>
-           
+				<th scope="col">Showtimes</th>
 
-        </tr>
-        </thead>
-        <!-- <tbody ng-repeat="showtime in allShowtimes | groupBy:'-movieName'"> -->
-        <tbody ng-repeat="showtime in allShowtimes | orderBy:'-movieName'"> 
-        <td>{{showtime.movieId}}</td>
-        <td>{{showtime.movieName}}</td>
-        <td>{{showtime.start_at}}</td>
-		
 
-        <td></td>
-        </tbody>
-      
-        
-    </table>
-    </div>
+			</tr>
+		</thead>
+		<!-- <tbody ng-repeat="showtime in allShowtimes | groupBy:'movieName'"> -->
+		 <tbody ng-repeat="showtime in allShowtimes | orderBy:'-movieName'"> 
+		<td>{{showtime.movieId}}</td>
+		<td>{{showtime.movieName}}</td>
+		<td>{{showtime.start_at}}</td>
+		<td></td>
+		</tbody>
+
+
+	</table>
+</div>
 
 </div>
 

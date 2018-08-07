@@ -42,7 +42,8 @@
             <th scope="col">Showtimes</th>
         </tr>
         </thead>
-        <tbody ng-repeat="cinema in allCinemas.cinemas | groupBy:'-id'">
+        <!--  <tbody ng-repeat="cinema in allCinemas.cinemas | groupBy:'-id'"> -->
+        <tbody ng-repeat="cinema in allCinemas.cinemas">
         <td>{{cinema.name}}</td>
         <td>{{cinema.location.address.display_text}}</td>
         <td>{{cinema.telephone}}</td>

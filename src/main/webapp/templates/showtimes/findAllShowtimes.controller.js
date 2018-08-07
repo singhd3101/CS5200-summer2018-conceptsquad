@@ -3,13 +3,13 @@
         .module('ShowtimeApp')
         .controller('FindAllShowtimesController',FindAllShowtimesController);
 
-    function FindAllShowtimesController($scope, $location, $http, $routeParams) {    
+    function FindAllShowtimesController($scope, $location, $http, $routeParams, $filter) {    
     	var pos;
     	var lat;
     	var long;
     	var loct;
-    	var cinemaUrl;
-    	var cinemaId;
+    	var cinemaUrl = "";
+    	var cinemaId = ""; 
     	var id;
     	var movieId;
     	var finalArray = [];
@@ -20,13 +20,10 @@
     	var count;
     	
         function init() {
-        	
+        	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	var url1 = 'https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
         	var url2 = 'https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
         	var url3 = 'http://localhost:8080/#!/findAllShowtimes/cinemaId='+ cinemaId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
-        	
-           
-        	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	var url4 = 'https://api.internationalshowtimes.com/v4/showtimes/?append=movies,cinemas&cinema_id='+ cinemaId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
         	console.log("inshowtimes controller");
         	console.log(cinemaId);
