@@ -18,7 +18,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <input  class="form-control bg-dark text-white" placeholder="search" ng-model="showTimes"/>
-            <button class="btn btn-primary invisible"  ng-click="model.searchShwotimes(showtimesName)">Search</button>
+            <button class="btn btn-primary invisible"  ng-click="model.searchShowtimes(showtimesName)">Search</button>
         </form>
         <li class="nav-link">
             <a class="nav-link"  href="#!login">Log In</a>
@@ -38,19 +38,22 @@
             <th scope="col">Id</th>
             <th scope="col">Slug</th>
             <th scope="col">Title</th>
-            <th scope="col">Poster</th>
+
             <th scope="col">Showtimes</th>
-            <th scope="col">Book</th>
+
         </tr>
         </thead>
-        <tbody ng-repeat="showtime in allShowtimes.movies">
-        <td>{{showtime.id}}</td>
-        <td>{{showtime.slug}}</td>
-        <td>{{showtime.title}}</td>
-         <td><img src={{showtime.poster_image_thumbnail}}></td>
-        <td>{{showtime.showtimes}}</td>
-        <td><a href ="#">Book</a></td>
+        <tbody ng-repeat="showtime in allShowtimes">
+        <td>{{showtimes}}</td>
+        <td>{{showtime.movieName}}</td>
+        <td>{{showtime.start_at}}</td>
+
+
+        <td></td>
         </tbody>
+        </tbody>
+        
     </table>
     </div>
+
 </div>
