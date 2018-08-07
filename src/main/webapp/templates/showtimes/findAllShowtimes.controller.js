@@ -37,6 +37,8 @@
                console.log(allShowtimes);
                allCinemas = response.data.cinemas;
                console.log(allCinemas);
+               $scope.cinemaName=allCinemas;
+               console.log("name is "+allCinemas[0].name);
               // $scope.cinemaName = 
                angular.forEach(allMovies, function(movie) {
             	    angular.forEach(allShowtimes, function(showtime) {
@@ -55,7 +57,7 @@
             	});
                $scope.allShowtimes = finalArray;
                console.log(finalArray);
-              
+              console.log($scope.cinemaName);
             });
             
         };

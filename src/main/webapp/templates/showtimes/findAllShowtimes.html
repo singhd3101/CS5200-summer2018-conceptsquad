@@ -31,7 +31,9 @@
 	</div>
 </nav>
 <div class="container-fluid">
-	<h4 class="text-center">Movies at</h4>
+<span ng-repeat="cinema in cinemaName">
+	<h4  class="text-center">Movies at {{cinema.name}}</h4>
+	</span>
 </div>
 <div class="container">
 	<ul ng-repeat="(key, value) in allShowtimes | groupBy: 'movieName'">
@@ -53,7 +55,7 @@
 			</tr>
 		</thead>
 		<!-- <tbody ng-repeat="showtime in allShowtimes | groupBy:'movieName'"> -->
-		 <tbody ng-repeat="showtime in allShowtimes | orderBy:'-movieName'"> 
+		 <tbody ng-repeat="showtime in allShowtimes | groupBy:'-movieName'"> 
 		<td>{{showtime.movieId}}</td>
 		<td>{{showtime.movieName}}</td>
 		<td>{{showtime.start_at}}</td>
