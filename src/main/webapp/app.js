@@ -44,9 +44,19 @@
                 controller : 'CustHomeController',
                 controllerAs : 'model'
             })
-	    .when('/custHome/:id' , {
+	        .when('/custHome/:id' , {
                 templateUrl : 'templates/custHome/custHome.html',
                 controller : 'CustHomeController',
+                controllerAs : 'model'
+            })
+            .when('/vendorHome' , {
+                templateUrl : 'templates/vendorHome/vendorHome.html',
+                controller : 'VendorHomeController',
+                controllerAs : 'model'
+            })
+	        .when('/vendorHome/:id' , {
+                templateUrl : 'templates/vendorHome/vendorHome.html',
+                controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
             .when('/displayEvents' , {

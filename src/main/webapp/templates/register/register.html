@@ -1,16 +1,40 @@
 <div class="align-content-md-center">
-    <form class="form-control">
+    <form class="form-control" name="registerForm">
         <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        
         <label for="firstName">First Name</label>
-        <input id="firstName" ng-model="firstName" class="form-control" placeholder="Alice" required="" autofocus="" type="text">
+        <input name="firstName" id="firstName" ng-model="firstName" class="form-control" placeholder="Alice" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="12" required />
+        <p ng-show="registerForm.firstName.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">First name is required.</p>
+        <p ng-show="registerForm.firstName.$error.maxlength" class="help-block">First name should be atmost 12 characters.</p>
+        
         <label for="lastName">Last Name</label>
-        <input id="lastName" ng-model="lastName" class="form-control" placeholder="Wonder" required="" type="text">
+        <input name="lastName" id="lastName" ng-model="lastName" class="form-control" placeholder="Wonder" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="12" required />
+        <p ng-show="registerForm.lastName.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="registerForm.lastName.$invalid && !registerForm.lastName.$pristine" class="help-block">Last name is required.</p>
+        <p ng-show="registerForm.lastName.$error.maxlength" class="help-block">Last name should be atmost 12 characters.</p>
+        
         <label for="username">Username/Email</label>
-        <input id="username" ng-model="username" class="form-control" placeholder="alice@example.com" required="" type="text">
+        <input name="username" id="username" ng-model="username" class="form-control" placeholder="alice@example.com" type="email" required />
+        <p ng-show="registerForm.username.$invalid && !registerForm.username.$pristine" class="help-block">Enter a valid email.</p>
+        
         <label for="password">Password</label>
-        <input id="password" ng-model="password" class="form-control" placeholder="Password" required="" type="password">
-        <label for="password">Password</label>
-        <input id="cpassword" ng-model="cpassword" class="form-control" placeholder="Password" required="" type="password">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.register(username, password)">Register</button>
+        <input name="password" id="password" ng-model="password" class="form-control" placeholder="Password" type="password" required />
+        <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine" class="help-block">Password is too short.</p>
+        
+        <label for="dtype">User Type</label>
+        <div class="form-check form-check-inline">
+  			<input class="form-check-input" type="radio" name="dtype" id="dtype1" value="Customer" ng-model="dtype" required />
+  			<label class="form-check-label" for="inlineRadio1">Customer</label>
+		</div>
+		<div class="form-check form-check-inline">
+  			<input class="form-check-input" type="radio" name="dtype" id="dtype2" value="Vendor" ng-model="dtype" required />
+  			<label class="form-check-label" for="inlineRadio2">Vendor</label>
+		</div>
+        <p ng-show="registerForm.dtype.$invalid && !registerForm.dtype.$pristine" class="help-block">User Type is required.</p>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerForm.$invalid" ng-click="model.register(firstName, lastName, username, password, dtype)">Register</button>
+        
+        <p ng-show="registerForm.$invalid && !registerForm.$pristine" class="help-block">Please enter data in all fields.</p>
     </form>
 </div>
