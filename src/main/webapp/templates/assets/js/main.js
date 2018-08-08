@@ -25,6 +25,7 @@
 	});
 	$('.menu-area ul > li > .theme-btn').on('click', function () {
 		$('.buy-ticket').show();
+		console.log("in buy");
 		return false;
 	});
 	$('.buy-ticket .buy-ticket-area > a').on('click', function () {
@@ -33,6 +34,7 @@
 	});
 	$('.login-popup').on('click', function () {
 		$('.login-area').show();
+		console.log("in login");
 		return false;
 	});
 	$('.login-box > a').on('click', function () {
