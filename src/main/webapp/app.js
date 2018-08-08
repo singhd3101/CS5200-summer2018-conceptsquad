@@ -56,7 +56,7 @@
             })
 	        .when('/vendorHome/:id' , {
                 templateUrl : 'templates/vendorHome/vendorHome.html',
-                controller : 'VendorHomeController',
+                controller : 'vendorHomeController',
                 controllerAs : 'model'
             })
             .when('/displayEvents' , {
