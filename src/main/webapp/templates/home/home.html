@@ -48,7 +48,7 @@
 						</form>
 						<ul>
 							<li><a href="#">Welcome Guest!</a></li>
-							<li><a class="login-popup" href="#">Login</a></li>
+							<li><a class="login-popup" id="login-popup" href="#">Login</a></li>
 						</ul>
 					</div>
 					<div class="menu-area">
@@ -764,5 +764,13 @@
 		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
 		<!-- main JS -->
 		<script src="templates/assets/js/main.js"></script>
+		<script>	
+
+		$('#login-popup').on('click', function () {
+		$('.login-area').show();
+		console.log("in login");
+		return false;
+	});
+	 	</script>
 	</body>
 </html>

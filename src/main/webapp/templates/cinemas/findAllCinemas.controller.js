@@ -10,8 +10,10 @@
     	var loct;
     	var cinemaUrl;
     	this.showtimeAtCinema = showtimeAtCinema;
-    		
+    		//https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5
         function init() {
+        	
+
         	
         	if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){
@@ -22,20 +24,20 @@
         	       console.log(position.coords.latitude);
         	       console.log(position.coords.longitude);
         	       loct='location='+lat+','+long;
-        	       console.log(loct);
         	       console.log("chal pada");
-        	       cinemaUrl='https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
-        	      console.log(cinemaUrl);
+        	       console.log("location is "+loct);
+               		$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+               		then(function(response) {
+                       console.log(response.data);
+                       $scope.allCinemas = response.data;
+                   });
         	      });
         	    });
+        	   
         	  }
             //$http.get('https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
-        	//$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
-        	$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+ loct +'&distance=10&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
-        	then(function(response) {
-                console.log(response.data);
-                $scope.allCinemas = response.data;
-            });
+        	//https://api.internationalshowtimes.com/v4/movies/?location=42.3605,-71.0596&limit=10&fields=synopsis,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5$http.get('https://api.internationalshowtimes.com/v4/movies/?location='+ lat +','+ long +'&limit=10&fields=synopsis,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').        	
+        	
         }
         
         init();
