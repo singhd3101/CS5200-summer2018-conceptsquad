@@ -6,21 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>It's Showtime - Online Movie,Vedio and TV Show HTML5 Template</title>
 		<!-- Favicon Icon -->
-		<link rel="icon" type="image/png" href="assets/img/favcion.png" />
+		<link rel="icon" type="image/png" href="templates/assets/img/favcion.png" />
 		<!-- Bootstrap CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/bootstrap.min.css" media="all" />
 		<!-- Slick nav CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/slicknav.min.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/slicknav.min.css" media="all" />
 		<!-- Iconfont CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/icofont.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/icofont.css" media="all" />
 		<!-- Owl carousel CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/owl.carousel.css">
 		<!-- Popup CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/magnific-popup.css">
 		<!-- Main style CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/style.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/style.css" media="all" />
 		<!-- Responsive CSS -->
-		<link rel="stylesheet" type="text/css" href="assets/css/responsive.css" media="all" />
+		<link rel="stylesheet" type="text/css" href="templates/assets/css/responsive.css" media="all" />
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -28,13 +28,13 @@
 	</head>
 	<body>
 		<!-- Page loader -->
-	    <div id="preloader"></div>
+	
 		<!-- header section start -->
 		<header class="header">
 			<div class="container">
 				<div class="header-area">
 					<div class="logo">
-						<a href="index.html"><img src="assets/img/logo.png" alt="logo" /></a>
+						<a href="index.html"><img src="templates/assets/img/logo.png" alt="logo" /></a>
 					</div>
 					<div class="header-right">
 						<form action="#">
@@ -56,8 +56,8 @@
 					    <div class="mainmenu">
                             <ul id="primary-menu">
                                 <li><a class="active" href="index.html">Home</a></li>
-                                <li><a href="movies.html">Movies</a></li>
-                                <li><a href="celebrities.html">CelebritiesList</a></li>
+                                <li><a href="#!/movies">Movies</a></li>
+                                <li><a href="#!/cinemas">Theatres</a></li>
                                 <li><a href="top-movies.html">Top Movies</a></li>
                                 <li><a href="blog.html">News</a></li>
 								<li><a href="#">Pages <i class="icofont icofont-simple-down"></i></a>
@@ -336,284 +336,41 @@
 		<section class="hero-area" id="home">
 			<div class="container">
 				<div class="hero-area-slider">
-					<div class="row hero-area-slide">
+					<div class="row hero-area-slide" ng-repeat="movie in allMovies.movies">
 						<div class="col-lg-6 col-md-5">
 							<div class="hero-area-content">
-								<img src="assets/img/slide2.png" alt="about" />
+								<img src="{{movie.poster_image.image_files[3].url}}" alt="about" />
 							</div>
 						</div>
 						<div class="col-lg-6 col-md-7">
 							<div class="hero-area-content pr-50">
-								<h2>The Devil Princess</h2>
+								<h2>{{movie.title}}</h2>
 								<div class="review">
 									<div class="author-review">
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
+										<i class="icofont icofont-star">IMDB: {{movie.ratings.imdb.value}}</i>
+										
 									</div>
-									<h4>180k voters</h4>
+									<h4>Total votes: {{movie.ratings.imdb.vote_count}}</h4>
 								</div>
-								<p>She is a devil princess from the demon world. She grew up sheltered by her parents and doesn't really know how to be evil or any of the common actions,   She is unable to cry due to Keita's accidental first wish, despite needed for him to wish...</p>
+								<p>{{movie.synopsis}}</p>
 								<h3>Cast:</h3>
 								<div class="slide-cast">
 									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast1.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast2.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast3.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast4.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast5.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast6.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast7.png" alt="about" />
-									</div>
-									<div class="single-slide-cast text-center">
-										5+
+										{{movie.cast[0].name}},{{movie.cast[1].name}},{{movie.cast[2].name}},
+										{{movie.cast[3].name}},{{movie.cast[4].name}}
 									</div>
 								</div>
 								<div class="slide-trailor">
-									<h3>Watch Trailer</h3>
+									<a class="theme-btn theme-btn2" href="{{movie.trailers[0].trailer_files[0].url}}" class="popup-youtube"><i class="icofont icofont-play"></i>Watch Trailer</a>
 									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
 								</div>
 							</div>
 						</div>
 					</div>
-					<div class="row hero-area-slide">
-						<div class="col-lg-6 col-md-5">
-							<div class="hero-area-content">
-								<img src="assets/img/slide1.png" alt="about" />
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-7">
-							<div class="hero-area-content pr-50">
-								<h2>Last Avatar</h2>
-								<div class="review">
-									<div class="author-review">
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-									</div>
-									<h4>180k voters</h4>
-								</div>
-								<p>She is a devil princess from the demon world. She grew up sheltered by her parents and doesn't really know how to be evil or any of the common actions,   She is unable to cry due to Keita's accidental first wish, despite needed for him to wish...</p>
-								<h3>Cast:</h3>
-								<div class="slide-cast">
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast1.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast2.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast3.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast4.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast5.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast6.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast7.png" alt="about" />
-									</div>
-									<div class="single-slide-cast text-center">
-										5+
-									</div>
-								</div>
-								<div class="slide-trailor">
-									<h3>Watch Trailer</h3>
-									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="row hero-area-slide">
-						<div class="col-lg-6 col-md-5">
-							<div class="hero-area-content">
-								<img src="assets/img/slide3.png" alt="about" />
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-7">
-							<div class="hero-area-content pr-50">
-								<h2>The Deer God</h2>
-								<div class="review">
-									<div class="author-review">
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-										<i class="icofont icofont-star"></i>
-									</div>
-									<h4>180k voters</h4>
-								</div>
-								<p>She is a devil princess from the demon world. She grew up sheltered by her parents and doesn't really know how to be evil or any of the common actions,   She is unable to cry due to Keita's accidental first wish, despite needed for him to wish...</p>
-								<h3>Cast:</h3>
-								<div class="slide-cast">
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast1.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast2.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast3.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast4.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast5.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast6.png" alt="about" />
-									</div>
-									<div class="single-slide-cast">
-										<img src="assets/img/cast/cast7.png" alt="about" />
-									</div>
-									<div class="single-slide-cast text-center">
-										5+
-									</div>
-								</div>
-								<div class="slide-trailor">
-									<h3>Watch Trailer</h3>
-									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-								</div>
-							</div>
-						</div>
+					
 					</div>
 				</div>
-				<div class="hero-area-thumb">
-					<div class="thumb-prev">
-						<div class="row hero-area-slide">
-							<div class="col-lg-6">
-								<div class="hero-area-content">
-									<img src="assets/img/slide3.png" alt="about" />
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="hero-area-content pr-50">
-									<h2>Last Avatar</h2>
-									<div class="review">
-										<div class="author-review">
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-										</div>
-										<h4>180k voters</h4>
-									</div>
-									<p>She is a devil princess from the demon world. She grew up sheltered by her parents and doesn't really know how to be evil or any of the common actions,   She is unable to cry due to Keita's accidental first wish, despite needed for him to wish...</p>
-									<h3>Cast:</h3>
-									<div class="slide-cast">
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast1.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast2.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast3.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast4.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast5.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast6.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast7.png" alt="about" />
-										</div>
-										<div class="single-slide-cast text-center">
-											5+
-										</div>
-									</div>
-									<div class="slide-trailor">
-										<h3>Watch Trailer</h3>
-										<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="thumb-next">
-						<div class="row hero-area-slide">
-							<div class="col-lg-6">
-								<div class="hero-area-content">
-									<img src="assets/img/slide1.png" alt="about" />
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="hero-area-content pr-50">
-									<h2>The Deer God</h2>
-									<div class="review">
-										<div class="author-review">
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-											<i class="icofont icofont-star"></i>
-										</div>
-										<h4>180k voters</h4>
-									</div>
-									<p>She is a devil princess from the demon world. She grew up sheltered by her parents and doesn't really know how to be evil or any of the common actions,   She is unable to cry due to Keita's accidental first wish, despite needed for him to wish...</p>
-									<h3>Cast:</h3>
-									<div class="slide-cast">
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast1.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast2.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast3.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast4.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast5.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast6.png" alt="about" />
-										</div>
-										<div class="single-slide-cast">
-											<img src="assets/img/cast/cast7.png" alt="about" />
-										</div>
-										<div class="single-slide-cast text-center">
-											5+
-										</div>
-									</div>
-									<div class="slide-trailor">
-										<h3>Watch Trailer</h3>
-										<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
+
 		</section><!-- hero area end -->
 		<!-- portfolio section start -->
 		<section class="portfolio-area pt-60">
@@ -642,7 +399,7 @@
 							<div class="col-md-4 col-sm-6 soon released">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio1.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio1.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -665,7 +422,7 @@
 							<div class="col-md-4 col-sm-6 top">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio2.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio2.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -688,7 +445,7 @@
 							<div class="col-md-4 col-sm-6 soon">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio3.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio3.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -711,7 +468,7 @@
 							<div class="col-md-4 col-sm-6 top released">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio4.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio4.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -734,7 +491,7 @@
 							<div class="col-md-4 col-sm-6 released">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio5.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio5.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -757,7 +514,7 @@
 							<div class="col-md-4 col-sm-6 soon top">
 								<div class="single-portfolio">
 									<div class="single-portfolio-img">
-										<img src="assets/img/portfolio/portfolio6.png" alt="portfolio" />
+										<img src="templates/assets/img/portfolio/portfolio6.png" alt="portfolio" />
 										<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 											<i class="icofont icofont-ui-play"></i>
 										</a>
@@ -781,10 +538,10 @@
 					</div>
 					<div class="col-lg-3 text-center text-lg-left">
 					    <div class="portfolio-sidebar">
-							<img src="assets/img/sidebar/sidebar1.png" alt="sidebar" />
-							<img src="assets/img/sidebar/sidebar2.png" alt="sidebar" />
-							<img src="assets/img/sidebar/sidebar3.png" alt="sidebar" />
-							<img src="assets/img/sidebar/sidebar4.png" alt="sidebar" />
+							<img src="templates/assets/img/sidebar/sidebar1.png" alt="sidebar" />
+							<img src="templates/assets/img/sidebar/sidebar2.png" alt="sidebar" />
+							<img src="templates/assets/img/sidebar/sidebar3.png" alt="sidebar" />
+							<img src="templates/assets/img/sidebar/sidebar4.png" alt="sidebar" />
 						</div>
 					</div>
 				</div>
@@ -804,7 +561,7 @@
 				<div class="row">
                     <div class="col-md-9">
 						<div class="video-area">
-							<img src="assets/img/video/video1.png" alt="video" />
+							<img src="templates/assets/img/video/video1.png" alt="video" />
 							<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 								<i class="icofont icofont-ui-play"></i>
 							</a>
@@ -827,7 +584,7 @@
 						<div class="row">
 							<div class="col-md-12 col-sm-6">
 								<div class="video-area">
-									<img src="assets/img/video/video2.png" alt="video" />
+									<img src="templates/assets/img/video/video2.png" alt="video" />
 									<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 										<i class="icofont icofont-ui-play"></i>
 									</a>
@@ -835,7 +592,7 @@
 							</div>
 							<div class="col-md-12 col-sm-6">
 								<div class="video-area">
-									<img src="assets/img/video/video3.png" alt="video" />
+									<img src="templates/assets/img/video/video3.png" alt="video" />
 									<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
 										<i class="icofont icofont-ui-play"></i>
 									</a>
@@ -935,7 +692,7 @@
 				<div class="row">
                     <div class="col-lg-3 col-sm-6">
 						<div class="widget">
-							<img src="assets/img/logo.png" alt="about" />
+							<img src="templates/assets/img/logo.png" alt="about" />
 							<p>7th Harley Place, London W1G 8LZ United Kingdom</p>
 							<h6><span>Call us: </span>(+880) 111 222 3456</h6>
 						</div>
@@ -994,18 +751,18 @@
 			</div>
 		</footer><!-- footer section end -->
 		<!-- jquery main JS -->
-		<script src="assets/js/jquery.min.js"></script>
+		<script src="templates/assets/js/jquery.min.js"></script>
 		<!-- Bootstrap JS -->
-		<script src="assets/js/bootstrap.min.js"></script>
+		<script src="templates/assets/js/bootstrap.min.js"></script>
 		<!-- Slick nav JS -->
-		<script src="assets/js/jquery.slicknav.min.js"></script>
+		<script src="templates/assets/js/jquery.slicknav.min.js"></script>
 		<!-- owl carousel JS -->
-		<script src="assets/js/owl.carousel.min.js"></script>
+		<script src="templates/assets/js/owl.carousel.min.js"></script>
 		<!-- Popup JS -->
-		<script src="assets/js/jquery.magnific-popup.min.js"></script>
+		<script src="templates/assets/js/jquery.magnific-popup.min.js"></script>
 		<!-- Isotope JS -->
-		<script src="assets/js/isotope.pkgd.min.js"></script>
+		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
 		<!-- main JS -->
-		<script src="assets/js/main.js"></script>
+		<script src="templates/assets/js/main.js"></script>
 	</body>
 </html>

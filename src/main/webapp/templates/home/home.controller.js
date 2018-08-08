@@ -23,7 +23,7 @@
         	  }
             //$http.get('https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
         	//https://api.internationalshowtimes.com/v4/movies/?location=42.3605,-71.0596&limit=10&fields=synopsis,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5$http.get('https://api.internationalshowtimes.com/v4/movies/?location='+ lat +','+ long +'&limit=10&fields=synopsis,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
-        	$http.get('https://api.internationalshowtimes.com/v4/movies/?location=42.3605,-71.0596&limit=10&fields=ratings,synopsis,cast,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+        	$http.get('https://api.internationalshowtimes.com/v4/movies/?location=42.3605,-71.0596&limit=10&fields=ratings,synopsis,cast,trailers,id,title,poster_image&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
         	then(function(response) {
                 console.log(response.data);
                 $scope.allMovies = response.data;

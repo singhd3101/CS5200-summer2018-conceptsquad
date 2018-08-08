@@ -5,7 +5,7 @@
     function Config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl:'templates/movies/home.html',
+                templateUrl:'templates/home/home.html',
                 controller:'HomeController',
                 controllerAs:'model'
             })
@@ -82,6 +82,11 @@
             .when('/cinemas' , {
                 templateUrl : 'templates/cinemas/findAllCinemas.html',
                 controller : 'FindAllCinemasController',
+                controllerAs : 'model'
+            })
+            .when('/movies' , {
+                templateUrl : 'templates/movies/findAllMovies.html',
+                controller : 'FindAllMoviesController',
                 controllerAs : 'model'
             })
             .when('/findAllShowtimes' , {
