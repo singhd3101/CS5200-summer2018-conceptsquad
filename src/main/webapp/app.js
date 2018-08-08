@@ -5,8 +5,8 @@
     function Config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl:'templates/movies/findAllMovies.html',
-                controller:'FindAllMoviesController',
+                templateUrl:'templates/movies/home.html',
+                controller:'HomeController',
                 controllerAs:'model'
             })
             .when('/profile', {
