@@ -10,9 +10,10 @@
         <label for="password">Password</label>
         <input id="password" ng-model="password" class="form-control" required="" type="password" ng-value="user.password">
   		<label for="phone">Mobile</label>
-        <input id="phone" ng-model="phone" class="form-control" required="" type="number">
+        <input id="phone" ng-model="phone" class="form-control" required="" type="number" ng-value="user.contact[0]">
         <label for="dob">Date of Birth</label>
         <input id="dob" ng-model="dob" class="form-control" required="" type="text" ng-value="user.dob">
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob)">Update</button>
+        <input type="date" name="coco" id="coco" ng-model="coco" ng-value="user.dob">
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob, coco)">Update</button>
     </form>
 </div>

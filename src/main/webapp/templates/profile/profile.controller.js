@@ -9,18 +9,14 @@
     	var custId;
     	
     	function init(){
-    		custId = $routeParams.custId.substring(1,$routeParams.custId.length);
-    		$http.get("/api/person/"+custId)
-            .then(function (response) {
-            	$scope.user=response.data;
-                user=response.data;
-            })
+    		
     	}
     	
     	init();
     	
-        function update(firstName, lastName, username, password, phone, dob){
+        function update(firstName, lastName, username, password, phone, dob, coco){
         	console.log(firstName);
+        	alert(coco);
         }
     }
 })();
