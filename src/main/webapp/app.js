@@ -98,6 +98,11 @@
                 templateUrl : 'templates/showtimes/findAllShowtimes.html',
                 controller : 'FindAllShowtimesController',
                 controllerAs : 'model'
-            });
+            })
+        	.when('/movies/:cinemaId' , {
+            templateUrl : 'templates/movies/moviesAtCinema.html',
+            controller :  	'FindAllMoviesController',
+            controllerAs : 'model'
+        	});
     }
 })();

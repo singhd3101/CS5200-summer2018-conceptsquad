@@ -10,6 +10,7 @@
     	var loct;
     	var cinemaUrl;
     	this.showtimeAtCinema = showtimeAtCinema;
+    	this.moviesAtCinema = moviesAtCinema;
     		//https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5
         function init() {
         	
@@ -48,5 +49,13 @@
         	$location.url('/findAllShowtimes/:'+cinemaId);
         	//"#!findAllShowtimes/cinemaId={{cinema.id}}
         }
+        
+        function moviesAtCinema(cinemaId){
+        	console.log("in moviesAtCinema function");
+        	console.log(cinemaId);
+        	$location.url('/movies/:'+cinemaId);
+        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        }
+        
     }
 })();

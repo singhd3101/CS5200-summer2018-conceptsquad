@@ -46,8 +46,8 @@
             	          var test = {
             	            movieId : showtime.movie_id,
             	            movieName: movie.slug,
-            	            start_at: showtime.start_at,
-            	            count:showtime.movie_id.count
+            	            start_at: showtime.start_at
+            	            
             	          }
             	          finalArray.push(test);
             	          
