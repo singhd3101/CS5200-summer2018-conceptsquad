@@ -11,7 +11,7 @@
     	var cinemaId;
         function init() {
         	
-        	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
+        	//cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	console.log("cinema id is "+cinemaId);
         	if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){
@@ -29,6 +29,7 @@
                        console.log(response.data);
                        $scope.allMovies = response.data;
                    });
+               		//
                		cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
                 	console.log("cinema id is "+cinemaId);
                 	$http.get('https://api.internationalshowtimes.com/v4/movies/?cinema_id='+cinemaId+'&limit=10&fields=synopsis,trailers,id,title,poster_image_thumbnail&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').

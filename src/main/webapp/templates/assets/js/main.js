@@ -167,6 +167,6 @@
 	jQuery(window).load(function(){
 		jQuery("#preloader").fadeOut(500);
 	});
-	
+	console.log("hello");
 
 }(jQuery));
