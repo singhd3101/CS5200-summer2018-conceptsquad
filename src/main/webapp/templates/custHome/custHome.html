@@ -40,14 +40,23 @@
             <th scope="col">Tickets</th>
             <th scope="col">Date</th>
             <th scope="col">Amount</th>
+            <th scope="col">Status</th>
             <th scope="col">Details</th>
         </tr>
         </thead>
-        <tbody ng-repeat="booking in allmovieBookings">
+        <tbody ng-repeat="booking in allmovieBookings | orderBy:'-id'">
         <td>{{booking.id}}</td>
         <td>{{booking.noOfTickets}}</td>
         <td>{{booking.date.substring(0,10)}}</td>
         <td>${{booking.totalCost}}</td>
+        <td>
+        	<span ng-if="booking.status == 'Active'">
+        		<span class="text-primary">{{booking.status}}</span>
+        	</span>
+        	<span ng-if="booking.status == 'Cancelled'">
+        		<span class="text-danger">{{booking.status}}</span>
+        	</span>
+        </td>
         <td><button class="btn btn-success" ng-click="model.movieDetails(booking.id)">Details</button></td>
         </tbody>
     </table>
@@ -64,14 +73,23 @@
             <th scope="col">Tickets</th>
             <th scope="col">Date</th>
             <th scope="col">Amount</th>
+            <th scope="col">Status</th>
             <th scope="col">Details</th>
         </tr>
         </thead>
-        <tbody ng-repeat="booking in alleventBookings">
+        <tbody ng-repeat="booking in alleventBookings | orderBy:'-id'">
         <td>{{booking.id}}</td>
         <td>{{booking.noOfTickets}}</td>
         <td>{{booking.date.substring(0,10)}}</td>
         <td>${{booking.totalCost}}</td>
+        <td>
+        	<span ng-if="booking.status == 'Active'">
+        		<span class="text-primary">{{booking.status}}</span>
+        	</span>
+        	<span ng-if="booking.status == 'Cancelled'">
+        		<span class="text-danger">{{booking.status}}</span>
+        	</span>
+        </td>
         <td><button class="btn btn-success" ng-click="model.eventDetails(booking.id)">Details</button></td>
         </tbody>
     </table>

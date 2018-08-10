@@ -51,9 +51,20 @@
 		Booking Id: {{booking.id }} <br />
 		Quantity: {{booking.noOfTickets }} <br />
 		Booking Date: {{booking.date.substring(0,10) }} <br />
-		Price: ${{booking.totalCost }} <br />
-		Historical Booking: {{booking.historicalBooking }} <br />
-	<div class="text-center">
-		<button class="btn btn-success">Modify</button>
+		Price: ${{booking.totalCost }} <br /><br/>
+		<b>Historical Booking:</b>  <br />
+		<p ng-if="booking.historicalBooking != null">
+			Booking Id: {{booking.historicalBooking.id }} <br />
+			Quantity: {{booking.historicalBooking.noOfTickets }} <br />
+			Booking Date: {{booking.historicalBooking.date.substring(0,10) }} <br />
+			Price: ${{booking.historicalBooking.totalCost }} <br />
+		</p>
+		<p ng-if="booking.historicalBooking == null">
+			None
+		</p>
+	<div ng-if="booking.status == 'Active'">
+		<div class="text-center">
+			<button class="btn btn-success">Modify</button>
+		</div>
 	</div>
 </div>

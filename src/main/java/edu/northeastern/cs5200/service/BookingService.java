@@ -7,13 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Booking;
 import edu.northeastern.cs5200.model.Event;
+import edu.northeastern.cs5200.model.EventBooking;
 import edu.northeastern.cs5200.model.Movie;
+import edu.northeastern.cs5200.model.MovieBooking;
 import edu.northeastern.cs5200.repositories.BookingRepository;
+import edu.northeastern.cs5200.repositories.EventBookingRepository;
 import edu.northeastern.cs5200.repositories.EventRepository;
+import edu.northeastern.cs5200.repositories.MovieBookingRepository;
 import edu.northeastern.cs5200.repositories.MovieRepository;
 
 @RestController
@@ -27,6 +33,12 @@ public class BookingService {
 	
 	@Autowired
 	EventRepository eventRepository;
+	
+	@Autowired
+	EventBookingRepository eventBookingRepository;
+	
+	@Autowired
+	MovieBookingRepository movieBookingRepository;
 
 	@GetMapping("/api/booking")
 	public List<Booking> findAllBooking(){
@@ -61,6 +73,16 @@ public class BookingService {
 	@DeleteMapping("/api/booking/{bookingId}")
 	public void deleteBooking(@PathVariable("bookingId") int id) {
 		bookingRepository.deleteById(id);
+	}
+	
+	@PostMapping("/api/moviebooking")
+	public MovieBooking createMovieBooking(@RequestBody MovieBooking booking) {
+		return movieBookingRepository.save(booking);
+	}
+	
+	@PostMapping("/api/eventbooking")
+	public EventBooking createEventBooking(@RequestBody EventBooking booking) {
+		return eventBookingRepository.save(booking);
 	}
 
 }

@@ -31,11 +31,14 @@ public class Booking {
     private Booking historicalBooking;
 	
 	@OneToOne(mappedBy="historicalBooking")
+	@JsonIgnore
     private Booking currentBooking;
 	
 	@ManyToOne
 	@JsonIgnore
 	private Customer customer;
+	
+	private String status;
 	
 	public Booking() {}
 	
@@ -45,6 +48,7 @@ public class Booking {
 		this.totalCost = totalCost;
 		this.historicalBooking = historicalBooking;
 		this.customer = customer;
+		this.status = "Active";
 	}
 
 	@Override
@@ -54,7 +58,8 @@ public class Booking {
 				"date: " + date + 
 				"totalCost: " + totalCost +
 				"historicalBooking: " + historicalBooking + 
-				"customer: " + customer;
+				"customer: " + customer +
+				"status: " + status;
 	}
 
 	public int getId() {
@@ -104,5 +109,23 @@ public class Booking {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
+
+	public Booking getCurrentBooking() {
+		return currentBooking;
+	}
+
+	public void setCurrentBooking(Booking currentBooking) {
+		this.currentBooking = currentBooking;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 
 }
