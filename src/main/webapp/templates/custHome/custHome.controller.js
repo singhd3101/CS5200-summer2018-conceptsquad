@@ -8,12 +8,14 @@
     	this.movieDetails = movieDetails;
     	this.eventDetails = eventDetails;
     	var custId;
+    	var user;
     
         function init () {
 		custId = $routeParams.id.substring(1,$routeParams.id.length);
 		$http.get("/api/person/" + custId)
         .then(function(response) {
         	$scope.user = response.data;
+        	user = response.data;
         	console.log(response.data);
         });
 		$scope.cid = custId;
@@ -29,24 +31,16 @@
         init();
         
         function profile(id) {
-        	 //console.log($scope.user.firstName);
         	 $location.url('/profile/:'+custId);
         };
         
         function movieDetails(bookingId) {
-        	alert("in movie details" + bookingId);
-        	$http.get("/api/moviebooking/"+bookingId+"/movie")
-        	.then(function(response){
-                console.log(response.data);
-        	});
+        	$location.url('/custHome/:'+user.id + '/bookingDetails/:' + bookingId + '/type/:movie');
+        	
         };
         
         function eventDetails(bookingId) {
-        	alert("in event details" + bookingId);
-        	$http.get("/api/eventbooking/"+bookingId+"/event")
-        	.then(function(response){
-                console.log(response.data);
-        	});
+        	$location.url('/custHome/:'+user.id + '/bookingDetails/:' + bookingId  + '/type/:event');
         };
     }
 })();

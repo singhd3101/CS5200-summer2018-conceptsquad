@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Its Showtime</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarSupportedContent"
+		aria-controls="navbarSupportedContent" aria-expanded="false"
+		aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item active"><a class="nav-link" href="#">Theaters</a>
+			</li>
+			<li class="nav-itemn"><a class="nav-link" href="#">Movies</a></li>
+			<li class="nav-item"><a class="nav-link" href="#!displayEvents">Events</a>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0">
+			<input class="form-control bg-dark text-white" placeholder="search"
+				ng-model="movieName" />
+			<button class="btn btn-primary invisible"
+				ng-click="model.searchMovie(movieName)">Search</button>
+		</form>
+		<span class="text-light">Welcome {{user.firstName}}!</span>
+		<li class="nav-link"><a class="nav-link" href
+			ng-click="model.profile()">Profile</a></li>
+		<li class="nav-link"><a class="nav-link" href
+			ng-click="model.home()">Home</a></li>
+		<li class="nav-link"><a class="nav-link" href="#">Logout</a></li>
+	</div>
+</nav>
+<div class="container-fluid">
+	<h4 class="text-center">Booking Details</h4>
+</div>
+<div class="container" class="text-center">
+	<div ng-if="bType == 'movie'">
+		Name: {{movie.name}} <br /> 
+		Rating: {{movie.rating}} <br /> 
+		Duration: {{movie.duration}} hours <br /> 
+		TheatreId {{movie.theatreId}} <br />
+	</div>
+	<div ng-if="bType == 'event'">
+		Name: {{event.name}} <br /> 
+		Event Type: {{event.type}} <br />
+		Description: {{event.description}} <br /> 
+		Venue: {{event.venue}} <br />
+		Capacity: {{event.capacity}} <br /> 
+		Price: {{event.price}} <br />
+		Date: {{event.eventDate.substring(0,10)}} <br />
+	</div>
+		Booking Id: {{booking.id }} <br />
+		Quantity: {{booking.noOfTickets }} <br />
+		Booking Date: {{booking.date.substring(0,10) }} <br />
+		Price: ${{booking.totalCost }} <br />
+		Historical Booking: {{booking.historicalBooking }} <br />
+	<div class="text-center">
+		<button class="btn btn-success">Modify</button>
+	</div>
+</div>

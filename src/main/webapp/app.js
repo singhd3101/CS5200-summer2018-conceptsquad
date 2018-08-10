@@ -49,6 +49,11 @@
                 controller : 'CustHomeController',
                 controllerAs : 'model'
             })
+            .when('/custHome/:custId/bookingDetails/:bookId/type/:bType' , {
+                templateUrl : 'templates/bookingDetails/bookingDetails.html',
+                controller : 'BookingDetailsController',
+                controllerAs : 'model'
+            })
             .when('/vendorHome' , {
                 templateUrl : 'templates/vendorHome/vendorHome.html',
                 controller : 'VendorHomeController',
