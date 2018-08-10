@@ -48,7 +48,15 @@
         }
         
         function home(){
-        	$location.url('/custHome/:'+id);
+        	if(user.access === "1"){
+        		$location.url('/custHome/:'+id);
+        	}
+        	if(user.access === "2"){
+        		$location.url('/vendorHome/:'+id);
+        	}
+        	if(user.access === "3"){
+        		$location.url('/adminHome/:'+id);
+        	}
         }
     }
 })();
