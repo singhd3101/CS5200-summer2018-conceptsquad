@@ -60,4 +60,13 @@ public class VendorService {
 	public Vendor createVendor(@RequestBody Vendor vendor) {
 		return vendorRepository.save(vendor);
 	}
+	
+	@GetMapping("/api/vendor/{vendorId}")
+	public Vendor findVendorById(@PathVariable("vendorId") int id) {
+		Optional<Vendor> optional = vendorRepository.findById(id);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
+		return null;
+	}
 }

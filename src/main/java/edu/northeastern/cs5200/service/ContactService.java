@@ -49,9 +49,9 @@ public class ContactService {
 			if(newContact.getPrimaryContact() != null) {
 				contact.setPrimaryContact(newContact.getPrimaryContact());
 			}
-			if(newContact.getEmail() != null) {
+			/*if(newContact.getEmail() != null) {
 				contact.setEmail(newContact.getEmail());
-			}
+			}*/
 			if(newContact.getPerson() != null) {
 				contact.setPerson(newContact.getPerson());
 			}
