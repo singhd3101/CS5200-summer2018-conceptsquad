@@ -22,6 +22,7 @@ public class Person {
 	private String UserName;
 	private String Password;
 	private Date Dob;
+	private int access;
 	
 	@OneToMany(mappedBy="person")
 	private List<Address> addresses;
@@ -30,7 +31,7 @@ public class Person {
 	public String toString() {
 		return "Person [id=" + id + ", FirstName=" + FirstName + ", LastName=" + LastName + ", UserName=" + UserName
 				+ ", Password=" + Password + ", Dob=" + Dob + ", addresses=" + addresses + ", contacts=" + contacts
-				+ "]";
+				+ ", access= " + access + "]";
 	}
 	
 	@OneToMany(mappedBy="person")
@@ -101,5 +102,14 @@ public class Person {
 	public void setDob(Date dob) {
 		Dob = dob;
 	}
+
+	public int getAccess() {
+		return access;
+	}
+
+	public void setAccess(int access) {
+		this.access = access;
+	}
+	
 	
 }

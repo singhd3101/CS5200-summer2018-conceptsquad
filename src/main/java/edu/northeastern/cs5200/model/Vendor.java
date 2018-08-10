@@ -15,6 +15,10 @@ public class Vendor extends Person{
 	@OneToMany(mappedBy="vendor")
 	private List<Event> eventsAdded;
 	
+	public Vendor(){
+		super.setAccess(2);
+	}
+	
 	public void eventsAdded(Event event) {
 		this.eventsAdded.add(event);
 		if(event.getVendor() != this) {

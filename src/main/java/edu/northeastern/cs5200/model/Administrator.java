@@ -6,5 +6,9 @@ import javax.persistence.Entity;
 @Entity
 @DiscriminatorValue("Administrator")
 public class Administrator extends Person{
+	
+	public Administrator(){
+		super.setAccess(3);
+	}
 
 }

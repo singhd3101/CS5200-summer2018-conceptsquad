@@ -17,6 +17,10 @@ public class Customer extends Person {
 	@OneToMany(mappedBy = "customer")
 	private List<Booking> bookings = new ArrayList<>();
 	
+	public Customer(){
+		super.setAccess(1);
+	}
+	
 	public int getBooking() {
 		return booking;
 	}
