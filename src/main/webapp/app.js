@@ -108,6 +108,11 @@
             templateUrl : 'templates/movies/moviesAtCinema.html',
             controller :  	'FindAllMoviesController',
             controllerAs : 'model'
-        	});
+        	})
+        	.when('/payment' , {
+                templateUrl : 'templates/payment/payment.html',
+                controller : 'PaymentController',
+                controllerAs : 'model'
+            });
     }
 })();
