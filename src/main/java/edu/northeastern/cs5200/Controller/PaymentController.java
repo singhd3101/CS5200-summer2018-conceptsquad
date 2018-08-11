@@ -5,19 +5,20 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.paypal.api.payments.Links;
+import com.paypal.api.payments.Payment;
+import com.paypal.base.rest.PayPalRESTException;
+
 import edu.northeastern.cs5200.payment.PaypalPaymentIntent;
 import edu.northeastern.cs5200.payment.PaypalPaymentMethod;
 import edu.northeastern.cs5200.service.PaypalService;
 import edu.northeastern.cs5200.util.URLUtils;
-import com.paypal.api.payments.Links;
-import com.paypal.api.payments.Payment;
-import com.paypal.base.rest.PayPalRESTException;
 
 @RestController
 @RequestMapping("/payment")
@@ -36,7 +37,7 @@ public class PaymentController {
 		return "index";
 	}
 	
-	@RequestMapping(method = RequestMethod.POST, value = "pay")
+	@RequestMapping(method = RequestMethod.GET, value = "pay")
 	public String pay(HttpServletRequest request){
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
