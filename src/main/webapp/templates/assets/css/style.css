@@ -400,11 +400,15 @@ option {
 ------------------------------------*/
 .hero-area {
     position: relative;
-    background-image: url('../img/hero-area.png');
+    
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     overflow: hidden;
+}
+.index-body {
+	
+	  background-image: url('../img/blackImg.jpg');
 }
 .hero-area-slide {
     background: #13151f;
