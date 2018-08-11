@@ -4,7 +4,7 @@
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>It's Showtime - Online Movie,Vedio and TV Show HTML5 Template</title>
+		<title>Moviepoint - Online Movie,Vedio and TV Show HTML5 Template</title>
 		<!-- Favicon Icon -->
 		<link rel="icon" type="image/png" href="templates/assets/img/favcion.png" />
 		<!-- Bootstrap CSS -->
@@ -28,7 +28,7 @@
 	</head>
 	<body>
 		<!-- Page loader -->
-	
+
 		<!-- header section start -->
 		<header class="header">
 			<div class="container">
@@ -48,7 +48,7 @@
 						</form>
 						<ul>
 							<li><a href="#">Welcome Guest!</a></li>
-							<li><a href="#" class="login-popup" name="login-popup" id="login-popup">Login</a></li>
+							<li><a class="login-popup" href="#">Login</a></li>
 						</ul>
 					</div>
 					<div class="menu-area">
@@ -56,8 +56,8 @@
 					    <div class="mainmenu">
                             <ul id="primary-menu">
                                 <li><a class="active" href="index.html">Home</a></li>
-                                <li><a href="#!/movies">Movies</a></li>
-                                <li><a href="#!/cinemas">Theatres</a></li>
+                                <li><a href="movies.html">Movies</a></li>
+                                <li><a href="celebrities.html">CelebritiesList</a></li>
                                 <li><a href="top-movies.html">Top Movies</a></li>
                                 <li><a href="blog.html">News</a></li>
 								<li><a href="#">Pages <i class="icofont icofont-simple-down"></i></a>
@@ -99,7 +99,7 @@
 						<a href="#"><i class="icofont icofont-camera"></i></a>
 					</div>
 				</form>
-				
+
 			</div>
 		</div>
 		<div class="buy-ticket">
@@ -333,10 +333,10 @@
 			</div>
 		</div><!-- header section end -->
 		<!-- hero area start -->
-		<section class="hero-area" id="home">
+		<section class="hero-area" id="home" >
 			<div class="container">
-				<div class="hero-area-slider">
-					<div class="row hero-area-slide" ng-repeat="movie in allMovies.movies">
+				<div class="hero-area-slider"  ng-repeat="movie in allMovies.movies">
+					<div class="row hero-area-slide">
 						<div class="col-lg-6 col-md-5">
 							<div class="hero-area-content">
 								<img src="{{movie.poster_image.image_files[3].url}}" alt="about" />
@@ -348,9 +348,8 @@
 								<div class="review">
 									<div class="author-review">
 										<i class="icofont icofont-star">IMDB: {{movie.ratings.imdb.value}}</i>
-										
 									</div>
-									<h4>Total votes: {{movie.ratings.imdb.vote_count}}</h4>
+									<h4>{{movie.ratings.imdb.vote_count}} voters</h4>
 								</div>
 								<p>{{movie.synopsis}}</p>
 								<h3>Cast:</h3>
@@ -366,11 +365,81 @@
 								</div>
 							</div>
 						</div>
+					</div>					
+				</div>
+				<div class="hero-area-thumb"  ng-repeat="movie in allMovies.movies">
+					<div class="thumb-prev">
+						<div class="row hero-area-slide" >
+							<div class="col-lg-6">
+								<div class="hero-area-content">
+									<img src="{{movie[movie.length-1].poster_image.image_files[3].url}}" alt="about" />
+								</div>
+							</div>
+							<div class="col-lg-6">
+								<div class="hero-area-content pr-50">
+									<h2>{{movie[movie.length-1].title}}</h2>
+									<div class="review">
+											<div class="author-review">
+										<i class="icofont icofont-star">IMDB: {{movie[movie.length-1].ratings.imdb.value}}</i>
+									</div>
+									<h4>{{movie[movie.length-1].ratings.imdb.vote_count}} voters</h4>
+								</div>
+								<p>{{movie[movie.length-1].synopsis}}</p>
+								<h3>Cast:</h3>
+								<div class="slide-cast">
+									<div class="">
+										{{movie[movie.length-1].cast[0].name}},<br/>
+										{{movie[movie.length-1].cast[1].name}},<br/>
+										{{movie[movie.length-1].cast[2].name}},<br/>
+										{{movie[movie.length-1].cast[3].name}},<br/>
+										{{movie[movie.length-1].cast[4].name}}
+									</div>
+								</div>
+								<div class="slide-trailor">
+									<a class="theme-btn theme-btn2" href="{{movie[movie.length-1].trailers[0].trailer_files[0].url}}" class="popup-youtube"><i class="icofont icofont-play"></i>Watch Trailer</a>
+									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
+								</div>
+								</div>
+							</div>
+						</div>
 					</div>
-					
+					<div class="thumb-next" >
+						<div class="row hero-area-slide">
+						<div class="col-lg-6 col-md-5">
+							<div class="hero-area-content">
+								<img src="{{movie[$index+1].poster_image.image_files[3].url}}" alt="about" />
+							</div>
+						</div>
+						<div class="col-lg-6 col-md-7">
+							<div class="hero-area-content pr-50">
+								<h2>{{movie[$index+1].title}}</h2>
+								<div class="review">
+									<div class="author-review">
+										<i class="icofont icofont-star">IMDB: {{movie[$index+1].ratings.imdb.value}}</i>
+									</div>
+									<h4>{{movie[$index+1].ratings.imdb.vote_count}} voters</h4>
+								</div>
+								<p>{{movie[$index+1].synopsis}}</p>
+								<h3>Cast:</h3>
+								<div class="slide-cast">
+									<div class="">
+										{{movie[$index+1].cast[0].name}},<br/>
+										{{movie[$index+1].cast[1].name}},<br/>
+										{{movie[$index+1].cast[2].name}},<br/>
+										{{movie[$index+1].cast[3].name}},<br/>
+										{{movie[$index+1].cast[4].name}}
+									</div>
+								</div>
+								<div class="slide-trailor">
+									<a class="theme-btn theme-btn2" href="{{movie[$index+1].trailers[0].trailer_files[0].url}}" class="popup-youtube"><i class="icofont icofont-play"></i>Watch Trailer</a>
+									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
+								</div>
+							</div>
+						</div>
+					</div>	
 					</div>
 				</div>
-
+			</div>
 		</section><!-- hero area end -->
 		<!-- portfolio section start -->
 		<section class="portfolio-area pt-60">
@@ -561,8 +630,8 @@
 				<div class="row">
                     <div class="col-md-9">
 						<div class="video-area">
-							<img src="templates/assets/img/video/video1.png" alt="video" />
-							<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+							121 Grandview Rd, Braintree, MA 02184, United States
+
 								<i class="icofont icofont-ui-play"></i>
 							</a>
 							<div class="video-text">
@@ -584,16 +653,16 @@
 						<div class="row">
 							<div class="col-md-12 col-sm-6">
 								<div class="video-area">
-									<img src="templates/assets/img/video/video2.png" alt="video" />
-									<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+
+
 										<i class="icofont icofont-ui-play"></i>
 									</a>
 								</div>
 							</div>
 							<div class="col-md-12 col-sm-6">
 								<div class="video-area">
-									<img src="templates/assets/img/video/video3.png" alt="video" />
-									<a href="https://www.youtube.com/watch?v=RZXnugbhw_4" class="popup-youtube">
+
+
 										<i class="icofont icofont-ui-play"></i>
 									</a>
 								</div>
@@ -736,7 +805,7 @@
 					<div class="row">
 						<div class="col-lg-6 text-center text-lg-left">
 							<div class="copyright-content">
-								<p>&copy; 2018 It's Showtime. All Rights Reserved. Designed by octopas</p>
+								<p>&copy; 2018 MoviePoint. All Rights Reserved. Designed by octopas</p>
 							</div>
 						</div>
 						<div class="col-lg-6 text-center text-lg-right">
@@ -750,32 +819,5 @@
 				</div>
 			</div>
 		</footer><!-- footer section end -->
-		<!-- jquery main JS -->
-		<script src="templates/assets/js/jquery.min.js"></script>
-		<!-- Bootstrap JS -->
-		<script src="templates/assets/js/bootstrap.min.js"></script>
-		<!-- Slick nav JS -->
-		<script src="templates/assets/js/jquery.slicknav.min.js"></script>
-		<!-- owl carousel JS -->
-		<script src="templates/assets/js/owl.carousel.min.js"></script>
-		<!-- Popup JS -->
-		<script src="templates/assets/js/jquery.magnific-popup.min.js"></script>
-		<!-- Isotope JS -->
-		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
-		<!-- main JS -->
-		<script src="templates/assets/js/main.js"></script>
-		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>		
-		
-		<script>
-		
-		 (function ($) {
-			"use strict";
-			$('.login-popup').click( function () {
-				console.log("in login");
-				$('.login-area').show();
-				return true;
-			});
-		})(jQuery); 
-	 	</script>
 	</body>
 </html>

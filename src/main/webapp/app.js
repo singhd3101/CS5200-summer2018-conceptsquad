@@ -106,7 +106,7 @@
             })
         	.when('/movies/:cinemaId' , {
             templateUrl : 'templates/movies/moviesAtCinema.html',
-            controller :  	'FindAllMoviesController',
+            controller :  	'MovieAtCinemaController',
             controllerAs : 'model'
         	})
         	.when('/payment' , {
