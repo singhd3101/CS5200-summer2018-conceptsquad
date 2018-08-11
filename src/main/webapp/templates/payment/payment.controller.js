@@ -19,6 +19,13 @@
             });
         }
         init();
+        
+        function paym(){
+        	console.log("in payment");
+
+        	$location.url('/pay');
+        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        }
   
     }
 })();
