@@ -21,9 +21,19 @@ public class Theatre {
 	
 	private String name;
 	
+	private int showtimeId;
+	
 	@ManyToMany(mappedBy="hostingTheatres", cascade=CascadeType.ALL)
 	@JsonIgnore
 	private List<Movie> movieshosted;
+
+	public int getShowtimeId() {
+		return showtimeId;
+	}
+
+	public void setShowtimeId(int showtimeId) {
+		this.showtimeId = showtimeId;
+	}
 
 	public int getId() {
 		return id;

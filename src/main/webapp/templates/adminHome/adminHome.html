@@ -117,9 +117,108 @@
 	</table>
  </div>
  
- <h2 ng-if="options === 'events'">Event List</h2>
- <h2 ng-if="options === 'theatres'">Theatre List</h2>
- <h2 ng-if="options === 'bookings'">Booking List</h2>
+ <div ng-if="options === 'events'" class="container">
+ 	<h3>Events</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Type</th>
+				<th scope="col">Description</th>
+				<th scope="col">Venue</th>
+				<th scope="col">Capacity</th>
+				<th scope="col">Price/Ticket</th>
+				<th scope="col">Date</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="event in allEvents">
+			<td>{{event.id}}</td>
+			<td>{{event.name}}</td>
+			<td>{{event.type}}</td>
+			<td>{{event.description}}</td>
+			<td>{{event.venue}}</td>
+			<td>{{event.capacity}}</td>
+			<td>{{event.price}}</td>
+			<td>{{event.eventDate}}</td>
+			<td><i class="fas fa-cog" ng-click="model.eventDetail(event.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <div ng-if="options === 'theatres'" class="container">
+ 	<h3>Theatres</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">ShowTime Id</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="theatre in allTheatres">
+			<td>{{theatre.id}}</td>
+			<td>{{theatre.name}}</td>
+			<td>{{theatre.showtimeId}}</td>
+			<td><i class="fas fa-cog" ng-click="model.theatreDetail(theatre.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+
+<div ng-if="options === 'bookings'" class="container">
+ 	<h3>Bookings</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Tickets Booked</th>
+				<th scope="col">Date</th>
+				<th scope="col">Price</th>
+				<th scope="col">Status</th>
+				<th scope="col">Historical Booking</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="booking in allBookings">
+			<td>{{booking.id}}</td>
+			<td>{{booking.noOfTickets}}</td>
+			<td>{{booking.date.substring(1,10)}}</td>
+			<td>${{booking.totalCost}}</td>
+			<td>{{booking.status}}</td>
+			<td>{{booking.historicalBooking.id}}</td>
+			<td><i class="fas fa-cog" ng-click="model.bookingDetail(booking.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+
+<div ng-if="options === 'payments'" class="container">
+ 	<h3>Bookings</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Tickets Booked</th>
+				<th scope="col">Date</th>
+				<th scope="col">Price</th>
+				<th scope="col">Status</th>
+				<th scope="col">Historical Booking</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="booking in allBookings">
+			<td>{{booking.id}}</td>
+			<td>{{booking.noOfTickets}}</td>
+			<td>{{booking.date.substring(1,10)}}</td>
+			<td>${{booking.totalCost}}</td>
+			<td>{{booking.status}}</td>
+			<td>{{booking.historicalBooking.id}}</td>
+			<td><i class="fas fa-cog" ng-click="model.bookingDetail(booking.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
  <h2 ng-if="options === 'payments'">Payment List</h2>
  
  </div>

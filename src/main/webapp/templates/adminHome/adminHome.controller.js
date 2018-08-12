@@ -17,6 +17,8 @@
         this.getPayment = getPayment;
         this.custDetail = custDetail;
         this.movieDetail = movieDetail;
+        this.eventDetail = eventDetail;
+        this.theatreDetail = theatreDetail;
         
         function init(){
         	
@@ -38,15 +40,27 @@
         }
         
         function getBooking(){
-        	
+        	$http.get("/api/booking/")
+            .then(function(response) {
+            	$scope.allBookings = response.data;
+            	console.log(response.data);
+            });
         }
         
         function getTheatre() {
-        	
+        	$http.get("/api/theatre/")
+            .then(function(response) {
+            	$scope.allTheatres = response.data;
+            	console.log(response.data);
+            });
         }
         
         function getEvent(){
-        	
+        	$http.get("/api/event/")
+            .then(function(response) {
+            	$scope.allEvents = response.data;
+            	console.log(response.data);
+            });
         }
         
         function getMovie(){
@@ -63,6 +77,18 @@
             	$scope.allVendors = response.data;
             	console.log(response.data);
             });
+        }
+        
+        function boookingDetail(id){
+        	alert("booking details for id: " + id);
+        }
+        
+        function theatreDetail(id){
+        	alert("theatre details for id: " + id);
+        }
+        
+        function eventDetail(id){
+        	alert("event details for id: " + id);
         }
         
         function movieDetail(id){
