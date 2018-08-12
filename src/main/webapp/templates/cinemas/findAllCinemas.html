@@ -21,10 +21,14 @@
 		<link rel="stylesheet" type="text/css" href="templates/assets/css/style.css" media="all" />
 		<!-- Responsive CSS -->
 		<link rel="stylesheet" type="text/css" href="templates/assets/css/responsive.css" media="all" />
+		
+	
+    
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+
 	</head>
 	<body>
 		<!-- Page loader -->
@@ -351,15 +355,14 @@
 					<div class="row flexbox-center">
 						<div class="col-lg-5 text-lg-left text-center" >
 							<div class="transformers-content">
-								<img src="templates/assets/img/slide4.jpg" alt="about" />
-							</div>
+							<img src="http://maps.googleapis.com/maps/api/staticmap?center={{cinema.location.lat}},{{cinema.location.lon}}&zoom=11&size=400x400&sensor=false&key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU"/>
+							<a href="http://maps.google.com/maps?z=12&t=m&q={{cinema.location.lat}},{{cinema.location.lon}}" class="popup-youtube">Click here for the location</a>
+							</div>							
 						</div>
 						<div class="col-lg-7">
 							<div class="transformers-content mtr-30">
 								<h2>{{cinema.name}}</h2>
-								<button class="theme-btn" ng-click="model.moviesAtCinema(cinema.id)">View Movies</button>
-								
-								
+								<button class="theme-btn" ng-click="model.moviesAtCinema(cinema.id)">View Movies</button>								
 								<ul>
 									<li>
 										<div class="transformers-left">
