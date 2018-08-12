@@ -1,3 +1,125 @@
-<div class="align-content-md-center">
-    <h1>Welcome Administrator</h1>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Its Showtime</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <span class="nav-link">Welcome {{user.firstName}}! <span class="sr-only">(current)</span></span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.profile()">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.home()">Home</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h4>
+<p class="text-center">Admin Panel</p></h4>
+<div class="container">
+<table class="table table-hover">
+	<thead>
+	<tr>
+	<th>
+		<input ng-model="options" type="radio" value="customers" ng-change='model.getCustomer()'/> Customer
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="vendors" ng-change='model.getVendor()'/> Vendor
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="movies" ng-change='model.getMovie()'/> Movie
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="events" ng-change='model.getEvent()'/> Event
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="theatres" ng-change='model.getTheatre()'/> Theatre
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="bookings" ng-change='model.getBooking()'/> Booking
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="payments" ng-change='model.getPayment()'/> Payment
+	</th>
+	</tr>
+	</thead>
+</table>
 </div>
+<div class="text-center">
+ <div ng-if="options === 'customers'" class="container">
+ 	<h3>Customers</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Date Of Birth</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="customer in allCustomers">
+			<td>{{customer.id}}</td>
+			<td>{{customer.firstName}} {{customer.lastName}}</td>
+			<td>{{customer.userName}}</td>
+			<td>{{customer.dob}}</td>
+			<td><i class="fas fa-cog" ng-click="model.custDetail(customer.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <div ng-if="options === 'vendors'" class="container">
+ 	<h3>Vendors</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Date Of Birth</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="vendor in allVendors">
+			<td>{{vendor.id}}</td>
+			<td>{{vendor.firstName}} {{vendor.lastName}}</td>
+			<td>{{vendor.userName}}</td>
+			<td>{{vendor.dob}}</td>
+			<td><i class="fas fa-cog" ng-click="model.vendorDetail(vendor.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <div ng-if="options === 'movies'" class="container">
+ 	<h3>Movies</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Rating</th>
+				<th scope="col">Duration</th>
+				<th scope="col">Theatres Hosted</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="movie in allMovies">
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.rating}}</td>
+			<td>{{movie.duration}}</td>
+			<td>{{movie.theatreId.length}}</td>
+			<td><i class="fas fa-cog" ng-click="model.movieDetail(movie.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <h2 ng-if="options === 'events'">Event List</h2>
+ <h2 ng-if="options === 'theatres'">Theatre List</h2>
+ <h2 ng-if="options === 'bookings'">Booking List</h2>
+ <h2 ng-if="options === 'payments'">Payment List</h2>
+ 
+ </div>

@@ -39,6 +39,11 @@
                 controller : 'AdminHomeController',
                 controllerAs : 'model'
             })
+            .when('/adminHome/:adminId' , {
+                templateUrl : 'templates/adminHome/adminHome.html',
+                controller : 'AdminHomeController',
+                controllerAs : 'model'
+            })
             .when('/custHome' , {
                 templateUrl : 'templates/custHome/custHome.html',
                 controller : 'CustHomeController',
