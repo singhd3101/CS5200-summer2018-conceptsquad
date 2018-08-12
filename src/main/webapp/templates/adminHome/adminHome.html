@@ -17,41 +17,106 @@
     </ul>
   </div>
 </nav>
-
-<h4 class="text-center">Admin Panel</h4>
+<h4>
+<p class="text-center">Admin Panel</p></h4>
 <div class="container">
 <table class="table table-hover">
 	<thead>
 	<tr>
 	<th>
-		<input ng-model="options" type="radio" value="customers" /> Customer
+		<input ng-model="options" type="radio" value="customers" ng-change='model.getCustomer()'/> Customer
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="vendors" /> Vendor
+		<input ng-model="options" type="radio" value="vendors" ng-change='model.getVendor()'/> Vendor
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="movies" /> Movie
+		<input ng-model="options" type="radio" value="movies" ng-change='model.getMovie()'/> Movie
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="events" /> Event
+		<input ng-model="options" type="radio" value="events" ng-change='model.getEvent()'/> Event
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="theatres" /> Theatre
+		<input ng-model="options" type="radio" value="theatres" ng-change='model.getTheatre()'/> Theatre
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="bookings" /> Booking
+		<input ng-model="options" type="radio" value="bookings" ng-change='model.getBooking()'/> Booking
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="payments" /> Payment
+		<input ng-model="options" type="radio" value="payments" ng-change='model.getPayment()'/> Payment
 	</th>
 	</tr>
 	</thead>
 </table>
 </div>
 <div class="text-center">
- <h2 ng-if="options === 'customers'">Customer List</h2>
- <h2 ng-if="options === 'vendors'">Vendor List</h2>
- <h2 ng-if="options === 'movies'">Movie List</h2>
+ <div ng-if="options === 'customers'" class="container">
+ 	<h3>Customers</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Date Of Birth</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="customer in allCustomers">
+			<td>{{customer.id}}</td>
+			<td>{{customer.firstName}} {{customer.lastName}}</td>
+			<td>{{customer.userName}}</td>
+			<td>{{customer.dob}}</td>
+			<td><i class="fas fa-cog" ng-click="model.custDetail(customer.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <div ng-if="options === 'vendors'" class="container">
+ 	<h3>Vendors</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Email</th>
+				<th scope="col">Date Of Birth</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="vendor in allVendors">
+			<td>{{vendor.id}}</td>
+			<td>{{vendor.firstName}} {{vendor.lastName}}</td>
+			<td>{{vendor.userName}}</td>
+			<td>{{vendor.dob}}</td>
+			<td><i class="fas fa-cog" ng-click="model.vendorDetail(vendor.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
+ <div ng-if="options === 'movies'" class="container">
+ 	<h3>Movies</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Name</th>
+				<th scope="col">Rating</th>
+				<th scope="col">Duration</th>
+				<th scope="col">Theatres Hosted</th>
+				<th scope="col">Details</th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="movie in allMovies">
+			<td>{{movie.id}}</td>
+			<td>{{movie.name}}</td>
+			<td>{{movie.rating}}</td>
+			<td>{{movie.duration}}</td>
+			<td>{{movie.theatreId.length}}</td>
+			<td><i class="fas fa-cog" ng-click="model.movieDetail(movie.id)"></i></td>
+		</tbody>
+	</table>
+ </div>
+ 
  <h2 ng-if="options === 'events'">Event List</h2>
  <h2 ng-if="options === 'theatres'">Theatre List</h2>
  <h2 ng-if="options === 'bookings'">Booking List</h2>
