@@ -18,4 +18,43 @@
   </div>
 </nav>
 
-<div>Welcome Admin</div>
+<h4 class="text-center">Admin Panel</h4>
+<div class="container">
+<table class="table table-hover">
+	<thead>
+	<tr>
+	<th>
+		<input ng-model="options" type="radio" value="customers" /> Customer
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="vendors" /> Vendor
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="movies" /> Movie
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="events" /> Event
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="theatres" /> Theatre
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="bookings" /> Booking
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="payments" /> Payment
+	</th>
+	</tr>
+	</thead>
+</table>
+</div>
+<div class="text-center">
+ <h2 ng-if="options === 'customers'">Customer List</h2>
+ <h2 ng-if="options === 'vendors'">Vendor List</h2>
+ <h2 ng-if="options === 'movies'">Movie List</h2>
+ <h2 ng-if="options === 'events'">Event List</h2>
+ <h2 ng-if="options === 'theatres'">Theatre List</h2>
+ <h2 ng-if="options === 'bookings'">Booking List</h2>
+ <h2 ng-if="options === 'payments'">Payment List</h2>
+ 
+ </div>
