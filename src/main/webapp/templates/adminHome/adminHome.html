@@ -59,6 +59,7 @@
 				<th scope="col">Email</th>
 				<th scope="col">Date Of Birth</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="customer in allCustomers">
@@ -67,6 +68,7 @@
 			<td>{{customer.userName}}</td>
 			<td>{{customer.dob}}</td>
 			<td><i class="fas fa-cog" ng-click="model.custDetail(customer.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteCust(customer.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -81,6 +83,7 @@
 				<th scope="col">Email</th>
 				<th scope="col">Date Of Birth</th>
 				<th scope="col">Details</th>
+				<th scope="col"></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="vendor in allVendors">
@@ -89,6 +92,7 @@
 			<td>{{vendor.userName}}</td>
 			<td>{{vendor.dob}}</td>
 			<td><i class="fas fa-cog" ng-click="model.vendorDetail(vendor.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteVendor(vendor.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -104,6 +108,7 @@
 				<th scope="col">Duration</th>
 				<th scope="col">Theatres Hosted</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="movie in allMovies">
@@ -113,6 +118,7 @@
 			<td>{{movie.duration}}</td>
 			<td>{{movie.theatreId.length}}</td>
 			<td><i class="fas fa-cog" ng-click="model.movieDetail(movie.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteMovie(movie.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -131,6 +137,7 @@
 				<th scope="col">Price/Ticket</th>
 				<th scope="col">Date</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="event in allEvents">
@@ -143,6 +150,7 @@
 			<td>{{event.price}}</td>
 			<td>{{event.eventDate}}</td>
 			<td><i class="fas fa-cog" ng-click="model.eventDetail(event.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteEvent(event.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -156,6 +164,7 @@
 				<th scope="col">Name</th>
 				<th scope="col">ShowTime Id</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="theatre in allTheatres">
@@ -163,6 +172,7 @@
 			<td>{{theatre.name}}</td>
 			<td>{{theatre.showtimeId}}</td>
 			<td><i class="fas fa-cog" ng-click="model.theatreDetail(theatre.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteTheatre(theatre.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -179,6 +189,7 @@
 				<th scope="col">Status</th>
 				<th scope="col">Historical Booking</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="booking in allBookings">
@@ -189,12 +200,13 @@
 			<td>{{booking.status}}</td>
 			<td>{{booking.historicalBooking.id}}</td>
 			<td><i class="fas fa-cog" ng-click="model.bookingDetail(booking.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteBooking(booking.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
 
 <div ng-if="options === 'payments'" class="container">
- 	<h3>Bookings</h3>
+ 	<h3>Payments</h3>
  	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -204,6 +216,7 @@
 				<th scope="col">Status</th>
 				<th scope="col">Booking</th>
 				<th scope="col">Details</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="payment in allPayments">
@@ -213,6 +226,7 @@
 			<td>{{payment.status}}</td>
 			<td>{{payment.booking.id}}</td>
 			<td><i class="fas fa-cog" ng-click="model.paymentDetail(payment.id)"></i></td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deletePayment(payment.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div> 
