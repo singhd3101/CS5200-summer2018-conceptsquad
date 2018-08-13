@@ -29,6 +29,13 @@
         this.deleteTheatre = deleteTheatre;
         this.deleteBooking = deleteBooking;
         this.deletePayment = deletePayment;
+        this.createCust = createCust;
+        this.createVendor = createVendor;
+        this.createMovie = createMovie;
+        this.createEvent = createEvent;
+        this.createTheatre = createTheatre;
+        this.createBooking = createBooking;
+        this.createPayment = createPayment;
         
         function init(){
         	
@@ -211,6 +218,34 @@
                 	$scope.allCustomers = response.data;
                 });
             });
+        };
+        
+        function createPayment(){
+        	$location.url("/createPayment/:"+adminId);
+        }
+        
+        function createBooking(){
+        	$location.url("/createBooking/:"+adminId);
+        }
+        
+        function createTheatre() {
+        	$location.url("/createTheatre/:"+adminId);
+        }
+        
+        function createEvent(){
+        	$location.url("/createEvent/:"+adminId);
+        }
+        
+        function createMovie(){
+        	$location.url("/createMovie/:"+adminId);
+        }
+        
+        function createVendor() {
+        	$location.url("/createVendor/:"+adminId);
+        }
+       
+        function createCust() {
+        	$location.url("/createCustomer/:"+adminId);
         };
     }
 })();

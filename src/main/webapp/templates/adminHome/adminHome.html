@@ -71,6 +71,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteCust(customer.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createCust()">Create Customer</button>
  </div>
  
  <div ng-if="options === 'vendors'" class="container">
@@ -95,6 +96,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteVendor(vendor.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createVendor()">Create Vendor</button>
  </div>
  
  <div ng-if="options === 'movies'" class="container">
@@ -121,6 +123,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteMovie(movie.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createMovie()">Create Movie</button>
  </div>
  
  <div ng-if="options === 'events'" class="container">
@@ -153,6 +156,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteEvent(event.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createEvent()">Create Event</button>
  </div>
  
  <div ng-if="options === 'theatres'" class="container">
@@ -175,6 +179,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteTheatre(theatre.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createTheatre()">Create Theatre</button>
  </div>
 
 <div ng-if="options === 'bookings'" class="container">
@@ -203,6 +208,7 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteBooking(booking.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createBooking()">Create Booking</button>
  </div>
 
 <div ng-if="options === 'payments'" class="container">
@@ -229,5 +235,6 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deletePayment(payment.id)">Delete</button></td>
 		</tbody>
 	</table>
+	<button type="button" class= "btn btn-primary" ng-click="model.createPayment()">Create Payment</button>
  </div> 
  </div>
