@@ -55,7 +55,7 @@ public class PaymentController {
 				if(links.getRel().equals("approval_url")){
 					//return "redirect:" + links.getHref();
 					urlPattern obj = new urlPattern();
-					obj.path = "redirect:" + links.getHref();
+					obj.path = links.getHref();
 					return obj;
 				}
 			}
