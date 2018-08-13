@@ -7,27 +7,16 @@
     	this.paym = paym;
     	
         function init() {
-        	console.log("inside payment init");
-            /*$http.get("/api/payment/pay")
-            .then(function(response) {
-                console.log(response.data);
-            });*/
         }
         init();
         
         function paym(){
-        	console.log("in payment");
-        	$http.post({
-        		url: '/api/payment/pay',
-        		method: "POST",
-        		transformResponse: ""//something;
+        	console.log("in padfdsgdsfdyment");
+        	$http.post("/api/payment/pay")
+        	.then(function(res){
+        		console.log(res.data);
         	});
-            /*.then(function(response) {
-                //console.log(response.data);
-                $location.url(response.data);
-            });*/
         }
-  
     }
 })();
 

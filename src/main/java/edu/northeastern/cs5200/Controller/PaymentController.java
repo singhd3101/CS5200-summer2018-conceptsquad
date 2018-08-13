@@ -38,7 +38,7 @@ public class PaymentController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, value = "pay")
-	public String pay(HttpServletRequest request){
+	public urlPattern pay(HttpServletRequest request){
 		System.out.println("inside pay post method");
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
@@ -53,13 +53,20 @@ public class PaymentController {
 					successUrl);
 			for(Links links : payment.getLinks()){
 				if(links.getRel().equals("approval_url")){
-					return "redirect:" + links.getHref();
+					//return "redirect:" + links.getHref();
+					urlPattern obj = new urlPattern();
+					obj.path = "redirect:" + links.getHref();
+					return obj;
 				}
 			}
 		} catch (PayPalRESTException e) {
 			log.error(e.getMessage());
 		}
-		return "redirect:/";
+		//return "redirect:/";
+		
+		urlPattern obj = new urlPattern();
+		obj.path = "redirect:/";
+		return obj;
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value = PAYPAL_CANCEL_URL)
@@ -79,5 +86,20 @@ public class PaymentController {
 		}
 		return "redirect:/";
 	}
+	
+}
+
+class urlPattern {
+	String path;
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	
 	
 }
