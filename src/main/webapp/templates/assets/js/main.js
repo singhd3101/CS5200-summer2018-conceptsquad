@@ -151,22 +151,12 @@
 	/*----------------------------
     START - Isotope
     ------------------------------ */
-    jQuery(".portfolio-item").isotope();
-    $(".portfolio-menu li").on("click", function(){
-      $(".portfolio-menu li").removeClass("active");
-      $(this).addClass("active");
-      var selector = $(this).attr('data-filter');
-      $(".portfolio-item").isotope({
-        filter: selector
-      })
-    });
-	
+
 	/*----------------------------
     START - Preloader
     ------------------------------ */
 	jQuery(window).load(function(){
 		jQuery("#preloader").fadeOut(500);
 	});
-	console.log("hello");
 
 }(jQuery));
