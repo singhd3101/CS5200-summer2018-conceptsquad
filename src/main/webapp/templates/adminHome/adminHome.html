@@ -199,26 +199,21 @@
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
-				<th scope="col">Tickets Booked</th>
+				<th scope="col">Amount</th>
 				<th scope="col">Date</th>
-				<th scope="col">Price</th>
 				<th scope="col">Status</th>
-				<th scope="col">Historical Booking</th>
+				<th scope="col">Booking</th>
 				<th scope="col">Details</th>
 			</tr>
 		</thead>
-		<tbody ng-repeat="booking in allBookings">
-			<td>{{booking.id}}</td>
-			<td>{{booking.noOfTickets}}</td>
-			<td>{{booking.date.substring(1,10)}}</td>
-			<td>${{booking.totalCost}}</td>
-			<td>{{booking.status}}</td>
-			<td>{{booking.historicalBooking.id}}</td>
-			<td><i class="fas fa-cog" ng-click="model.bookingDetail(booking.id)"></i></td>
+		<tbody ng-repeat="payment in allPayments">
+			<td>{{payment.id}}</td>
+			<td>${{payment.amount}}</td>
+			<td>{{payment.payDate.substring(1,10)}}</td>
+			<td>{{payment.status}}</td>
+			<td>{{payment.booking.id}}</td>
+			<td><i class="fas fa-cog" ng-click="model.paymentDetail(payment.id)"></i></td>
 		</tbody>
 	</table>
- </div>
- 
- <h2 ng-if="options === 'payments'">Payment List</h2>
- 
+ </div> 
  </div>

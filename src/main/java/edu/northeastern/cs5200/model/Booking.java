@@ -2,8 +2,10 @@ package edu.northeastern.cs5200.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,6 +42,12 @@ public class Booking {
 	
 	private String status;
 	
+	@OneToOne(fetch = FetchType.EAGER,
+            cascade =  CascadeType.ALL,
+            mappedBy = "booking")
+	@JsonIgnore
+	private Payment bookingPayment;
+	
 	public Booking() {}
 	
 	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, Customer customer) {
@@ -60,6 +68,14 @@ public class Booking {
 				"historicalBooking: " + historicalBooking + 
 				"customer: " + customer +
 				"status: " + status;
+	}
+
+	public Payment getBookingPayment() {
+		return bookingPayment;
+	}
+
+	public void setBookingPayment(Payment bookingPayment) {
+		this.bookingPayment = bookingPayment;
 	}
 
 	public int getId() {
