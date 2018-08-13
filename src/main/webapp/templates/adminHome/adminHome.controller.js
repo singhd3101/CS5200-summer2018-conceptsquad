@@ -16,9 +16,12 @@
         this.getBooking = getBooking;
         this.getPayment = getPayment;
         this.custDetail = custDetail;
+        this.vendorDetail = vendorDetail;
         this.movieDetail = movieDetail;
         this.eventDetail = eventDetail;
         this.theatreDetail = theatreDetail;
+        this.paymentDetail = paymentDetail;
+        this.bookingDetail = bookingDetail;
         
         function init(){
         	
@@ -36,7 +39,11 @@
         init();
         
         function getPayment(){
-        	
+        	$http.get("/api/ppayment/")
+            .then(function(response) {
+            	$scope.allPayments = response.data;
+            	console.log(response.data);
+            });
         }
         
         function getBooking(){
@@ -79,7 +86,18 @@
             });
         }
         
-        function boookingDetail(id){
+        function getCustomer() {
+        	$http.get("/api/customer/")
+            .then(function(response) {
+            	$scope.allCustomers = response.data;
+            });
+        };
+        
+        function paymentDetail(id){
+        	alert("payment details for id: " + id);
+        }
+        
+        function bookingDetail(id){
         	alert("booking details for id: " + id);
         }
         
@@ -99,13 +117,10 @@
         	alert("customer details for id: " + id);
         }
         
-        function getCustomer() {
-        	$http.get("/api/customer/")
-            .then(function(response) {
-            	$scope.allCustomers = response.data;
-            });
-        };
-        
+        function vendorDetail(id){
+        	alert("vendor details for id: " + id);
+        }
+                
         function profile() {            
         	$location.url('/profile/:'+adminId);
         }

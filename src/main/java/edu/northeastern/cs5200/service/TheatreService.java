@@ -22,12 +22,12 @@ public class TheatreService {
 	TheatreRepository theatreRepository;
 	
 	@GetMapping("/api/theatre")
-	public List<Theatre> findAllMovies() {
+	public List<Theatre> findAllTheatres() {
 		return (List<Theatre>) theatreRepository.findAll();
 	}
 	
 	@GetMapping("/api/theatre/{theareId}")
-	public Theatre findMovieById(@PathVariable("theatreId") int id) {
+	public Theatre findTheatreById(@PathVariable("theatreId") int id) {
 		Optional<Theatre> optional = theatreRepository.findById(id);
 		if(optional.isPresent()) {
 			return optional.get();
@@ -36,7 +36,7 @@ public class TheatreService {
 	}
 	
 	@GetMapping("/api/theatre/show/{showtimeId}")
-	public Theatre findMovieByShowtimeId(@PathVariable("showtimeId") int id) {
+	public Theatre findTheatreByShowtimeId(@PathVariable("showtimeId") int id) {
 		Optional<Theatre> optional = theatreRepository.findByShowtimeId(id);
 		if(optional.isPresent()) {
 			return optional.get();
