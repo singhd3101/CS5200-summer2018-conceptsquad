@@ -3,29 +3,33 @@
         .module('ShowtimeApp')
         .controller('PaymentController',PaymentController);
 
-    function PaymentController($scope, $location, $http, $routeParams) {    
-    	var pos;
-    	var lat;
-    	var long;
-    	var loct;
-    	var cinemaId;
+    function PaymentController($scope, $location, $http, $routeParams) {   
+    	this.paym = paym;
+    	
         function init() {
-        	
         	console.log("inside payment init");
-            $http.get("/payment")
+            /*$http.get("/api/payment/pay")
             .then(function(response) {
                 console.log(response.data);
-                
-            });
+            });*/
         }
         init();
         
         function paym(){
         	console.log("in payment");
-
-        	$location.url('/pay');
-        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        	$http.post({
+        		url: '/api/payment/pay',
+        		method: "POST",
+        		transformResponse: ""//something;
+        	});
+            /*.then(function(response) {
+                //console.log(response.data);
+                $location.url(response.data);
+            });*/
         }
   
     }
 })();
+
+
+

@@ -21,7 +21,7 @@ import edu.northeastern.cs5200.service.PaypalService;
 import edu.northeastern.cs5200.util.URLUtils;
 
 @RestController
-@RequestMapping("/payment")
+@RequestMapping("/api/payment")
 public class PaymentController {
 	
 	public static final String PAYPAL_SUCCESS_URL = "pay/success";
@@ -37,8 +37,9 @@ public class PaymentController {
 		return "index";
 	}
 	
-	@RequestMapping(method = RequestMethod.GET, value = "pay")
+	@RequestMapping(method = RequestMethod.POST, value = "pay")
 	public String pay(HttpServletRequest request){
+		System.out.println("inside pay post method");
 		String cancelUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_CANCEL_URL;
 		String successUrl = URLUtils.getBaseURl(request) + "/" + PAYPAL_SUCCESS_URL;
 		try {
