@@ -15,6 +15,9 @@
         	$http.post("/api/payment/pay")
         	.then(function(res){
         		console.log(res.data);
+        		var path = res.data.path;
+        		console.log("path is "+path);
+        		window.location.href=path;
         	});
         }
     }
