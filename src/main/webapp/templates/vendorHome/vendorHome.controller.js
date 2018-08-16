@@ -39,6 +39,13 @@
 		function modifyEvent(id){
 			alert("insert modify");
 		}
+		
+		function createEvent(eventNew){
+			$http.post("/api/vendor/" + vendorId + "/event", eventNew)
+            .then(function (response) {
+            	alert("Event added successfully !!");
+            })
+		}
 
 		function addEvent(name, type, capacity, description, price, venue, eventDate) {            
 			const eventNew = {
@@ -50,10 +57,9 @@
 					price : price,
 					eventDate : eventDate
         	};
-        	$http.post("/api/vendor/" + vendorId + "/event", eventNew)
-            .then(function (response) {
-            	alert("Event added successfully !!");
-            })
+        	if(eventNew != null){
+        		createEvent(eventNew);
+        	}
 		}
 		
 		function deleteEvent(eventId) { 
