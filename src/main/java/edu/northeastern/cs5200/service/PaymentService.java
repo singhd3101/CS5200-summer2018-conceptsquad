@@ -53,7 +53,8 @@ public class PaymentService {
 	
 	@DeleteMapping("/api/ppayment/{paymentId}")
 	public void deletePayment(@PathVariable("paymentId") int id) {
-		paymentRepository.deleteById(id);
+		System.out.println("delete service: "+ id);
+		paymentRepository.deletePaymentById(id);
 	}
 	
 	@PutMapping("/api/ppayment/{paymentId}")

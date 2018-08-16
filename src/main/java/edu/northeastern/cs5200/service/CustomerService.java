@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -48,5 +49,10 @@ public class CustomerService {
 	public Customer createCustomer(@RequestBody Customer customer) {
 		System.out.println(customer.getFirstName());
 		return customerRepository.save(customer);
+	}
+	
+	@DeleteMapping("/api/customer/{custId}")
+	public void deleteCustomer(@PathVariable("custId") int id) {
+		customerRepository.deleteById(id);
 	}
 }

@@ -2,7 +2,6 @@ package edu.northeastern.cs5200.model;
 
 import java.util.Date;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -15,7 +14,6 @@ import javax.persistence.OneToOne;
 public class Payment {
 	
 	@Id
-	@Column(name="ID")
 	@GeneratedValue
 	(strategy=GenerationType.IDENTITY)
 	private int id;
@@ -29,6 +27,13 @@ public class Payment {
 	private Booking booking;
 	
 	public Payment() {}
+	
+	public Payment(int id, float amount, String status, Date payDate) {
+		this.id = id;
+		this.amount = amount;
+		this.status = status;
+		this.payDate = payDate;
+	}
 	
 	public Date getPayDate() {
 		return payDate;

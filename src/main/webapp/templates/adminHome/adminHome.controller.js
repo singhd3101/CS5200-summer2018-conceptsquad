@@ -22,6 +22,20 @@
         this.theatreDetail = theatreDetail;
         this.paymentDetail = paymentDetail;
         this.bookingDetail = bookingDetail;
+        this.deleteCust = deleteCust;
+        this.deleteVendor = deleteVendor;
+        this.deleteMovie = deleteMovie;
+        this.deleteEvent = deleteEvent;
+        this.deleteTheatre = deleteTheatre;
+        this.deleteBooking = deleteBooking;
+        this.deletePayment = deletePayment;
+        this.createCust = createCust;
+        this.createVendor = createVendor;
+        this.createMovie = createMovie;
+        this.createEvent = createEvent;
+        this.createTheatre = createTheatre;
+        this.createBooking = createBooking;
+        this.createPayment = createPayment;
         
         function init(){
         	
@@ -128,5 +142,110 @@
         function home() {
         	$location.url('/adminHome/:'+adminId);
         }
+        
+        function deletePayment(id){
+        	console.log("inside delete pay: "+ id);
+        	$http.delete("/api/ppayment/"+id)
+            .then(function(response) {
+            	$http.get("/api/ppayment/")
+                .then(function(response) {
+                	$scope.allPayments = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+        
+        function deleteBooking(id){
+        	$http.delete("/api/booking/"+id)
+            .then(function(response) {
+            	$http.get("/api/booking/")
+                .then(function(response) {
+                	$scope.allBookings = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+        
+        function deleteTheatre(id) {
+        	$http.delete("/api/theatre/"+id)
+            .then(function(response) {
+            	$http.get("/api/theatre/")
+                .then(function(response) {
+                	$scope.allTheatres = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+        
+        function deleteEvent(id){
+        	$http.delete("/api/event/"+id)
+            .then(function(response) {
+            	$http.get("/api/event/")
+                .then(function(response) {
+                	$scope.allEvents = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+        
+        function deleteMovie(id){
+        	$http.delete("/api/movie/"+id)
+            .then(function(response) {
+            	$http.get("/api/movie/")
+                .then(function(response) {
+                	$scope.allMovies = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+        
+        function deleteVendor(id) {
+        	$http.delete("/api/vendor/"+id)
+            .then(function(response) {
+            	$http.get("/api/vendor/")
+                .then(function(response) {
+                	$scope.allVendors = response.data;
+                	console.log(response.data);
+                });
+            });
+        }
+       
+        function deleteCust(id) {
+        	$http.delete("/api/customer/"+id)
+            .then(function(response) {
+            	$http.get("/api/customer/")
+                .then(function(response) {
+                	$scope.allCustomers = response.data;
+                });
+            });
+        };
+        
+        function createPayment(){
+        	$location.url("/createPayment/:"+adminId);
+        }
+        
+        function createBooking(){
+        	$location.url("/createBooking/:"+adminId);
+        }
+        
+        function createTheatre() {
+        	$location.url("/createTheatre/:"+adminId);
+        }
+        
+        function createEvent(){
+        	$location.url("/createEvent/:"+adminId);
+        }
+        
+        function createMovie(){
+        	$location.url("/createMovie/:"+adminId);
+        }
+        
+        function createVendor() {
+        	$location.url("/createVendor/:"+adminId);
+        }
+       
+        function createCust() {
+        	$location.url("/createCustomer/:"+adminId);
+        };
     }
 })();
