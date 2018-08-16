@@ -10,6 +10,7 @@
     	var long;
     	var loct;
     	var cinemaId;
+    	this.moviesShowtime = moviesShowtime;
     	
     	this.moviesShowtime = moviesShowtime;
     	
