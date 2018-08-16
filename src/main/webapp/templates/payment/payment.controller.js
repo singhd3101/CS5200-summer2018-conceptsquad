@@ -14,9 +14,13 @@
         	console.log("in padfdsgdsfdyment");
         	$http.post("/api/payment/pay")
         	.then(function(res){
+
+
+
         		console.log(res.data.path);
         		var path = res.data.path;
         		window.location.href = path;
+
         	});
         }
     }

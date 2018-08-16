@@ -1,2 +1,52 @@
-<button type="submit" ng-click="model.paym()"> Process Payment </button>
-<br/>
+
+<div id="paypal-button-container"></div>
+
+<script>
+
+    // Render the PayPal button
+
+    paypal.Button.render({
+
+        // Set your environment
+
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+
+        style: {
+            label: 'paypal',
+            size:  'medium',    // small | medium | large | responsive
+            shape: 'rect',     // pill | rect
+            color: 'blue',     // gold | blue | silver | black
+            tagline: false    
+        },
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+        client: {
+            sandbox:    'AaVXucUoiUlc_S8xsNz0ellCBfFWolVHtGaWTYPebrodZh4mGSGam13wHuLywt0iUUJOxbHEXwYawBWH',
+            production: '<insert production client id>'
+        },
+
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '0.01', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>

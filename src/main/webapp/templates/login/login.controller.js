@@ -13,11 +13,15 @@
                 .then(function (response) {
                 	id = response.data[0].id;
                 	if (response.data[0].access === 3){
-                        console.log("validated");
+                        console.log("admin validated");
                         $location.url('/adminHome/:'+id);
                     }
+                	else if(response.data[0].access === 2){
+                        console.log("vendor validated");
+                        $location.url('/vendorHome/:'+id);
+                    }
                     else {
-                        console.log("not validated");
+                        console.log("customer validated");
                         $location.url('/custHome/:'+id);
                     }
                 })   

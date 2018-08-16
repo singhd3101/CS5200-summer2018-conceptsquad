@@ -64,9 +64,9 @@
                 controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
-	        .when('/vendorHome/:id' , {
+	        .when('/vendorHome/:vendorId' , {
                 templateUrl : 'templates/vendorHome/vendorHome.html',
-                controller : 'vendorHomeController',
+                controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
             .when('/displayEvents' , {
@@ -118,6 +118,12 @@
                 templateUrl : 'templates/payment/payment.html',
                 controller : 'PaymentController',
                 controllerAs : 'model'
-            });
+            })
+        	.when('/pay/success?paymentId=:paymentId&token=:token&PayerID=:PayerID' , {
+            //.when('/pay/success/pay/success' , {
+            templateUrl : 'templates/payment/success.html',
+            controller :  	'PaymentController',
+            controllerAs : 'model'
+        	});
     }
 })();

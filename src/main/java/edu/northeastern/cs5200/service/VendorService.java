@@ -42,6 +42,10 @@ public class VendorService {
 		return ovendor.get().getEventsAdded();
 	}
 	
+	@PostMapping("/api/vendor/{vendorId}/event")
+	public void addEventForVendor(@PathVariable("vendorId") int vendorId) {
+		
+	}
 	
 	@PutMapping("/api/vendor/{vendorId}/eventsAdded/{eventId}")
 	public void eventsAdded(
