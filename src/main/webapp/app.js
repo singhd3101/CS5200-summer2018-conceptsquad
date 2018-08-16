@@ -64,9 +64,9 @@
                 controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
-	        .when('/vendorHome/:id' , {
+	        .when('/vendorHome/:vendorId' , {
                 templateUrl : 'templates/vendorHome/vendorHome.html',
-                controller : 'vendorHomeController',
+                controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
             .when('/displayEvents' , {

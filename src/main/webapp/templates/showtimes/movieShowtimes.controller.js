@@ -30,6 +30,7 @@
      	var dateTo = this.date.getFullYear() + "-" + m + "-" + d;
      	console.log(dateTo);
     	function init() {
+
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
         	console.log("in movie showtimes controller");
@@ -43,7 +44,7 @@
                $scope.cinemas = response.data.cinemas;
 
             	});
-             
+           
             
         };
         init();

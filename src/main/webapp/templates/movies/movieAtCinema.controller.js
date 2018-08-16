@@ -12,6 +12,8 @@
     	var cinemaId;
     	this.moviesShowtime = moviesShowtime;
     	
+    	this.moviesShowtime = moviesShowtime;
+    	
     	function init() {
     		cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
     		console.log("-------cinemaId-----------------");

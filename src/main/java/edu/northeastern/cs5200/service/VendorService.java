@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Event;
+import edu.northeastern.cs5200.model.Person;
 import edu.northeastern.cs5200.model.Vendor;
 import edu.northeastern.cs5200.repositories.EventRepository;
 import edu.northeastern.cs5200.repositories.VendorRepository;
@@ -42,6 +43,23 @@ public class VendorService {
 		return ovendor.get().getEventsAdded();
 	}
 	
+	@PostMapping("/api/vendor/{vendorId}/event")
+	public void addEventForVendor(@PathVariable("vendorId") int vendorId, @RequestBody Event newEvent) {
+		Optional<Vendor> optional = vendorRepository.findById(vendorId);
+		if(optional.isPresent()) {
+			Vendor vendor = optional.get();
+			Event event = new Event();
+			event.setName(newEvent.getName());
+			event.setCapacity(newEvent.getCapacity());
+			event.setDescription(newEvent.getDescription());
+			event.setEventDate(newEvent.getEventDate());
+			event.setPrice(newEvent.getPrice());
+			event.setType(newEvent.getType());
+			event.setVenue(newEvent.getVenue());
+			event.setVendor(vendor);
+			eventRepository.save(event);
+		}
+	}
 	
 	@PutMapping("/api/vendor/{vendorId}/eventsAdded/{eventId}")
 	public void eventsAdded(
