@@ -9,14 +9,10 @@
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	movieId = $routeParams.cinemaId.substring(1,$routeParams.movieId.length);
         	console.log("in movie showtimes controller");
-        	console.log(cinemaId);
-        	
-        	
+        	console.log('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id='+ cinemaId +'&movie_id='+ movieId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5');
         	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id='+ cinemaId +'&movie_id='+ movieId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
         	then(function(response) {
-               console.log(response.data);
-            	
-            	    
+               console.log(response.data);   
             	});
              
             

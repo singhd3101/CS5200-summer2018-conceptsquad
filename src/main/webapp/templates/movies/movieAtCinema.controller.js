@@ -10,6 +10,7 @@
     	var long;
     	var loct;
     	var cinemaId;
+    	this.moviesShowtime = moviesShowtime;
     	
     	function init() {
     		cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);

@@ -119,7 +119,7 @@
                 controller : 'PaymentController',
                 controllerAs : 'model'
             })
-            .when('/moviesShowtime/:cinemaId/movies/:movieId' , {
+            .when('/movieShowtime/:cinemaId/movies/:movieId' , {
                 templateUrl : 'templates/showtimes/findAllShowtimes.html',
                 controller : 'MovieShowtimesController',
                 controllerAs : 'model'
