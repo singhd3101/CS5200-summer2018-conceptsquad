@@ -347,8 +347,8 @@
 										<i class="icofont icofont-star">IMDB: {{movie.ratings.imdb.value}}</i>
 									</div>
 									<h4>{{movie.ratings.imdb.vote_count}} voters</h4><br/>
-									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Showtimes</a>
-								</div>
+									<button class="theme-btn theme-btn2" ng-click="model.moviesShowtime(movie.id)">View Showtimes</button>	
+									</div>
 							</div>
 						</div>
 					</div>

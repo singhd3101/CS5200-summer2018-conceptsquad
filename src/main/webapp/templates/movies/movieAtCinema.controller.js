@@ -19,11 +19,18 @@
        		then(function(response) {
        		   console.log("------------------------");
                console.log(response.data);
+               $scope.cinemaId = cinemaId;
                $scope.allMoviesAtCinema = response.data;
            });
     	}
     	init();
     	
+    	function moviesShowtime(movieId){
+        	console.log("in showtimes at movie function");
+        	console.log(cinemaId);
+        	$location.url('/movieShowtimes/:'+cinemaId+'/movies/:'+movieId);
+        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        }
     }
 
 })();

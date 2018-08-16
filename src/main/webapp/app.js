@@ -119,6 +119,11 @@
                 controller : 'PaymentController',
                 controllerAs : 'model'
             })
+            .when('/moviesShowtime/:cinemaId/movies/:movieId' , {
+                templateUrl : 'templates/showtimes/findAllShowtimes.html',
+                controller : 'MovieShowtimesController',
+                controllerAs : 'model'
+            })
         	.when('/pay/success?paymentId=:paymentId&token=:token&PayerID=:PayerID' , {
             //.when('/pay/success/pay/success' , {
             templateUrl : 'templates/payment/success.html',
