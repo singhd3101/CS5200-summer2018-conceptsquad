@@ -120,7 +120,7 @@
                 controllerAs : 'model'
             })
             .when('/movieShowtimes/:cinemaId/movies/:movieId' , {
-                templateUrl : 'templates/showtimes/findAllShowtimes.html',
+                templateUrl : 'templates/showtimes/movieShowtime.html',
                 controller : 'MovieShowtimesController',
                 controllerAs : 'model'
             })
