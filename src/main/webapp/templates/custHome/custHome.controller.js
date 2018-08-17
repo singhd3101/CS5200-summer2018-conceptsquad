@@ -12,14 +12,11 @@
     	var user;
     
         function init () {
-        	console.log("rootscope flag- " + $rootScope.loggedIn);
-        	console.log("rootscope user- " + $rootScope.userId);
-		custId = $routeParams.id.substring(1,$routeParams.id.length);
+        custId = $routeParams.id.substring(1,$routeParams.id.length);
 		$http.get("/api/person/" + custId)
         .then(function(response) {
         	$scope.user = response.data;
         	user = response.data;
-        	console.log(response.data);
         });
 		$scope.cid = custId;
         	$http.get("/api/moviebooking/" + custId)

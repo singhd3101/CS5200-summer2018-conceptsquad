@@ -33,24 +33,15 @@
         this.deleteTheatre = deleteTheatre;
         this.deleteBooking = deleteBooking;
         this.deletePayment = deletePayment;
-        this.createCust = createCust;
-        this.createVendor = createVendor;
-        this.createMovie = createMovie;
-        this.createEvent = createEvent;
-        this.createTheatre = createTheatre;
-        this.createBooking = createBooking;
-        this.createPayment = createPayment;
         
         function init(){
         	
         	adminId = $routeParams.adminId.substring(1,$routeParams.adminId.length);
-        	console.log(adminId);
         	
     		$http.get("/api/person/" + adminId)
             .then(function(response) {
             	$scope.user = response.data;
             	user = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -60,7 +51,6 @@
         	$http.get("/api/ppayment/")
             .then(function(response) {
             	$scope.allPayments = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -68,7 +58,6 @@
         	$http.get("/api/booking/")
             .then(function(response) {
             	$scope.allBookings = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -76,7 +65,6 @@
         	$http.get("/api/theatre/")
             .then(function(response) {
             	$scope.allTheatres = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -84,7 +72,6 @@
         	$http.get("/api/event/")
             .then(function(response) {
             	$scope.allEvents = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -92,7 +79,6 @@
         	$http.get("/api/movie/")
             .then(function(response) {
             	$scope.allMovies = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -100,7 +86,6 @@
         	$http.get("/api/vendor/")
             .then(function(response) {
             	$scope.allVendors = response.data;
-            	console.log(response.data);
             });
         }
         
@@ -148,13 +133,11 @@
         }
         
         function deletePayment(id){
-        	console.log("inside delete pay: "+ id);
         	$http.delete("/api/ppayment/"+id)
             .then(function(response) {
             	$http.get("/api/ppayment/")
                 .then(function(response) {
                 	$scope.allPayments = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -165,7 +148,6 @@
             	$http.get("/api/booking/")
                 .then(function(response) {
                 	$scope.allBookings = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -176,7 +158,6 @@
             	$http.get("/api/theatre/")
                 .then(function(response) {
                 	$scope.allTheatres = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -187,7 +168,6 @@
             	$http.get("/api/event/")
                 .then(function(response) {
                 	$scope.allEvents = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -198,7 +178,6 @@
             	$http.get("/api/movie/")
                 .then(function(response) {
                 	$scope.allMovies = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -209,7 +188,6 @@
             	$http.get("/api/vendor/")
                 .then(function(response) {
                 	$scope.allVendors = response.data;
-                	console.log(response.data);
                 });
             });
         }
@@ -224,40 +202,11 @@
             });
         };
         
-        function createPayment(){
-        	$location.url("/createPayment/:"+adminId);
-        }
-        
-        function createBooking(){
-        	$location.url("/createBooking/:"+adminId);
-        }
-        
-        function createTheatre() {
-        	$location.url("/createTheatre/:"+adminId);
-        }
-        
-        function createEvent(){
-        	$location.url("/createEvent/:"+adminId);
-        }
-        
-        function createMovie(){
-        	$location.url("/createMovie/:"+adminId);
-        }
-        
-        function createVendor() {
-        	$location.url("/createVendor/:"+adminId);
-        }
-       
-        function createCust() {
-        	$location.url("/createCustomer/:"+adminId);
-        };
-        
         function register(firstName, lastName, username, password, dtype) {
             $http.get('/api/person?username=' + username)
             .then(function(response) {
             	var user = response.data[0];
             	if(user === undefined || user === null){
-            		console.log("user not present");
             		const user = {
                             firstName : firstName,
                             lastName  : lastName,
@@ -305,7 +254,6 @@
         }
         
         function addEvent(name, type, capacity, description, price, venue, dateOfEvent, vendorId){
-        	console.log(vendorId);
         	$http.get('/api/vendor/'+vendorId)
 			.then(function(response) {
 				var ven = response.data;
@@ -322,8 +270,7 @@
 							price : price,
 							eventDate : dateOfEvent
 		        	};
-					console.log("eventNew name " +eventNew.name)
-		        	if(eventNew.name != null && eventNew.name != undefined){
+			    	if(eventNew.name != null && eventNew.name != undefined){
 		        		$http.post("/api/vendor/" + vendorId + "/event", eventNew)
 		                .then(function (response) {
 		                	alert("Event added successfully !!");
@@ -337,7 +284,6 @@
         }
         
         function addTheatre(name, showtimeId){
-        	//alert(name + " " + showtimeId);
         	$http.get('/api/theatre/name/'+ name)
 			.then(function(response) {
 				var ven = response.data;

@@ -7,10 +7,8 @@
     	this.eventDetails = eventDetails;
     
         function init() {
-        	console.log("inside init");
             $http.get("/api/event")
             .then(function(response) {
-                console.log(response.data);
                 $scope.allEvents = response.data;
             });
         }

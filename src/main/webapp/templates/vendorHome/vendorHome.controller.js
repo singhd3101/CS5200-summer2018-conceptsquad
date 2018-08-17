@@ -16,13 +16,11 @@
 
 		function init(){
 			vendorId = $routeParams.vendorId.substring(1,$routeParams.vendorId.length);
-			console.log(vendorId);
 
 			$http.get("/api/person/" + vendorId)
 			.then(function(response) {
 				$scope.user = response.data;
 				user = response.data;
-				console.log(response.data);
 			});
 		}
 
@@ -32,7 +30,6 @@
 			$http.get("/api/vendor/" + vendorId)
 			.then(function(response) {
 				$scope.allEvents = response.data.eventsAdded;
-				console.log(response.data.eventsAdded);
 			});
 		}
 		
@@ -50,7 +47,6 @@
 					price : price,
 					eventDate : eventDate
         	};
-			console.log("eventNew name " +eventNew.name)
         	if(eventNew.name != null && eventNew.name != undefined){
         		$http.post("/api/vendor/" + vendorId + "/event", eventNew)
                 .then(function (response) {
@@ -66,7 +62,6 @@
 					$http.get("/api/vendor/" + vendorId)
 					.then(function(response) {
 						$scope.allEvents = response.data.eventsAdded;
-						console.log(response.data.eventsAdded);
 					});
 				});
 		    } else {
