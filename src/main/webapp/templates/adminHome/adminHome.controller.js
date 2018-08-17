@@ -3,9 +3,10 @@
         .module('ShowtimeApp')
         .controller('AdminHomeController', AdminHomeController);
 
-    function AdminHomeController($scope, $location, $http, $window, $routeParams) {
+    function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
     	var adminId;
     	
+    	this.register = register;
     	this.profile = profile;
         this.home = home;
         this.getVendor = getVendor;
@@ -247,5 +248,46 @@
         function createCust() {
         	$location.url("/createCustomer/:"+adminId);
         };
+        
+        function register(firstName, lastName, username, password, dtype) {
+            $http.get('/api/person?username=' + username)
+            .then(function(response) {
+            	var user = response.data[0];
+            	if(user === undefined || user === null){
+            		console.log("user not present");
+            		const user = {
+                            firstName : firstName,
+                            lastName  : lastName,
+                            userName  : username,
+                            password  : password
+                    };
+            		if(dtype === 'Customer'){
+            			$http.post('/api/customer/', user)
+            			.then(function(response) {
+            				console.log(response.data);
+            				alert("Customer added successfully !!");
+            				//userId = response.data.id;
+            			})
+            			.then(function () {
+            			//	$location.url("/adminHome/:"+adminId);
+            				$route.reload();
+            			});
+            		} else {
+            			$http.post('/api/vendor/', user)
+            			.then(function(response) {
+            				console.log(response.data);
+            				alert("Vendor added successfully !!");
+            				//userId = response.data.id;
+            			})
+            			.then(function () {
+            				//$location.url("/adminHome/:"+adminId);
+            				$route.reload();
+            			});
+            		}
+            	} else {
+            		alert("Email already present");
+            	}
+            });
+        }
     }
 })();

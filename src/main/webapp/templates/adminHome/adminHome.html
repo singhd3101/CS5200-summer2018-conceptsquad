@@ -54,7 +54,7 @@
 
 <div class="text-center">
  <div ng-if="options === 'customers'" class="container">
- 	<h3>Customers</h3>
+ 	<h3>Customers</h3> <br/>
  	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Customer</button> <br/>
 	<div class="hideShow" ng-show="isShow">
     	<form class="form-control" name="registerForm">
@@ -119,7 +119,48 @@
  </div>
  
  <div ng-if="options === 'vendors'" class="container">
- 	<h3>Vendors</h3>
+ 	<h3>Vendors</h3> <br/>
+ 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Vendor</button> <br/>
+	<div class="hideShow" ng-show="isShow">
+    	<form class="form-control" name="registerForm">
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+        
+        <label for="firstName">First Name</label>
+        <input name="firstName" id="firstName" ng-model="firstName" class="form-control" placeholder="Alice" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="12" required />
+        <p ng-show="registerForm.firstName.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="registerForm.firstName.$invalid && !registerForm.firstName.$pristine" class="help-block">First name is required.</p>
+        <p ng-show="registerForm.firstName.$error.maxlength" class="help-block">First name should be atmost 12 characters.</p>
+        
+        <label for="lastName">Last Name</label>
+        <input name="lastName" id="lastName" ng-model="lastName" class="form-control" placeholder="Wonder" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="12" required />
+        <p ng-show="registerForm.lastName.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="registerForm.lastName.$invalid && !registerForm.lastName.$pristine" class="help-block">Last name is required.</p>
+        <p ng-show="registerForm.lastName.$error.maxlength" class="help-block">Last name should be atmost 12 characters.</p>
+        
+        <label for="username">Username/Email</label>
+        <input name="username" id="username" ng-model="username" class="form-control" placeholder="alice@example.com" type="email" required />
+        <p ng-show="registerForm.username.$invalid && !registerForm.username.$pristine" class="help-block">Enter a valid email.</p>
+        
+        <label for="password">Password</label>
+        <input name="password" id="password" ng-model="password" class="form-control" placeholder="Password" type="password" required />
+        <p ng-show="registerForm.password.$invalid && !registerForm.password.$pristine" class="help-block">Password is too short.</p>
+        
+        <label for="dtype">User Type</label>
+        <div class="form-check form-check-inline">
+  			<input class="form-check-input" type="radio" name="dtype" id="dtype1" value="Customer" ng-model="dtype" required />
+  			<label class="form-check-label" for="inlineRadio1">Customer</label>
+		</div>
+		<div class="form-check form-check-inline">
+  			<input class="form-check-input" type="radio" name="dtype" id="dtype2" value="Vendor" ng-model="dtype" required />
+  			<label class="form-check-label" for="inlineRadio2">Vendor</label>
+		</div>
+        <p ng-show="registerForm.dtype.$invalid && !registerForm.dtype.$pristine" class="help-block">User Type is required.</p>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerForm.$invalid" ng-click="model.register(firstName, lastName, username, password, dtype)">Register</button>
+        
+        <p ng-show="registerForm.$invalid && !registerForm.$pristine" class="help-block">Please enter data in all fields.</p>
+    </form>
+  	</div> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -144,7 +185,34 @@
  </div>
  
  <div ng-if="options === 'movies'" class="container">
- 	<h3>Movies</h3>
+ 	<h3>Movies</h3>  <br/>
+ 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Movie</button> <br/>
+	<div class="hideShow" ng-show="isShow">
+    	<form class="form-control" name="registerMovie">
+        
+        <label for="movieName">Name</label>
+        <input name="movieName" id="movieName" ng-model="movieName" class="form-control" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="20" required />
+        <p ng-show="registerMovie.movieName.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="registerMovie.movieName.$invalid && !registerMovie.movieName.$pristine" class="help-block">Name is required.</p>
+        <p ng-show="registerMovie.movieName.$error.maxlength" class="help-block">Name should be atmost 20 characters.</p>
+        
+        <label for="movieDuration">Duration</label> hours
+        <input name="movieDuration" id="movieDuration" ng-model="movieDuration" class="form-control" type="number" required />
+        <p ng-show="registerMovie.movieDuration.$error.pattern" class="help-block">Only numbers allowed.</p>
+        <p ng-show="registerMovie.movieDuration.$invalid && !registerMovie.movieDuration.$pristine" class="help-block">Duration is required.</p>
+        
+        <label for="movieRating">Rating</label>
+        <input name="movieRating" id="movieRating" ng-model="movieRating" class="form-control" type="number" required />
+        <p ng-show="registerMovie.movieDuration.$error.pattern" class="help-block">Only numbers allowed.</p>
+        <p ng-show="registerMovie.movieDuration.$invalid && !registerMovie.movieDuration.$pristine" class="help-block">Duration is required.</p>
+        
+         <p ng-show="registerForm.dtype.$invalid && !registerForm.dtype.$pristine" class="help-block">User Type is required.</p>
+        
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerForm.$invalid" ng-click="model.register(firstName, lastName, username, password, dtype)">Register</button>
+        
+        <p ng-show="registerForm.$invalid && !registerForm.$pristine" class="help-block">Please enter data in all fields.</p>
+    </form>
+  	</div> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -171,7 +239,7 @@
  </div>
  
  <div ng-if="options === 'events'" class="container">
- 	<h3>Events</h3>
+ 	<h3>Events</h3> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
