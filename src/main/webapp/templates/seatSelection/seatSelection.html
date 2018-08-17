@@ -530,8 +530,11 @@
                     </tr>
                 </table>
                 <br>
-                <button class="theme-btn" ng-click= "model.checkout(seatsDisplay,totalPrice)">Check out</button>
+                <button class="theme-btn" onclick= "checkout()">Check out</button>
             </div>
+            <div id="cinemaId" type="hidden">{{cinemaId}}</div>
+            <div id="movieId" type="hidden">{{movieId}}</div>
+            <div id="showtimeId" type="hidden">{{showtimeId}}</div>
             <!-- //details after booking displayed here -->
         </div>
     </div>
@@ -596,10 +599,20 @@
         	$('#totalPrice').html(10*seats);
         }
 
-        function checkOut() {
+        function checkout() {
         	
-        	var seats = document.getElementById("seatsDisplay").value;
+        	var seats = document.getElementById("seatsDisplay").innerHTML;
+        	var totalPrice = document.getElementById("totalPrice").innerHTML;
+        	var cinemaId = document.getElementById("cinemaId").innerHTML;
+        	var movieId = document.getElementById("movieId").innerHTML;
+        	var showtimeId = document.getElementById("showtimeId").innerHTML;
         	console.log(seats);
+        	console.log(totalPrice);
+        	console.log(cinemaId);
+        	console.log(movieId);
+        	console.log(showtimeId);
+        	
+        	window.location.href = "#!/payment/:"+seats+"/:"+totalPrice+"/:"+ cinemaId+ "/:"+movieId + "/:"+showtimeId;
         }
         
         /*
