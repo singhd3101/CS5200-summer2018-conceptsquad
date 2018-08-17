@@ -6,6 +6,7 @@
     function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
     	var adminId;
     	
+    	this.registerMovie = registerMovie;
     	this.register = register;
     	this.profile = profile;
         this.home = home;
@@ -288,6 +289,12 @@
             		alert("Email already present");
             	}
             });
+        }
+        
+        function registerMovie(movieName, movieDuration, movieRating){
+        	alert(movieName);
+        	alert(movieDuration);
+        	alert(movieRating);
         }
     }
 })();

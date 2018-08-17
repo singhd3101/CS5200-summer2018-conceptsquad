@@ -191,7 +191,7 @@
     	<form class="form-control" name="registerMovie">
         
         <label for="movieName">Name</label>
-        <input name="movieName" id="movieName" ng-model="movieName" class="form-control" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-maxlength="20" required />
+        <input name="movieName" id="movieName" ng-model="movieName" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" ng-maxlength="20" required />
         <p ng-show="registerMovie.movieName.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="registerMovie.movieName.$invalid && !registerMovie.movieName.$pristine" class="help-block">Name is required.</p>
         <p ng-show="registerMovie.movieName.$error.maxlength" class="help-block">Name should be atmost 20 characters.</p>
@@ -203,14 +203,12 @@
         
         <label for="movieRating">Rating</label>
         <input name="movieRating" id="movieRating" ng-model="movieRating" class="form-control" type="number" required />
-        <p ng-show="registerMovie.movieDuration.$error.pattern" class="help-block">Only numbers allowed.</p>
-        <p ng-show="registerMovie.movieDuration.$invalid && !registerMovie.movieDuration.$pristine" class="help-block">Duration is required.</p>
+        <p ng-show="registerMovie.movieRating.$error.pattern" class="help-block">Only numbers allowed.</p>
+        <p ng-show="registerMovie.movieRating.$invalid && !registerMovie.movieRating.$pristine" class="help-block">Rating is required.</p>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerMovie.$invalid" ng-click="model.registerMovie(movieName, movieDuration, movieRating)">Create</button>
         
-         <p ng-show="registerForm.dtype.$invalid && !registerForm.dtype.$pristine" class="help-block">User Type is required.</p>
-        
-        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerForm.$invalid" ng-click="model.register(firstName, lastName, username, password, dtype)">Register</button>
-        
-        <p ng-show="registerForm.$invalid && !registerForm.$pristine" class="help-block">Please enter data in all fields.</p>
+        <p ng-show="registerMovie.$invalid && !registerMovie.$pristine" class="help-block">Please enter data in all fields.</p>
     </form>
   	</div> <br/>
  	<table class="table table-hover">
@@ -235,7 +233,6 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteMovie(movie.id)">Delete</button></td>
 		</tbody>
 	</table>
-	<button type="button" class= "btn btn-primary" ng-click="model.createMovie()">Create Movie</button>
  </div>
  
  <div ng-if="options === 'events'" class="container">
