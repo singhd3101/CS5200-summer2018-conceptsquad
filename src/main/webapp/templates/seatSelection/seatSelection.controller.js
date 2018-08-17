@@ -7,9 +7,10 @@
     	var showtimeId;
     	var cinemaId;
     	var movieId;
-    	
+
+    	var seats;
+    	var totalPrice;
     	this.checkout = checkout;
-    	
     	function init() {
     		
     		console.log("seat selection controller");
@@ -25,10 +26,12 @@
         };
         init();
         
-        function checkout(seats, totalPrice){
+        function checkout(s, t){
+        	this.seats = s;
+        	this.totalPrice = t;
         	console.log("check out function");
         	console.log("seats are "+seats);
-        	console.log("total price is"+totalPrice);
+        	console.log("total price is "+totalPrice);
         	//$location.url('/findAllShowtimes/:'+cinemaId);
         }
     }
