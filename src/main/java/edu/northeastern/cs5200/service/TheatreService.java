@@ -44,6 +44,15 @@ public class TheatreService {
 		return null;
 	}
 	
+	@GetMapping("/api/theatre/name/{theatreName}")
+	public Theatre findTheatreByName(@PathVariable("theatreName") String name) {
+		Optional<Theatre> optional = theatreRepository.findByName(name);
+		if(optional.isPresent()) {
+			return optional.get();
+		}
+		return null;
+	}
+	
 	@PostMapping("api/theatre")
 	public Theatre createTheatre(@RequestBody Theatre theatre) {
 		return theatreRepository.save(theatre);

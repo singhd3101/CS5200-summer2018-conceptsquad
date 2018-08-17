@@ -243,12 +243,12 @@
     <form class="form-control" name="eventForm">
         
         <label for="name">Name</label>
-        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" required />
+        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" required />
         <p ng-show="eventForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventForm.name.$invalid && !eventForm.name.$pristine" class="help-block">Name is required.</p>
         
         <label for="type">Type</label>
-        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[a-zA-Z]+$/" required />
+        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[\w -]*$/" required />
         <p ng-show="eventForm.type.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventForm.type.$invalid && !eventForm.type.$pristine" class="help-block">Type is required.</p>
         
@@ -265,7 +265,7 @@
         <p ng-show="eventForm.price.$invalid && !eventForm.price.$pristine" class="help-block">Enter a valid number.</p>
         
         <label for="venue">Venue</label>
-        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[a-zA-Z]+$/" required />
+        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[\w -]*$/" required />
         <p ng-show="eventForm.venue.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventForm.venue.$invalid && !eventForm.venue.$pristine" class="help-block">venue is required.</p>
         
@@ -313,7 +313,27 @@
  </div>
  
  <div ng-if="options === 'theatres'" class="container">
- 	<h3>Theatres</h3>
+ 	<h3>Theatres</h3><br/>
+ 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Theatre</button> <br/>
+	<div class="hideShow" ng-show="isShow">
+    	<div class="align-content-md-center">
+    <form class="form-control" name="theatreForm">
+        
+        <label for="name">Name</label>
+        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" required />
+        <p ng-show="theatreForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="theatreForm.name.$invalid && !theatreForm.name.$pristine" class="help-block">Name is required.</p>
+        
+        <label for="showtimeId">Showtime API Id</label>
+        <input name="showtimeId" id="showtimeId" ng-model="showtimeId" class="form-control" type="number" />
+        <p ng-show="theatreForm.showtimeId.$invalid && !theatreForm.showtimeId.$pristine" class="help-block">Enter a valid number.</p>
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="theatreForm.$invalid" ng-click="model.addTheatre(name, showtimeId)">Add Theatre</button>
+        
+        <p ng-show="theatreForm.$invalid && !theatreForm.$pristine" class="help-block">Please enter data in all fields.</p>
+    </form>
+</div>
+  	</div> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -332,7 +352,6 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteTheatre(theatre.id)">Delete</button></td>
 		</tbody>
 	</table>
-	<button type="button" class= "btn btn-primary" ng-click="model.createTheatre()">Create Theatre</button>
  </div>
 
 <div ng-if="options === 'bookings'" class="container">

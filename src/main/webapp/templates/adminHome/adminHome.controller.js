@@ -6,6 +6,7 @@
     function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
     	var adminId;
     	
+    	this.addTheatre = addTheatre;
     	this.addEvent = addEvent;
     	this.registerMovie = registerMovie;
     	this.register = register;
@@ -333,6 +334,33 @@
 		        	}
 				}
 			})
+        }
+        
+        function addTheatre(name, showtimeId){
+        	//alert(name + " " + showtimeId);
+        	$http.get('/api/theatre/name/'+ name)
+			.then(function(response) {
+				var ven = response.data;
+				if(ven.id === undefined || ven.id === null){
+					theatreNew = {
+						name : name,
+						showtimeId : showtimeId,	        	
+					};
+					if(theatreNew.name != null && theatreNew.name != undefined){
+		        		$http.post("/api/theatre/", theatreNew)
+		                .then(function (response) {
+		                	alert("Theatre added successfully !!");
+		                })
+		                .then(function () {
+		    				$route.reload();
+		    			});
+		        	}
+				} else {
+					alert("Theatre already present");
+				}
+			})
+        	
+        	
         }
     }
 })();
