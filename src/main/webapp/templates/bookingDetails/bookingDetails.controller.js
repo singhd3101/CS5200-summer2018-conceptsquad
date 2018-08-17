@@ -6,10 +6,12 @@
     function BookingDetailsController($scope, $location, $http, $routeParams) {    
     	this.profile = profile;
     	var bookId;
+    	var booking;
     	var bType;
     	var custId;
     	var user;
     	this.home = home;
+    	this.cancelBooking = cancelBooking;
     
         function init () {
         	custId = $routeParams.custId.substring(1,$routeParams.custId.length);
@@ -26,6 +28,7 @@
 			$http.get("/api/booking/" + bookId)
 	        .then(function(response) {
 	        	$scope.booking = response.data;
+	        	booking = response.data;
 	        	console.log("booking details: " + response.data);
 	        });
 			
@@ -46,6 +49,15 @@
 			}
         };
         init();
+        
+        function cancelBooking(id){
+        	$http.put("/api/booking/" + bookId)
+	        .then(function(response) {
+	        	console.log(response.data);
+	        	alert("Booking cancelled.");
+	        	$location.url('/custHome/:'+user.id);
+	        });
+        }
         
         function profile(id) {
         	$location.url('/profile/:'+custId);
