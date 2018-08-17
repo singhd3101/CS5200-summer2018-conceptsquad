@@ -69,6 +69,11 @@
                 controller : 'VendorHomeController',
                 controllerAs : 'model'
             })
+            .when('/vendorHome/:vendorId/modifyEvent/:eventId' , {
+                templateUrl : 'templates/vendorHome/vendorModifyEvent.html',
+                controller : 'VendorModifyEventController',
+                controllerAs : 'model'
+            })
             .when('/displayEvents' , {
                 templateUrl : 'templates/displayEvents/displayEvents.html',
                 controller : 'DisplayEventsController',
