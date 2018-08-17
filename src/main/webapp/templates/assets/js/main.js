@@ -28,7 +28,7 @@
 		console.log("in buy");
 		return false;
 	});
-	$('#showtime').on('click', function () {
+	$('.showtime .transformers-bottom .theme-btn').on('click', function () {
 		$('.buy-ticket').show();
 		console.log("in buy");
 		return false;
