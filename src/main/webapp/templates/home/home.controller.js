@@ -3,15 +3,20 @@
         .module('ShowtimeApp')
         .controller('HomeController',HomeController);
 
-    function HomeController($scope, $location, $http, $routeParams) {    
+    function HomeController($scope, $location, $http, $routeParams, $rootScope) {    
     	var pos;
     	var lat;
     	var long;
     	var loct;
     	var cinemaId;
+    	
         function init() {
         	
-console.log("in home");
+        	var pogo = $rootScope.loggedIn;
+        	console.log("pogo " + $rootScope.user.userName);
+        	$scope.pogo = $rootScope.loggedIn;
+        	
+        	console.log("in home");
         	if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){
         	      $scope.$apply(function(){
