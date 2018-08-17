@@ -40,7 +40,7 @@ public class Booking {
 	@JsonIgnore
 	private Customer customer;
 	
-	private String status;
+	private String status = "Active";
 	
 	@OneToOne(fetch = FetchType.EAGER,
             cascade =  CascadeType.ALL,

@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.service;
 
+import java.util.Calendar;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,11 +87,51 @@ public class BookingService {
 		return eventBookingRepository.save(booking);
 	}
 	
-	@PutMapping("/api/booking/{bookingId}")
+	@PutMapping("/api/cancelbooking/{bookingId}")
 	public void cancelBooking(@PathVariable("bookingId") int id) {
 		Optional<Booking> optional = bookingRepository.findById(id);
 		if(optional.isPresent()) {
 			Booking booking = optional.get();
+			booking.setStatus("Cancelled");
+			bookingRepository.save(booking);
+		}
+	}
+	
+	@PutMapping("/api/mbooking/{bookingId}")
+	public void updateMovieBooking(@PathVariable("bookingId") int id, @RequestBody MovieBooking book) {
+		Optional<MovieBooking> optional = movieBookingRepository.findById(id);
+		if(optional.isPresent()) {
+			MovieBooking booking = optional.get();
+			book.setCustomer(booking.getCustomer());
+			
+			Calendar cal = Calendar.getInstance(); 
+			cal.setTime(book.getDate()); 
+			cal.add(Calendar.DATE, 1);
+			book.setDate(cal.getTime());
+			book.setHistoricalBooking(booking);
+			book.setMovie(booking.getMovie());
+			movieBookingRepository.save(book);
+			
+			booking.setStatus("Cancelled");
+			bookingRepository.save(booking);
+		}
+	}
+	
+	@PutMapping("/api/ebooking/{bookingId}")
+	public void updateEventBooking(@PathVariable("bookingId") int id, @RequestBody EventBooking book) {
+		Optional<EventBooking> optional = eventBookingRepository.findById(id);
+		if(optional.isPresent()) {
+			EventBooking booking = optional.get();
+			book.setCustomer(booking.getCustomer());
+			
+			Calendar cal = Calendar.getInstance(); 
+			cal.setTime(book.getDate()); 
+			cal.add(Calendar.DATE, 1);
+			book.setDate(cal.getTime());
+			book.setHistoricalBooking(booking);
+			book.setEvent(booking.getEvent());
+			eventBookingRepository.save(book);
+			
 			booking.setStatus("Cancelled");
 			bookingRepository.save(booking);
 		}

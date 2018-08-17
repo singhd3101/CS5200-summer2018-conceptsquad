@@ -11,6 +11,7 @@
     	var custId;
     	var user;
     	this.home = home;
+    	this.updateBooking = updateBooking;
     	this.cancelBooking = cancelBooking;
     
         function init () {
@@ -51,12 +52,46 @@
         init();
         
         function cancelBooking(id){
-        	$http.put("/api/booking/" + bookId)
+        	$http.put("/api/cancelbooking/" + bookId)
 	        .then(function(response) {
 	        	console.log(response.data);
 	        	alert("Booking cancelled.");
 	        	$location.url('/custHome/:'+user.id);
 	        });
+        }
+        
+        function updateBooking(noOfTickets, date){
+        	if(noOfTickets == null || noOfTickets == undefined){
+        		noOfTickets = booking.noOfTickets;
+        		var flag = true;
+        	}
+        	var newPrice = booking.totalCost/booking.noOfTickets * noOfTickets;
+        	if(date == null || date == undefined){
+        		date = booking.date;
+        		if(flag){
+        			$location.url('/custHome/:'+user.id);
+        		}
+        	}
+        	book = {
+        		noOfTickets: noOfTickets,
+        		date : date,
+        		totalCost : newPrice,
+        	}
+        	if(book.noOfTickets != null && book.noOfTickets != undefined){
+        		if(bType === 'movie'){
+        			$http.put("/api/mbooking/" + bookId, book)
+        	        .then(function(response) {
+        	        	alert("Booking updated.");
+        	        	$location.url('/custHome/:'+user.id);
+        	        });
+        		} else {
+        			$http.put("/api/ebooking/" + bookId, book)
+        	        .then(function(response) {
+        	        	alert("Booking updated.");
+        	        	$location.url('/custHome/:'+user.id);
+        	        });
+        		}
+        	}
         }
         
         function profile(id) {

@@ -33,12 +33,43 @@
 	<h4 class="text-center">Booking Details</h4>
 </div>
 <div class="container" class="text-center">
-	<div ng-if="bType == 'movie'">
-		Name: {{movie.name}} <br /> 
-		Rating: {{movie.rating}} <br /> 
-		Duration: {{movie.duration}} hours <br /> 
-		TheatreId {{movie.theatreId}} <br />
+	<div>
+		<form name="mForm">
+			<div class="form-group">
+				<label for="bookingId">Booking Id</label> 
+				<input type="number" class="form-control" id="bookingId" ng-value="booking.id" disabled>
+			</div>
+			<div class="form-group">
+				<label for="price">Price</label> 
+				$<input	type="text" class="form-control" id="price"	ng-value="booking.totalCost" disabled>
+			</div>
+			<div class="form-group">
+				<label for="noOfTickets">No Of Ticket</label> 
+				<input	type="number" class="form-control" id="noOfTickets" ng-model="noOfTickets" name="noOfTickets" min="1" max="10" ng-value="booking.noOfTickets" required>
+			</div>
+			<div class="form-group">
+				<label for="date">Booking Date</label> 
+				<input type="text" class="form-control" id="date" name="date" ng-model="date" ng-value="booking.date.substring(0,10)" required>
+			</div>
+		</form>
 	</div>
+	<div ng-if="bType == 'movie'">
+		<form>
+			<div class="form-group">
+				<label for="movieName">Name</label> 
+				<input type="text" class="form-control" id="movieName"	ng-value="movie.name" disabled>
+			</div>
+			<div class="form-group">
+				<label for="movieRating">Rating</label> 
+				<input	type="text" class="form-control" id="movieRating"	ng-value="movie.rating" disabled>
+			</div>
+			<div class="form-group">
+				<label for="movieDuration">Duration</label> 
+				<input	type="text" class="form-control" id="movieDuration"	ng-value="movie.duration" disabled>
+			</div>
+		</form>
+	</div>
+	
 	<div ng-if="bType == 'event'">
 		Name: {{event.name}} <br /> 
 		Event Type: {{event.type}} <br />
@@ -47,27 +78,59 @@
 		Capacity: {{event.capacity}} <br /> 
 		Price: {{event.price}} <br />
 		Date: {{event.eventDate.substring(0,10)}} <br />
+		<form>
+			<div class="form-group">
+				<label for="eventName">Name</label> 
+				<input type="text" class="form-control" id="eventName" ng-value="event.name" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventType">Type</label> 
+				<input	type="text" class="form-control" id="eventType"	ng-value="eventType" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventDescription">Description</label> 
+				<input	type="text" class="form-control" id="eventDescription"	ng-value="event.description" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventVenue">Venue</label> 
+				<input	type="text" class="form-control" id="eventVenue" ng-value="event.venue" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventCapacity">Capacity</label> 
+				<input	type="text" class="form-control" id="eventCapacity"	ng-value="event.capacity" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventPrice">Price / Ticket</label> 
+				<input	type="text" class="form-control" id="eventPrice" ng-value="event.price" disabled>
+			</div>
+			<div class="form-group">
+				<label for="eventDate">Date</label> 
+				<input	type="text" class="form-control" id="eventDate"	ng-value="event.eventDate.substring(0,10)" disabled>
+			</div>
+		</form>
 	</div>
-		Booking Id: {{booking.id }} <br />
-		Quantity: {{booking.noOfTickets }} <br />
-		Booking Date: {{booking.date.substring(0,10) }} <br />
-		Price: ${{booking.totalCost }} <br /><br/>
-		<b>Historical Booking:</b>  <br />
-		<p ng-if="booking.historicalBooking != null">
-			Booking Id: {{booking.historicalBooking.id }} <br />
-			Quantity: {{booking.historicalBooking.noOfTickets }} <br />
-			Booking Date: {{booking.historicalBooking.date.substring(0,10) }} <br />
-			Price: ${{booking.historicalBooking.totalCost }} <br />
-		</p>
-		<p ng-if="booking.historicalBooking == null">
-			None
-		</p>
+	
+	<b>Historical Booking: </b> <br/>
+	
+	<p ng-if="booking.historicalBooking != null">
+		Booking Id: {{booking.historicalBooking.id }} <br /> 
+		Quantity: {{booking.historicalBooking.noOfTickets }} <br /> 
+		Booking Date: {{booking.historicalBooking.date.substring(0,10) }} <br /> 
+		Price: ${{booking.historicalBooking.totalCost }} <br />
+	</p>
+	
+	<p ng-if="booking.historicalBooking == null">None</p>
+		
 	<div ng-if="booking.status == 'Active'">
 		<div class="text-center">
-			<button class="btn btn-success">Modify</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-primary" ng-click="model.home()">Back</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-success" ng-click="model.updateBooking(noOfTickets, date)">Modify</button>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-danger" ng-click="model.cancelBooking(booking.id)">Cancel</button>
 		</div>
 	</div>
+		
 	<div ng-if="booking.status != 'Active'">
 		<div class="text-center">
 			<button class="btn btn-primary" ng-click="model.home()">Back</button>

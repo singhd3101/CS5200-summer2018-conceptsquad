@@ -365,16 +365,14 @@
 											Cinema:
 										</div>
 										
-									<div class="transformers-right">
+										<div class="transformers-right">
 											{{cinemas[0].name}}
 											
-											<div class="transformers-bottom" ng-repeat="showtime in showtimes">
-											<a id="showtime" href="#" class="theme-btn">
-											{{showtime.start_at | date:"MM/dd/yyyy 'at' h:mma"}} <i class="icofont icofont-ticket"></i>
-											</a>
-											
+											<div class="transformers-bottom">
+												<a class="pogo" href="#">
+													{{showtimes[0].start_at | date:"MM/dd/yyyy 'at' h:mma"}} <i class="icofont icofont-ticket"></i>
+												</a>
 											</div>
-											
 										</div>
 									</li>
 								</ul>
