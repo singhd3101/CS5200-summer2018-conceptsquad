@@ -29,6 +29,7 @@
      	}
      	var dateTo = this.date.getFullYear() + "-" + m + "-" + d;
      	console.log(dateTo);
+     	this.selectSeats = selectSeats;
     	function init() {
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
@@ -46,5 +47,11 @@
             
         };
         init();
+        
+        function selectSeats(showtimeId){
+        	console.log("in select seats function");
+        	$location.url('/seatSelection/:'+showtimeId+'/:'+cinemaId+'/:'+movieId);
+        	//"#!findAllShowtimes/cinemaId={{cinema.id}}
+        }
     }
 })();

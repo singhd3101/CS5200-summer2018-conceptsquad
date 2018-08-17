@@ -3,7 +3,59 @@
 <html lang="zxx">
 
 <head>
-    <title>It'Ss Showtime</title>
+    <title>It's Showtime</title>
+    
+    <script>
+
+    // Render the PayPal button
+
+    paypal.Button.render({
+
+        // Set your environment
+
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+
+        style: {
+            label: 'paypal',
+            size:  'medium',    // small | medium | large | responsive
+            shape: 'rect',     // pill | rect
+            color: 'blue',     // gold | blue | silver | black
+            tagline: false    
+        },
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+        client: {
+            sandbox:    'AaVXucUoiUlc_S8xsNz0ellCBfFWolVHtGaWTYPebrodZh4mGSGam13wHuLywt0iUUJOxbHEXwYawBWH',
+            production: '<insert production client id>'
+        },
+		
+        console.log("cinema ID is "+{{cinemaId}});
+        payment: function(data, actions) {
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: '0.01', currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+                window.alert('Payment Complete!');
+            });
+        }
+
+    }, '#paypal-button-container');
+
+</script>
+
 <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -12,6 +64,7 @@
         function hideURLbar() {
             window.scrollTo(0, 1);
         }
+        console.log(window.location.href);
     </script>
     <!-- //Meta-Tags -->
     <!-- Index-Page-CSS -->
@@ -39,10 +92,16 @@
                         <input type="text" id="Username" required>
                     </div>
                     <div class="agileits-right">
-                        <label> Number of Seats
+                        <label> Number of Seats {{cinemaId}}
                             <span>*</span>
                         </label>
-                        <input type="number" id="Numseats" required min="1">
+                        <input type="number" id="Numseats" required min="1" onchange="getTotalPrice()">
+                    </div>
+                    <div class="agileits-right">
+                        <label> Price (Ticket price 10$)
+                            <span></span>
+                        </label>
+                        
                     </div>
                 </div>
                 <button onclick="takeData()">Start Selecting</button>
@@ -503,6 +562,7 @@
                         <th>Name</th>
                         <th>Number of Seats</th>
                         <th>Seats</th>
+                        <th>Total Price</th>
                     </tr>
                     <tr>
                         <td>
@@ -514,15 +574,20 @@
                         <td>
                             <textarea id="seatsDisplay"></textarea>
                         </td>
+                        <td>
+                        <textarea  id = "totalPrice" place-holder="total price"></textarea>
+                        </td>
                     </tr>
                 </table>
+                <br>
+                <div id="paypal-button-container"></div>
             </div>
             <!-- //details after booking displayed here -->
         </div>
     </div>
     
     <!-- js -->
-    <script src="templates/assets/js/jquery-2.2.3.min.js"></script>
+
     <!-- //js -->
     <!-- script for seat selection -->
     <script>
@@ -572,6 +637,12 @@
         function myFunction() {
             alert($("input:checked").length);
         }
+        
+        function getTotalPrice() {
+        	
+        	var seats =  ($("#Numseats").val());
+        	$('#totalPrice').val(10*seats);
+        }
 
         /*
         function getCookie(cname) {
@@ -601,6 +672,7 @@
         });
     </script>
     <!-- //script for seat selection -->
+   
 
 </body>
 

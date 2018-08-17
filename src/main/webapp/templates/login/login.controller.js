@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('LoginController', LoginController);
 
-    function LoginController($scope, $location, $http, $window) {
+    function LoginController($scope, $location, $http, $window, $rootScope) {
         this.login = login;
        
         var baseUrl = new $window.URL($location.absUrl()).origin + "/#!";
@@ -22,6 +22,8 @@
                     }
                     else {
                         console.log("customer validated");
+                        $rootScope.username= username;
+                        console.log("root is "+username);
                         $location.url('/custHome/:'+id);
                     }
                 })   

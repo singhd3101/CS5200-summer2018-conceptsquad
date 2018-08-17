@@ -371,9 +371,9 @@
 
 											<div class="showtime">
 											<div class="transformers-bottom" ng-repeat="showtime in showtimes">
-											<a id="" href="#!/seatSelection" class="theme-btn" >
+											<button class="theme-btn" ng-click="model.selectSeats(showtime.id)">
 											{{showtime.start_at | date:"MM/dd/yyyy 'at' h:mma"}} <i class="icofont icofont-ticket"></i>
-											</a>
+										</button>
 											
 											</div></div>
 											
