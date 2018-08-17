@@ -64,7 +64,13 @@
 		</p>
 	<div ng-if="booking.status == 'Active'">
 		<div class="text-center">
-			<button class="btn btn-success">Modify</button>
+			<button class="btn btn-success">Modify</button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-danger" ng-click="model.cancelBooking(booking.id)">Cancel</button>
+		</div>
+	</div>
+	<div ng-if="booking.status != 'Active'">
+		<div class="text-center">
+			<button class="btn btn-primary" ng-click="model.home()">Back</button>
 		</div>
 	</div>
 </div>
