@@ -367,8 +367,9 @@
 										
 									<div class="transformers-right">
 											{{cinemas[0].name}}
+											
 											<div class="transformers-bottom" ng-repeat="showtime in showtimes">
-											<a href="#" class="theme-btn">
+											<a id="showtime" href="#" class="theme-btn">
 											{{showtime.start_at | date:"MM/dd/yyyy 'at' h:mma"}} <i class="icofont icofont-ticket"></i>
 											</a>
 											
@@ -439,6 +440,18 @@
 				</div>
 			</div>
 		</footer><!-- footer section end -->
-	
+	<script src="templates/assets/js/jquery.min.js"></script>
+		<!-- Bootstrap JS -->
+		<script src="templates/assets/js/bootstrap.min.js"></script>
+		<!-- Slick nav JS -->
+		<script src="templates/assets/js/jquery.slicknav.min.js"></script>
+		<!-- owl carousel JS -->
+		<script src="templates/assets/js/owl.carousel.min.js"></script>
+		<!-- Popup JS -->
+		<script src="templates/assets/js/jquery.magnific-popup.min.js"></script>
+		<!-- Isotope JS -->
+		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
+		<!-- main JS -->
+		<script src="templates/assets/js/main.js"></script>
 	</body>
 </html>

@@ -28,6 +28,11 @@
 		console.log("in buy");
 		return false;
 	});
+	$('#showtime').on('click', function () {
+		$('.buy-ticket').show();
+		console.log("in buy");
+		return false;
+	});
 	$('.buy-ticket .buy-ticket-area > a').on('click', function () {
 		$('.buy-ticket').hide();
 		return false;
