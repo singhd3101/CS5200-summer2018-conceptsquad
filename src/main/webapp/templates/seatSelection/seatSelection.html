@@ -522,15 +522,15 @@
                             <textarea id="NumberDisplay"></textarea>
                         </td>
                         <td>
-                            <textarea id="seatsDisplay"></textarea>
+                            <textarea id="seatsDisplay" ng-model="seats" name="seats"></textarea>
                         </td>
                         <td>
-                        <textarea  id = "totalPrice" place-holder="total price"></textarea>
+                        <textarea  id = "totalPrice" ng-model="totalPrice" name="totalPrice" place-holder="total price"></textarea>
                         </td>
                     </tr>
                 </table>
                 <br>
-                <button class="theme-btn" ng-click="model.checkout(showtime.id)">Check out</button>
+                <button class="theme-btn" ng-click="model.checkout(seats,totalPrice)">Check out</button>
             </div>
             <!-- //details after booking displayed here -->
         </div>
@@ -620,7 +620,8 @@
                 $(":checkbox").prop('disabled', false);
             }
         });
-        
+       
+      
         
         
     </script>
