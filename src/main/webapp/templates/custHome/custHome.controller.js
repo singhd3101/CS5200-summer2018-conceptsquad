@@ -3,14 +3,17 @@
         .module('ShowtimeApp')
         .controller('CustHomeController',CustHomeController);
 
-    function CustHomeController($scope, $location, $http, $routeParams) {    
+    function CustHomeController($rootScope, $scope, $location, $http, $routeParams) {    
     	this.profile = profile;
     	this.movieDetails = movieDetails;
     	this.eventDetails = eventDetails;
+    	this.home = home;
     	var custId;
     	var user;
     
         function init () {
+        	console.log("rootscope flag- " + $rootScope.loggedIn);
+        	console.log("rootscope user- " + $rootScope.userId);
 		custId = $routeParams.id.substring(1,$routeParams.id.length);
 		$http.get("/api/person/" + custId)
         .then(function(response) {
@@ -41,6 +44,11 @@
         
         function eventDetails(bookingId) {
         	$location.url('/custHome/:'+user.id + '/bookingDetails/:' + bookingId  + '/type/:event');
+        };
+        
+        function home() {
+        	$location.url('/');
+        	
         };
     }
 })();

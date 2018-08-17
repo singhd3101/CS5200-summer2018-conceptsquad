@@ -3,10 +3,12 @@
         .module('ShowtimeApp')
         .controller('PaymentController',PaymentController);
 
-    function PaymentController($scope, $location, $http, $routeParams) {   
+    function PaymentController($scope, $location, $http, $routeParams, $rootScope) {   
     	this.paym = paym;
     	
         function init() {
+        	console.log("rootscope flag- " + $rootScope.loggedIn);
+        	console.log("rootscope user- " + $rootScope.userId);
         }
         init();
         
