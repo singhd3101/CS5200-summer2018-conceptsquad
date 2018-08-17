@@ -58,13 +58,16 @@ public class VendorService {
 			event.setVenue(newEvent.getVenue());
 			event.setVendor(vendor);
 			eventRepository.save(event);
+			vendor.eventsAdded(event);
+			vendorRepository.save(vendor);
 		}
 	}
 	
-	@PutMapping("/api/vendor/{vendorId}/eventsAdded/{eventId}")
-	public void eventsAdded(
+	/*@PutMapping("/api/vendor/{vendorId}/event/{eventId}")
+	public void updateEvent(
 			@PathVariable("vendorId") int vendorId,
-			@PathVariable("eventId") int eventId) {
+			@PathVariable("eventId") int eventId,
+			@RequestBody Event newEvent) {
 		Optional<Vendor> ovendor = vendorRepository.findById(vendorId);
 		Optional<Event> oevent   = eventRepository.findById(eventId);
 		if(ovendor.isPresent() && oevent.isPresent()) {
@@ -72,11 +75,13 @@ public class VendorService {
 			Vendor vendor = ovendor.get();
 			event.setVendor(vendor);
 			eventRepository.save(event);
+			System.out.println("evnet saved");
 			
-			vendor.eventsAdded(event);
-			vendorRepository.save(vendor);
+			
+			
+			
 		}
-	}
+	}*/
 	
 	@PostMapping("api/vendor")
 	public Vendor createVendor(@RequestBody Vendor vendor) {

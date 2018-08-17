@@ -37,7 +37,7 @@
 		}
 		
 		function modifyEvent(id){
-			alert("insert modify");
+			$location.url('/vendorHome/:'+ vendorId + '/modifyEvent/:' + id);
 		}
 
 		function addEvent(name, type, capacity, description, price, venue, eventDate) {            
