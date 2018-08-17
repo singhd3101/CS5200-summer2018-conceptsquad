@@ -522,15 +522,15 @@
                             <textarea id="NumberDisplay"></textarea>
                         </td>
                         <td>
-                            <textarea id="seatsDisplay" ng-model="seats" name="seats"></textarea>
+                            <input id="seatsDisplay" ng-model="seatsDisplay" name="seatsDisplay" class="form-control"></input>
                         </td>
                         <td>
-                        <textarea  id = "totalPrice" ng-model="totalPrice" name="totalPrice" place-holder="total price"></textarea>
+                        	<input id ="totalPrice" ng-model="totalPrice" name="totalPrice" place-holder="total price" class="form-control"></input>
                         </td>
                     </tr>
                 </table>
                 <br>
-                <button class="theme-btn" ng-click="model.checkout(seats,totalPrice)">Check out</button>
+                <button class="theme-btn" type="button" ng-click="model.checkout(seatsDisplay,totalPrice)">Check out</button>
             </div>
             <!-- //details after booking displayed here -->
         </div>

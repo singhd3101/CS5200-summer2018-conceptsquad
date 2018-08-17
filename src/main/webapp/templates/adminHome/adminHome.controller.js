@@ -6,6 +6,7 @@
     function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
     	var adminId;
     	
+    	this.addEvent = addEvent;
     	this.registerMovie = registerMovie;
     	this.register = register;
     	this.profile = profile;
@@ -265,23 +266,17 @@
             		if(dtype === 'Customer'){
             			$http.post('/api/customer/', user)
             			.then(function(response) {
-            				console.log(response.data);
             				alert("Customer added successfully !!");
-            				//userId = response.data.id;
             			})
             			.then(function () {
-            			//	$location.url("/adminHome/:"+adminId);
             				$route.reload();
             			});
             		} else {
             			$http.post('/api/vendor/', user)
             			.then(function(response) {
-            				console.log(response.data);
             				alert("Vendor added successfully !!");
-            				//userId = response.data.id;
             			})
             			.then(function () {
-            				//$location.url("/adminHome/:"+adminId);
             				$route.reload();
             			});
             		}
@@ -292,9 +287,52 @@
         }
         
         function registerMovie(movieName, movieDuration, movieRating){
-        	alert(movieName);
-        	alert(movieDuration);
-        	alert(movieRating);
+        	movieNew = {
+        		name : movieName,
+        		rating : movieRating,
+        		duration : movieDuration
+        	}
+        	if(movieNew.name != null && movieNew.name != undefined){
+        		$http.post('/api/movie/', movieNew)
+    			.then(function(response) {
+    				alert("Movie added successfully !!");
+    			})
+    			.then(function () {
+    				$route.reload();
+    			});
+        	}
+        }
+        
+        function addEvent(name, type, capacity, description, price, venue, dateOfEvent, vendorId){
+        	console.log(vendorId);
+        	$http.get('/api/vendor/'+vendorId)
+			.then(function(response) {
+				var ven = response.data;
+				if(ven.id === undefined || ven.id === null){
+					alert("Vendor not present. Please enter a valid vendor ID.");
+				} else {
+					alert("user present: " + ven.firstName);
+					eventNew = {
+							name : name,
+							type : type,
+							description : description,
+							venue : venue,
+							capacity : capacity,
+							price : price,
+							eventDate : dateOfEvent
+		        	};
+					console.log("eventNew name " +eventNew.name)
+		        	if(eventNew.name != null && eventNew.name != undefined){
+		        		$http.post("/api/vendor/" + vendorId + "/event", eventNew)
+		                .then(function (response) {
+		                	alert("Event added successfully !!");
+		                })
+		                .then(function () {
+		    				$route.reload();
+		    			});
+		        	}
+				}
+			})
         }
     }
 })();

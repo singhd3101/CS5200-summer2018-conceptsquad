@@ -7,6 +7,9 @@
     	var showtimeId;
     	var cinemaId;
     	var movieId;
+    	
+    	this.checkout = checkout;
+    	
     	function init() {
     		
     		console.log("seat selection controller");
