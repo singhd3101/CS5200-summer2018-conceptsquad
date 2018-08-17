@@ -7,6 +7,7 @@
     	var showtimeId;
     	var cinemaId;
     	var movieId;
+
     	var seats;
     	var totalPrice;
     	this.checkout = checkout;

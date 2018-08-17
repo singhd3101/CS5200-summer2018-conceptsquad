@@ -3,9 +3,13 @@
         .module('ShowtimeApp')
         .controller('AdminHomeController', AdminHomeController);
 
-    function AdminHomeController($scope, $location, $http, $window, $routeParams) {
+    function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
     	var adminId;
     	
+    	this.addTheatre = addTheatre;
+    	this.addEvent = addEvent;
+    	this.registerMovie = registerMovie;
+    	this.register = register;
     	this.profile = profile;
         this.home = home;
         this.getVendor = getVendor;
@@ -247,5 +251,116 @@
         function createCust() {
         	$location.url("/createCustomer/:"+adminId);
         };
+        
+        function register(firstName, lastName, username, password, dtype) {
+            $http.get('/api/person?username=' + username)
+            .then(function(response) {
+            	var user = response.data[0];
+            	if(user === undefined || user === null){
+            		console.log("user not present");
+            		const user = {
+                            firstName : firstName,
+                            lastName  : lastName,
+                            userName  : username,
+                            password  : password
+                    };
+            		if(dtype === 'Customer'){
+            			$http.post('/api/customer/', user)
+            			.then(function(response) {
+            				alert("Customer added successfully !!");
+            			})
+            			.then(function () {
+            				$route.reload();
+            			});
+            		} else {
+            			$http.post('/api/vendor/', user)
+            			.then(function(response) {
+            				alert("Vendor added successfully !!");
+            			})
+            			.then(function () {
+            				$route.reload();
+            			});
+            		}
+            	} else {
+            		alert("Email already present");
+            	}
+            });
+        }
+        
+        function registerMovie(movieName, movieDuration, movieRating){
+        	movieNew = {
+        		name : movieName,
+        		rating : movieRating,
+        		duration : movieDuration
+        	}
+        	if(movieNew.name != null && movieNew.name != undefined){
+        		$http.post('/api/movie/', movieNew)
+    			.then(function(response) {
+    				alert("Movie added successfully !!");
+    			})
+    			.then(function () {
+    				$route.reload();
+    			});
+        	}
+        }
+        
+        function addEvent(name, type, capacity, description, price, venue, dateOfEvent, vendorId){
+        	console.log(vendorId);
+        	$http.get('/api/vendor/'+vendorId)
+			.then(function(response) {
+				var ven = response.data;
+				if(ven.id === undefined || ven.id === null){
+					alert("Vendor not present. Please enter a valid vendor ID.");
+				} else {
+					alert("user present: " + ven.firstName);
+					eventNew = {
+							name : name,
+							type : type,
+							description : description,
+							venue : venue,
+							capacity : capacity,
+							price : price,
+							eventDate : dateOfEvent
+		        	};
+					console.log("eventNew name " +eventNew.name)
+		        	if(eventNew.name != null && eventNew.name != undefined){
+		        		$http.post("/api/vendor/" + vendorId + "/event", eventNew)
+		                .then(function (response) {
+		                	alert("Event added successfully !!");
+		                })
+		                .then(function () {
+		    				$route.reload();
+		    			});
+		        	}
+				}
+			})
+        }
+        
+        function addTheatre(name, showtimeId){
+        	//alert(name + " " + showtimeId);
+        	$http.get('/api/theatre/name/'+ name)
+			.then(function(response) {
+				var ven = response.data;
+				if(ven.id === undefined || ven.id === null){
+					theatreNew = {
+						name : name,
+						showtimeId : showtimeId,	        	
+					};
+					if(theatreNew.name != null && theatreNew.name != undefined){
+		        		$http.post("/api/theatre/", theatreNew)
+		                .then(function (response) {
+		                	alert("Theatre added successfully !!");
+		                })
+		                .then(function () {
+		    				$route.reload();
+		    			});
+		        	}
+				} else {
+					alert("Theatre already present");
+				}
+			})
+        	
+        	
+        }
     }
 })();
