@@ -20,56 +20,79 @@
     	
     	init();
     	
-        function update(firstName, lastName, username, password, phone, dob){
+        function update(firstName, lastName, userName, password, phone, dob, street1, street2, city, state, zip){
         	
-        	console.log(firstName);
-        	console.log(lastName);
-        	console.log(username);
-        	console.log(password);
-        	console.log(phone);
-        	console.log(dob);
-        	console.log(dob);
+        	//console.log(lastName);
         	
-        	/*var m = (parseInt(dob.getMonth()) + 1) + "";
-        	if(m.length === 1){
-        		m = "0" + m;
-        	}
-        	var d = (parseInt(dob.getDate()) + 1) + "";
-        	if(d.length === 1){
-        		d = "0" + d;
-        	}
-        	var formattedDob = dob.getFullYear() + "-" + m + "-" + d;*/
+        	console.log(street1);
+        	console.log(street2);
+        	console.log(city);
+        	console.log(state);
+        	console.log(zip);
         	
         	const contacts = {
         		phone : phone
         	}
         	
+        	const userNew = {
+            	firstName : firstName,
+            	lastName : lastName,
+            	userName : userName,
+            	dob : dob,
+            	password : password,
+            };
+        	
+        	const add = {
+        		street1 : street1,
+        		street2 : street2,
+        		city : city,
+        		zip : zip,
+        		state : state
+        	}
+        	
+        	if((street1 != null && street1 != undefined) ||
+        		(street2 != null && street2 != undefined) ||	
+        		(city != null && city != undefined) ||
+        		(state != null && state != undefined) ||
+        		(zip != null && zip != undefined)){
+        		
+        		console.log("inside address method");
+        		
+        		$http.put("/api/person/"+userId + "/personAddresses/" , add)
+                .then(function (response) {
+                	console.log(response.data);
+                	alert("Profile updated successfully !!");
+                	init();
+                })
+        	}        	
+        	
         	if(phone != null && phone != undefined){
         		$http.put("/api/person/"+userId + "/personContacts/" , contacts)
                 .then(function (response) {
                 	console.log(response.data);
-                	$scope.user = user;
-                	$route.reload();
+                	alert("Profile updated successfully !!");
+                	init();
                 })
-        	} else {
-        		const userNew = {
-                		firstName : firstName,
-                		lastName : lastName,
-                		userName : username,
-                		dob : dob,
-                		password : password,
-                	};
-                	
-                	$http.put("/api/person/"+userId, userNew)
-                    .then(function (response) {
-                    	alert("Profile updated successfully !!");
-                    	user = response.data;
-                        $scope.user = response.data;
-                        $route.reload();
-                    })
+                
+        	} 
+        	
+        	if((firstName != null && firstName != undefined) ||
+        		(lastName != null && lastName != undefined) ||
+        		(phone != null && phone != undefined) ||
+        		(userName != null && userName != undefined) ||
+        		(dob != null && dob != undefined) ||
+        		(password != null && password != undefined)) {
+        		
+        		console.log("inside persone check");
+        		
+                $http.put("/api/person/"+userId, userNew)
+                   .then(function (response) {
+                   	alert("Profile updated successfully !!");
+                   	user = response.data;
+                       $scope.user = response.data;
+                       $route.reload();
+                })
         	}
-        	
-        	
         }
         
         function home(){

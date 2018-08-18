@@ -43,7 +43,19 @@
   		<label for="phone">Mobile</label>
         <input id="phone" ng-model="phone" class="form-control" required="" type="number" ng-value="user.contacts.phone"><br/>
         <label for="dob">Date of Birth</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <input type="date" name="dob" id="dob" ng-model="dob" ng-value="user.dob"><br/>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob)">Update</button>
+        <input type="date" name="dob" id="dob" ng-model="dob" ng-value="user.dob"><br/><br/>
+        <label for="street1">Street 1</label>
+        <input id="street1" ng-model="street1" name="street1" class="form-control" autofocus="" type="text" ng-value="user.addresses.street1">
+        <label for="street2">Street 2</label>
+        <input id="street2" ng-model="street2" name="street2" class="form-control" autofocus="" type="text" ng-value="user.addresses.street2">
+        <label for="city">City</label>
+        <input id="city" ng-model="city" name="city" class="form-control" autofocus="" type="text" ng-value="user.addresses.city">
+        <label for="state">State</label>
+        <input id="state" ng-model="state" name="state" class="form-control" autofocus="" type="text" ng-value="user.addresses.state">
+        <label for="zip">Zip Code</label>
+        <input id="zip" ng-model="zip" name="zip" class="form-control" autofocus="" type="number" ng-value="user.addresses.zip"/>        
+        
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob, street1, street2, city, state, zip)">Update</button>
     </form>
 </div>
