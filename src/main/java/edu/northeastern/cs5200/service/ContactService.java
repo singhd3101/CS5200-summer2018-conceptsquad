@@ -46,9 +46,9 @@ public class ContactService {
 		Optional<Contact> optional = contactRepository.findById(id);
 		if(optional.isPresent()) {
 			Contact contact = optional.get();
-			if(newContact.getPrimaryContact() != null) {
+			/*if(newContact.getPrimaryContact() != null) {
 				contact.setPrimaryContact(newContact.getPrimaryContact());
-			}
+			}*/
 			/*if(newContact.getEmail() != null) {
 				contact.setEmail(newContact.getEmail());
 			}*/

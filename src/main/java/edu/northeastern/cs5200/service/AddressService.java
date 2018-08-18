@@ -41,9 +41,9 @@ public class AddressService {
 		Optional<Address> optional = addressRepository.findById(id);
 		if(optional.isPresent()) {
 			Address address = optional.get();
-			if(newAddress.getPrimaryAdd() != null) {
+			/*if(newAddress.getPrimaryAdd() != null) {
 				address.setPrimaryAdd(newAddress.getPrimaryAdd());
-			}
+			}*/
 			if(newAddress.getCity() != null) {
 				address.setCity(newAddress.getCity());
 			}

@@ -100,16 +100,18 @@ public class PersonService {
 			address.setPerson(person);
 			addressRepository.save(address);
 			
-			person.addresses(address);
+			person.setAddresses(address);
 			personRepository.save(person);
 		}
 	}
 	
 	@GetMapping("/api/person/{addressId}/addressesAdded")
-	public Iterable<Address> findAddressesAdded(
-			@PathVariable("personId") int personId) {
+	public Address findAddressesAdded(@PathVariable("personId") int personId) {
 		Optional<Person> operson = personRepository.findById(personId);
-		return operson.get().getAddresses();
+		if(operson.isPresent()) {
+			return operson.get().getAddresses();
+		}
+		return null;
 	}
 	
 	@PutMapping("/api/person/{personId}/personContacts/{contactId}")
@@ -124,15 +126,17 @@ public class PersonService {
 			contact.setPerson(person);
 			contactRepository.save(contact);
 			
-			person.contacts(contact);
+			person.setContacts(contact);
 			personRepository.save(person);
 		}
 	}
 	
 	@GetMapping("/api/person/{personId}/contactsAdded")
-	public Iterable<Contact> findContactsAdded(
-			@PathVariable("personId") int personId) {
+	public Contact findContactsAdded(@PathVariable("personId") int personId) {
 		Optional<Person> operson = personRepository.findById(personId);
-		return operson.get().getContacts();
+		if(operson.isPresent()) {
+			return operson.get().getContacts();
+		}
+		return null;
 	}
 }

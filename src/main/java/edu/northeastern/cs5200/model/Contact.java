@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,21 +17,28 @@ public class Contact {
 	private int id;
 	//private String email;
 	private long phone;
-	private Boolean primaryContact;
-	@ManyToOne
+//	private Boolean primaryContact;
+/*	@ManyToOne
 	@JsonIgnore
 	private Person person;
+*/	
+	@OneToOne
+	@JsonIgnore
+	private Person person;
+	
 	
 	public Contact() {}
 	
 	public Contact(int id, 
 			//String email, 
-			long phone, Boolean primaryContact, Person person) {
+			long phone, 
+			//Boolean primaryContact, 
+			Person person) {
 		super();
 		this.id = id;
 		//this.email = email;
 		this.phone = phone;
-		this.primaryContact = primaryContact;
+	//	this.primaryContact = primaryContact;
 		this.person = person;
 	}
 	
@@ -39,8 +46,9 @@ public class Contact {
 	public String toString() {
 		return "Contact [id=" + id + 
 				//", email=" + email + 
-				", phone=" + phone + ", primaryContact=" + primaryContact
-				+ ", person=" + person + "]";
+				", phone=" + phone + 
+				//", primaryContact=" + primaryContact + 
+				", person=" + person + "]";
 	}
 
 	public int getId() {
@@ -67,11 +75,11 @@ public class Contact {
 	public void setPhone(long phone) {
 		this.phone = phone;
 	}
-	public Boolean getPrimaryContact() {
+	/*public Boolean getPrimaryContact() {
 		return primaryContact;
 	}
 	public void setPrimaryContact(Boolean primaryContact) {
 		this.primaryContact = primaryContact;
-	}
+	}*/
 	
 }
