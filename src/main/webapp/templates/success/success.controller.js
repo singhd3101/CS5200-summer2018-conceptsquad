@@ -33,7 +33,9 @@
             	then(function(response) {
             	console.log(response);
                    $scope.showtimes=response.data.showtime;
-                   console.log("showtime is "+response.data.data.showtime);
+                   console.log("showtime is "+response.data.showtime);
+                   console.log("showtime is "+response.data.movie);
+                   console.log("showtime is "+response.data.cinema);
                    $scope.movies = response.data.movie;
                    $scope.cinemas = response.data.cinema;
               

@@ -21,8 +21,10 @@
         	       lat = position.coords.latitude;
         	       long = position.coords.longitude;
         	       loct='location='+lat+','+long;
+        	       console.log(loct);
         	    	$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5').
                		then(function(response) {
+               			
                        $scope.allCinemas = response.data;
                    });
         	      });
