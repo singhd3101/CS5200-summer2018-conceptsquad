@@ -25,22 +25,24 @@
            		
                	$scope.seats = $routeParams.seats.substring(1,$routeParams.seats.length);
            		seats = $scope.seats;
+           		seats = $scope.seats;
+        		seats = seats.substring(0, seats.length - 1); 
+        		$scope.seats = seats;
+        		console.log("seats is "+seats);
            		$scope.totalPrice = $routeParams.totalPrice.substring(1,$routeParams.totalPrice.length);
            		totalPrice = $scope.totalPrice;
            		$scope.paymentID = $routeParams.paymentID.substring(1,$routeParams.paymentID.length);
            		paymentID = $scope.paymentID;
             	$http.get('https://api.internationalshowtimes.com/v4/showtimes/'+ showtimeId +'?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie').
-            	then(function(response) {
-            	console.log(response);
-                   $scope.showtimes=response.data.showtime;
-                   console.log("showtime is "+response.data.showtime);
-                   console.log("showtime is "+response.data.movie);
-                   console.log("showtime is "+response.data.cinema);
-                   $scope.movies = response.data.movie;
-                   $scope.cinemas = response.data.cinema;
-              
-           		
-                });          
+
+            	then(function (res){
+            		console.log(res.data);
+            		$scope.showtime = res.data.showtime;
+            		$scope.cinema = res.data.cinema;
+            		$scope.movie = res.data.movie;
+            		
+            	});
+
             };
         init();
 

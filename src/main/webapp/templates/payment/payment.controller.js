@@ -18,7 +18,7 @@
         	console.log("rootscope user- " + $rootScope.userId);
         	console.log("payment controller");
         	$scope.seats = $routeParams.seats.substring(1,$routeParams.seats.length);
-    		seats = $scope.seats;
+    		
     		$scope.totalPrice = $routeParams.totalPrice.substring(1,$routeParams.totalPrice.length);
     		totalPrice = $scope.totalPrice;
         	$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
