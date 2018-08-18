@@ -23,14 +23,12 @@
 	        .then(function(response) {
 	        	$scope.user = response.data;
 	        	user = response.data;
-	        	console.log(response.data);
 	        });
 			
 			$http.get("/api/booking/" + bookId)
 	        .then(function(response) {
 	        	$scope.booking = response.data;
 	        	booking = response.data;
-	        	console.log("booking details: " + response.data);
 	        });
 			
 			if(bType === 'movie'){
@@ -38,14 +36,12 @@
 	        	.then(function(response){
 	        		var movie = response.data;
 	        		$scope.movie = response.data;
-	                console.log("movie details: " + movie.name);
 	        	});
 			} else {
 				$http.get("/api/eventbooking/"+bookId+"/event")
 	        	.then(function(response){
 	        		var event = response.data;
 	        		$scope.event = response.data;
-	                console.log("event details: " + event.name);
 	        	});
 			}
         };
@@ -54,7 +50,6 @@
         function cancelBooking(id){
         	$http.put("/api/cancelbooking/" + bookId)
 	        .then(function(response) {
-	        	console.log(response.data);
 	        	alert("Booking cancelled.");
 	        	$location.url('/custHome/:'+user.id);
 	        });

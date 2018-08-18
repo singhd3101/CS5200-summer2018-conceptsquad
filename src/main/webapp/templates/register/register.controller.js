@@ -12,7 +12,6 @@
             .then(function(response) {
             	var user = response.data[0];
             	if(user === undefined || user === null){
-            		console.log("user not present");
             		const user = {
                             firstName : firstName,
                             lastName  : lastName,
@@ -22,7 +21,6 @@
             		if(dtype === 'Customer'){
             			$http.post('/api/customer/', user)
             			.then(function(response) {
-            				console.log(response.data);
             				userId = response.data.id;
             			})
             			.then(function () {
@@ -31,7 +29,6 @@
             		} else {
             			$http.post('/api/vendor/', user)
             			.then(function(response) {
-            				console.log(response.data);
             				userId = response.data.id;
             			})
             			.then(function () {

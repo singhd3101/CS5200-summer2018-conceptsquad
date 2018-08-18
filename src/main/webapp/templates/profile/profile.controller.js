@@ -21,7 +21,6 @@
     	init();
     	
         function update(firstName, lastName, username, password, phone, dob, input){
-        	console.log(dob);
         	var m = (parseInt(dob.getMonth()) + 1) + "";
         	if(m.length === 1){
         		m = "0" + m;
@@ -31,7 +30,6 @@
         		d = "0" + d;
         	}
         	var formattedDob = dob.getFullYear() + "-" + m + "-" + d;
-        	console.log(formattedDob);
         	const userNew = {
         		firstName : firstName,
         		lastName : lastName,
