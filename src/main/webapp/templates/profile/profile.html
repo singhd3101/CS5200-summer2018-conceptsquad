@@ -41,9 +41,9 @@
         <label for="password">Password</label>
         <input id="password" ng-model="password" class="form-control" required="" type="password" ng-value="user.password">
   		<label for="phone">Mobile</label>
-        <input id="phone" ng-model="phone" class="form-control" required="" type="number" ng-value="user.contacts[0].phone">
-        <label for="dob">Date of Birth</label>
-        <input type="date" name="dob" id="dob" ng-model="dob" ng-value="user.dob">
+        <input id="phone" ng-model="phone" class="form-control" required="" type="number" ng-value="user.contacts.phone"><br/>
+        <label for="dob">Date of Birth</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="date" name="dob" id="dob" ng-model="dob" ng-value="user.dob"><br/>
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob)">Update</button>
     </form>
 </div>

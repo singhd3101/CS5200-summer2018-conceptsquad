@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Person {
@@ -24,8 +24,18 @@ public class Person {
 	private Date Dob;
 	private int access;
 	
-	@OneToMany(mappedBy="person")
+	/*@OneToMany(mappedBy="person")
 	private List<Address> addresses;
+	
+	@OneToMany(mappedBy="person")
+	private List<Contact> contacts;
+	*/
+	
+	@OneToOne(mappedBy="person")
+	private Address addresses;
+	
+	@OneToOne(mappedBy="person")
+	private Contact contacts;
 	
 	@Override
 	public String toString() {
@@ -34,10 +44,8 @@ public class Person {
 				+ ", access= " + access + "]";
 	}
 	
-	@OneToMany(mappedBy="person")
-	private List<Contact> contacts;
 	
-	public List<Contact> getContacts() {
+	/*public List<Contact> getContacts() {
 		return contacts;
 	}
 
@@ -64,11 +72,33 @@ public class Person {
 	}
 	public void setAddresses(List<Address> addresses) {
 		this.addresses = addresses;
-	}
+	}*/
+	
+	
 	
 	public int getId() {
 		return id;
 	}
+	public Address getAddresses() {
+		return addresses;
+	}
+
+
+	public void setAddresses(Address addresses) {
+		this.addresses = addresses;
+	}
+
+
+	public Contact getContacts() {
+		return contacts;
+	}
+
+
+	public void setContacts(Contact contacts) {
+		this.contacts = contacts;
+	}
+
+
 	public void setId(int id) {
 		this.id = id;
 	}
