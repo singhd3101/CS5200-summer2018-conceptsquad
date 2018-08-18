@@ -7,32 +7,40 @@
     	var showtimeId;
     	var cinemaId;
     	var movieId;
+    	var paymemtID
 
     	var seats;
     	var totalPrice;
-    	this.checkout = checkout;
-    	function init() {
+   
+    	
     		
-    		console.log("seat selection controller");
-    		$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
-    		showtimeId = $scope.showtimeId;
-    		$scope.cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
-    		cinemaId = $scope.cinemaId;
-    		$scope.movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
-        	movieId = $scope.movieId;
-        	
-             
-            
-        };
+    		
+    		//https://api.internationalshowtimes.com/v4/showtimes/5b7235d255e3ba571425832d?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie
+    		
+    		function init() {
+    			console.log("success controller");
+    			showtimeId = $scope.showtimeId;
+    			$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
+    			showtimeId = $scope.showtimeId;
+           		
+               	$scope.seats = $routeParams.seats.substring(1,$routeParams.seats.length);
+           		seats = $scope.seats;
+           		$scope.totalPrice = $routeParams.totalPrice.substring(1,$routeParams.totalPrice.length);
+           		totalPrice = $scope.totalPrice;
+           		$scope.paymentID = $routeParams.paymentID.substring(1,$routeParams.paymentID.length);
+           		paymentID = $scope.paymentID;
+            	$http.get('https://api.internationalshowtimes.com/v4/showtimes/'+ showtimeId +'?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie').
+            	then(function(response) {
+            	console.log(response);
+                   $scope.showtimes=response.data.showtime;
+                   console.log("showtime is "+response.data.data.showtime);
+                   $scope.movies = response.data.movie;
+                   $scope.cinemas = response.data.cinema;
+              
+           		
+                });          
+            };
         init();
-        
-        function checkout(s, t){
-        	this.seats = s;
-        	this.totalPrice = t;
-        	console.log("check out function");
-        	console.log("seats are "+seats);
-        	console.log("total price is "+totalPrice);
-        	//$location.url('/findAllShowtimes/:'+cinemaId);
-        }
-    }
+
+    	}
 })();

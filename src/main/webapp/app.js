@@ -140,9 +140,9 @@
                 controller : 'PaymentController',
                 controllerAs : 'model'
             })
-            .when('/payment/:paymentID' , {
-                templateUrl : 'templates/payment/payment.html',
-                controller : 'PaymentController',
+            .when('/success/:showtimeId/:paymentID/:seats/:totalPrice' , {
+                templateUrl : 'templates/success/success.html',
+                controller : 'SuccessController',
                 controllerAs : 'model'
             })
         	.when('/pay/success?paymentId=:paymentId&token=:token&PayerID=:PayerID' , {
