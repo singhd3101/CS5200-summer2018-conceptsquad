@@ -18,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Showtime {
 
 	@Id
-	private int id;
+	private String id;
 	
 	@ManyToMany
 	@JoinTable(name="Showtime2Movie", 
@@ -41,12 +41,12 @@ public class Showtime {
 			seatBooking.setShowtime(this);
 		}
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

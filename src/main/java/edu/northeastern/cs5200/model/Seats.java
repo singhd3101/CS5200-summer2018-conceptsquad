@@ -15,7 +15,7 @@ public class Seats {
 	@GeneratedValue
 	(strategy=GenerationType.IDENTITY)
 	private int id;
-	private String seatNUmber;
+	private String seatNumber;
 	@ManyToOne
 	@JsonIgnore
 	private MovieBooking mbooking;
@@ -30,11 +30,11 @@ public class Seats {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getSeatNUmber() {
-		return seatNUmber;
+	public String getSeatNumber() {
+		return seatNumber;
 	}
-	public void setSeatNUmber(String seatNUmber) {
-		this.seatNUmber = seatNUmber;
+	public void setSeatNumber(String seatNumber) {
+		this.seatNumber = seatNumber;
 	}
 	public MovieBooking getMbooking() {
 		return mbooking;
