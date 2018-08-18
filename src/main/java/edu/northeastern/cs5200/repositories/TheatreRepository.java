@@ -10,9 +10,9 @@ import edu.northeastern.cs5200.model.Theatre;
 
 public interface TheatreRepository extends CrudRepository<Theatre, Integer>{
 
-	@Query("SELECT t FROM Theatre t WHERE t.showtimeId = :id")
+/*	@Query("SELECT t FROM Theatre t WHERE t.showtimeId = :id")
 	public Optional<Theatre> findByShowtimeId(@Param("id") int id);
-
+*/
 	@Query("SELECT t FROM Theatre t WHERE t.name = :name")
 	public Optional<Theatre> findByName(@Param("name") String name);
 

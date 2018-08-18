@@ -53,8 +53,10 @@
         			$http.post('/api/moviebooking/', booking)
         			.then(function(response) {
         				console.log(response);
-        				booking = response.data.id;
-        			});}
+        				
+        			});
+        			
+    		}
         init();
 
     	}
