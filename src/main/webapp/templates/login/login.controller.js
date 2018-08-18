@@ -10,8 +10,6 @@
        var baseUrl = new $window.URL($location.absUrl()).origin + "/#!";
 
        function login(username, password) {  
-    	   	console.log("-------------------------");
-    	   	console.log(ENV.show-api-key);
             $http.get("/api/person?username="+username+"&password="+password)
                .then(function (response) {
                	id = response.data[0].id;

@@ -21,7 +21,7 @@
         	       lat = position.coords.latitude;
         	       long = position.coords.longitude;
         	       loct='location='+lat+','+long;
-        	    	$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+        	    	$http.get('https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5').
                		then(function(response) {
                        $scope.allCinemas = response.data;
                    });

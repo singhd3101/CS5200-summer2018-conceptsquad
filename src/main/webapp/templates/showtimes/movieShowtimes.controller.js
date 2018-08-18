@@ -35,7 +35,7 @@
      	function init() {
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
-        	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?append=movies,cinemas&cinema_id='+ cinemaId +'&movie_id='+ movieId +'&time_to='+ dateTo +'&movie_fields=ratings,trailers,id,title,poster_image&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+        	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?append=movies,cinemas&cinema_id='+ cinemaId +'&movie_id='+ movieId +'&time_to='+ dateTo +'&movie_fields=ratings,trailers,id,title,poster_image&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5').
         	then(function(response) {
                $scope.showtimes=response.data.showtimes;
                $scope.movies = response.data.movies;

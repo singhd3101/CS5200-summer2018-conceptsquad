@@ -265,7 +265,7 @@ textarea,
 input,
 textarea::-webkit-input-placeholder ,
 input::-webkit-input-placeholder {
-    color: #fff;
+    color: #FF4500;
 }
 
 /*--------------------------------------

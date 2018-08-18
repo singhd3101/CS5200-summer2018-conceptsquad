@@ -40,7 +40,6 @@
 	});
 	$('.login-popup').on('click', function () {
 		$('.login-area').show();
-		console.log("in login");
 		return false;
 	});
 	$('.login-box > a').on('click', function () {

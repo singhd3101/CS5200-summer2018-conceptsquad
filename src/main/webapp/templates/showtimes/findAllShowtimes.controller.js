@@ -21,10 +21,10 @@
     	
         function init() {
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
-        	var url1 = 'https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
-        	var url2 = 'https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
-        	var url3 = 'http://localhost:8080/#!/findAllShowtimes/cinemaId='+ cinemaId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
-        	var url4 = 'https://api.internationalshowtimes.com/v4/showtimes/?append=movies,cinemas&cinema_id='+ cinemaId +'&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5';
+        	var url1 = 'https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';
+        	var url2 = 'https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';
+        	var url3 = 'http://localhost:8080/#!/findAllShowtimes/cinemaId='+ cinemaId +'&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';
+        	var url4 = 'https://api.internationalshowtimes.com/v4/showtimes/?append=movies,cinemas&cinema_id='+ cinemaId +'&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';
                	
         	$http.get(url4).
         	then(function(response) {
@@ -53,7 +53,7 @@
         
         function movieDetails(mId){
         	movieId = mId;
-        	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=' +cinemaId+ '&movie_id=' +movieId+ '&apikey=cMQZTx5UYw7m3Ddio8jS0NcFwgmEQkE5').
+        	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?cinema_id=' +cinemaId+ '&movie_id=' +movieId+ '&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5').
             then(function(response) {
                 $scope.allMovieShowtimes = response.data;
             });
