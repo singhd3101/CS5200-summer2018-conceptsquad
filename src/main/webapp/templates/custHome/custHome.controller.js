@@ -27,6 +27,9 @@
             .then(function(response) {
             	$scope.alleventBookings = response.data;
             });
+        	
+        	
+  
         };
         init();
         
