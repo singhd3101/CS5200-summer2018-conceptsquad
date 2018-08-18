@@ -5,10 +5,28 @@
 
     function PaymentController($scope, $location, $http, $routeParams, $rootScope) {   
     	this.paym = paym;
+    	var showtimeId;
+    	var cinemaId;
+    	var movieId;
+    	var seats;
+    	var totalPrice;
+    	
+    	
     	
         function init() {
         	console.log("rootscope flag- " + $rootScope.loggedIn);
         	console.log("rootscope user- " + $rootScope.userId);
+        	console.log("payment controller");
+        	$scope.seats = $routeParams.seats.substring(1,$routeParams.seats.length);
+    		seats = $scope.seats;
+    		$scope.totalPrice = $routeParams.totalPrice.substring(1,$routeParams.totalPrice.length);
+    		totalPrice = $scope.totalPrice;
+        	$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
+    		showtimeId = $scope.showtimeId;
+    		$scope.cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
+    		cinemaId = $scope.cinemaId;
+    		$scope.movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
+        	movieId = $scope.movieId;
         }
         init();
         

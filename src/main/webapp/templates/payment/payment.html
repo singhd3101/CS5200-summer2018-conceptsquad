@@ -1,5 +1,4 @@
 
-<div id="paypal-button-container"></div>
 
 <script>
 
@@ -30,11 +29,13 @@
         },
 
         payment: function(data, actions) {
+        	var totalPrice = document.getElementById("totalPrice").innerHTML;
+        	console.log(totalPrice);
             return actions.payment.create({
                 payment: {
                     transactions: [
                         {
-                            amount: { total: '0.01', currency: 'USD' }
+                            amount: { total: totalPrice, currency: 'USD' }
                         }
                     ]
                 }
@@ -43,10 +44,35 @@
 
         onAuthorize: function(data, actions) {
             return actions.payment.execute().then(function() {
+            	var paymentID = data.paymentID;
+            	console.log(data);
                 window.alert('Payment Complete!');
+            	var seats = document.getElementById("seatsDisplay").innerHTML;
+            	var totalPrice = document.getElementById("totalPrice").innerHTML;
+            	var cinemaId = document.getElementById("cinemaId").innerHTML;
+            	var movieId = document.getElementById("movieId").innerHTML;
+            	var showtimeId = document.getElementById("showtimeId").innerHTML;
+            	console.log(seats);
+            	console.log(totalPrice);
+            	console.log(cinemaId);
+            	console.log(movieId);
+            	console.log(showtimeId);
+            	
+            	window.location.href = "#!/success/:"+seats+"/:"+ cinemaId+ "/:"+movieId + "/:"+showtimeId+"/:"+paymemtID;
+
+  
             });
         }
 
     }, '#paypal-button-container');
-
+    
 </script>
+
+<div id="" type="">Click on the button to make an payment of $<p id="totalPrice">{{totalPrice}}</p></div>
+
+<div id="paypal-button-container"></div>
+            <div id="cinemaId" type="hidden">{{cinemaId}}</div>
+            <div id="movieId" type="hidden">{{movieId}}</div>
+            <div id="showtimeId" type="hidden">{{showtimeId}}</div>
+            <div id="seats" type="hidden">{{seats}}</div>
+            <div id="totalPrice" type="hidden">{{totalPrice}}</div>
