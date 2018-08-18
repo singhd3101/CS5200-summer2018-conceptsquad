@@ -17,8 +17,8 @@ public class EventBooking extends Booking{
 	public EventBooking( ) {}
 
 	public EventBooking(int noOfTickets, Date date, float totalCost,
-			Booking historicalBooking, Customer customer) {
-		super(noOfTickets, date, totalCost, historicalBooking, customer);
+			Booking historicalBooking, String paymentId, Customer customer) {
+		super(noOfTickets, date, totalCost, historicalBooking, paymentId, customer);
 	}
 
 	public Event getEvent() {

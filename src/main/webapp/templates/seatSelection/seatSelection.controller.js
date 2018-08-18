@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('SeatSelectionController',SeatSelectionController);
 
-    function SeatSelectionController($scope, $location, $http, $routeParams, $filter) { 
+    function SeatSelectionController($scope, $location, $http, $routeParams, $filter, $rootScope) { 
     	var showtimeId;
     	var cinemaId;
     	var movieId;
@@ -13,6 +13,10 @@
     	this.checkout = checkout;
     	function init() {
     		
+    		var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
     		console.log("seat selection controller");
     		$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
     		showtimeId = $scope.showtimeId;
@@ -26,13 +30,6 @@
         };
         init();
         
-        function checkout(s, t){
-        	this.seats = s;
-        	this.totalPrice = t;
-        	console.log("check out function");
-        	console.log("seats are "+seats);
-        	console.log("total price is "+totalPrice);
-        	//$location.url('/findAllShowtimes/:'+cinemaId);
-        }
+        
     }
 })();

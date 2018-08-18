@@ -27,6 +27,7 @@ public class Booking {
 	private int noOfTickets;
 	private Date date;
 	private float totalCost;
+	private String paymentId;
 	
 	@OneToOne
 	@JoinColumn(name = "hist_id")
@@ -50,13 +51,14 @@ public class Booking {
 	
 	public Booking() {}
 	
-	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, Customer customer) {
+	public Booking(int noOfTickets, Date date, float totalCost, Booking historicalBooking, String paymentId, Customer customer) {
 		this.noOfTickets = noOfTickets;
 		this.date = date;
 		this.totalCost = totalCost;
 		this.historicalBooking = historicalBooking;
 		this.customer = customer;
 		this.status = "Active";
+		this.paymentId = paymentId;
 	}
 
 	@Override
@@ -67,7 +69,8 @@ public class Booking {
 				"totalCost: " + totalCost +
 				"historicalBooking: " + historicalBooking + 
 				"customer: " + customer +
-				"status: " + status;
+				"status: " + status +
+				"paymentID" + paymentId;
 	}
 
 	public Payment getBookingPayment() {
@@ -140,6 +143,14 @@ public class Booking {
 
 	public void setStatus(String status) {
 		this.status = status;
+	}
+
+	public String getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(String paymentId) {
+		this.paymentId = paymentId;
 	}
 	
 	

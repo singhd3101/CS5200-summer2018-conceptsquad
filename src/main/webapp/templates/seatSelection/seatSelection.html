@@ -39,10 +39,10 @@
                         <label> Name
                             <span>*</span>
                         </label>
-                        <input type="text" id="Username" required>
+                        <input type="text" id="Username" required value="{{user.firstName}}">
                     </div>
                     <div class="agileits-right">
-                        <label> Number of Seats {{cinemaId}}
+                        <label> Number of Seats
                             <span>*</span>
                         </label>
                         <input type="number" id="Numseats" required min="1" onchange="getTotalPrice()">

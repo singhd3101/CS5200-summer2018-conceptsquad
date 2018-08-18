@@ -42,8 +42,19 @@
             		$scope.movie = res.data.movie;
             		
             	});
-
-            };
+            	
+            	var currentTime = new Date();
+            	const booking = {
+                        noOfTickets : totalPrice/10,
+                        date  : currentTime,
+                        totalCost  : totalPrice,
+                        paymentId : paymentID
+                };
+        			$http.post('/api/moviebooking/', booking)
+        			.then(function(response) {
+        				console.log(response);
+        				booking = response.data.id;
+        			});}
         init();
 
     	}
