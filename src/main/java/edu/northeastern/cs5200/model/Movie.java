@@ -19,8 +19,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class Movie {
 
 	@Id
-	@GeneratedValue
-	(strategy=GenerationType.IDENTITY)
 	private int id;
 
 	private String name;
@@ -40,6 +38,10 @@ public class Movie {
 	@JsonIgnore
 	private List<MovieBooking> moviesBooked = new ArrayList<MovieBooking>();
 
+	@ManyToMany(mappedBy="availableMovies", cascade=CascadeType.ALL)
+	@JsonIgnore
+	private List<Showtime> availableShowtimes;
+	
 	public void bookedMovie(MovieBooking movieBooking) {
 		this.moviesBooked.add(movieBooking);
 		if(movieBooking.getMovie() != this) {

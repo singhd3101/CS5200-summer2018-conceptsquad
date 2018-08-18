@@ -35,14 +35,14 @@ public class TheatreService {
 		return null;
 	}
 	
-	@GetMapping("/api/theatre/show/{showtimeId}")
+/*	@GetMapping("/api/theatre/show/{showtimeId}")
 	public Theatre findTheatreByShowtimeId(@PathVariable("showtimeId") int id) {
 		Optional<Theatre> optional = theatreRepository.findByShowtimeId(id);
 		if(optional.isPresent()) {
 			return optional.get();
 		}
 		return null;
-	}
+	}*/
 	
 	@GetMapping("/api/theatre/name/{theatreName}")
 	public Theatre findTheatreByName(@PathVariable("theatreName") String name) {
