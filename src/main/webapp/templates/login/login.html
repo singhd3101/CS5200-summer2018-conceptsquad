@@ -1,9 +1,11 @@
-<div class="align-content-md-center">
+<div class="align-content-md-center" style="background-image: url(templates/assets/img/banner.jpg); background-repeat:no-repeat; height:650px; width: 1325px;>
     <form class="form-control">
-        <h1 class="h3 mb-3 font-weight-normal">Login</h1>
-        <label for="username">Username</label>
+    <br/><br/><br/><br/><br/>
+    	<div class="text-center">
+        <h1 class="text-light" class="h3 mb-3 font-weight-normal" >Login</h1></div><br/>
+        <label class="text-light" for="username">Username</label>
         <input id="username" ng-model="username" class="form-control" placeholder="Username" required="" autofocus="" type="text">
-        <label for="password">Password</label>
+        <label class="text-light" for="password">Password</label>
         <input id="password" ng-model="password" class="form-control" placeholder="Password" required="" type="password"> <br/>
         <div class="text-center">
         	<button class="btn btn-lg btn-primary" type="submit" ng-click="model.login(username, password)">Login</button>
