@@ -17,8 +17,8 @@ public class MovieBooking extends Booking{
 	public MovieBooking() {}
 	
 	public MovieBooking(int noOfTickets, Date date, float totalCost,
-			Booking historicalBooking, Customer customer) {
-		super(noOfTickets, date, totalCost, historicalBooking, customer);
+			Booking historicalBooking, String paymentId, Customer customer) {
+		super(noOfTickets, date, totalCost, historicalBooking, paymentId, customer);
 	}
 
 	public Movie getMovie() {
