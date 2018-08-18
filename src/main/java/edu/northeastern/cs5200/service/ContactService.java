@@ -35,6 +35,11 @@ public class ContactService {
 		return contactRepository.findById(id);
 	}
 	
+	@GetMapping("/api/contact/person/{perosnId}")
+	public Optional<Contact> findContactByPersonId(@PathVariable("perosnId") int id) {
+		return contactRepository.findByPersonId(id);
+	}
+	
 	@GetMapping("/api/contact")
 	public List<Contact> findAllContact(){
 			return (List<Contact>) contactRepository.findAll();

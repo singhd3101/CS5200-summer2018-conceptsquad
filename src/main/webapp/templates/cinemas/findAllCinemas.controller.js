@@ -14,6 +14,7 @@
     	this.moviesAtCinema = moviesAtCinema;
     	
     	function init() {
+    		
     		if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){
         	      $scope.$apply(function(){

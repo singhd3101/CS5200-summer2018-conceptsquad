@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('ProfileController', ProfileController);
 
-    function ProfileController($scope, $location, $http, $window, $routeParams) {
+    function ProfileController($scope, $location, $http, $window, $routeParams, $route) {
     	this.update = update;
     	this.home = home;
     	var user;
@@ -20,8 +20,17 @@
     	
     	init();
     	
-        function update(firstName, lastName, username, password, phone, dob, input){
-        	var m = (parseInt(dob.getMonth()) + 1) + "";
+        function update(firstName, lastName, username, password, phone, dob){
+        	
+        	console.log(firstName);
+        	console.log(lastName);
+        	console.log(username);
+        	console.log(password);
+        	console.log(phone);
+        	console.log(dob);
+        	console.log(dob);
+        	
+        	/*var m = (parseInt(dob.getMonth()) + 1) + "";
         	if(m.length === 1){
         		m = "0" + m;
         	}
@@ -29,20 +38,38 @@
         	if(d.length === 1){
         		d = "0" + d;
         	}
-        	var formattedDob = dob.getFullYear() + "-" + m + "-" + d;
-        	const userNew = {
-        		firstName : firstName,
-        		lastName : lastName,
-        		userName : username,
-        		dob : formattedDob,
-        		password : password
-        	};
-        	$http.put("/api/person/"+userId, userNew)
-            .then(function (response) {
-            	alert("Profile updated successfully !!");
-            	user = response.data;
-                $scope.user = response.data;
-            })
+        	var formattedDob = dob.getFullYear() + "-" + m + "-" + d;*/
+        	
+        	const contacts = {
+        		phone : phone
+        	}
+        	
+        	if(phone != null && phone != undefined){
+        		$http.put("/api/person/"+userId + "/personContacts/" , contacts)
+                .then(function (response) {
+                	console.log(response.data);
+                	$scope.user = user;
+                	$route.reload();
+                })
+        	} else {
+        		const userNew = {
+                		firstName : firstName,
+                		lastName : lastName,
+                		userName : username,
+                		dob : dob,
+                		password : password,
+                	};
+                	
+                	$http.put("/api/person/"+userId, userNew)
+                    .then(function (response) {
+                    	alert("Profile updated successfully !!");
+                    	user = response.data;
+                        $scope.user = response.data;
+                        $route.reload();
+                    })
+        	}
+        	
+        	
         }
         
         function home(){

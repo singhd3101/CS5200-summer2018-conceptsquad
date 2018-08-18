@@ -114,20 +114,17 @@ public class PersonService {
 		return null;
 	}
 	
-	@PutMapping("/api/person/{personId}/personContacts/{contactId}")
-	public void personContacts(
-			@PathVariable("personId") int personId,
-			@PathVariable("contactId") int contactId) {
+	@PutMapping("/api/person/{personId}/personContacts")
+	public void personContacts(@PathVariable("personId") int personId, @RequestBody Contact newContact) {
 		Optional<Person> operson = personRepository.findById(personId);
-		Optional<Contact> ocontact   = contactRepository.findById(contactId);
-		if(operson.isPresent() && ocontact.isPresent()) {
+		if(operson.isPresent()) {
 			Person person = operson.get();
-			Contact contact = ocontact.get();
-			contact.setPerson(person);
-			contactRepository.save(contact);
-			
-			person.setContacts(contact);
-			personRepository.save(person);
+			Optional<Contact> ocontact = contactRepository.findByPersonId(personId);
+			if (ocontact.isPresent()) {
+				Contact contact = ocontact.get();
+				contact.setPhone(newContact.getPhone());
+				contactRepository.save(contact);
+			}
 		}
 	}
 	

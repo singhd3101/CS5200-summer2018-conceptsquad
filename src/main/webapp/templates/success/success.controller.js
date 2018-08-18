@@ -45,7 +45,7 @@
             		
                 }); 
             	
-            	console.log("-----------------------------------");
+            	/*console.log("-----------------------------------");
             	$http.get('https://api.internationalshowtimes.com/v4/showtimes/5b7384fc8836652b8221fbd0?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie')
             	.then(function (res){
             		console.log(res.data);
@@ -53,7 +53,7 @@
             		console.log(res.data.cinema);
             		console.log(res.data.movie);
             		
-            	});
+            	});*/
             };
         init();
 
