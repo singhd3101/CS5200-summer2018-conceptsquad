@@ -25,9 +25,14 @@ public class Showtime {
 	joinColumns=@JoinColumn(name="SHOWTIME_ID", referencedColumnName="ID"),
 	inverseJoinColumns=@JoinColumn(name="MOVIE_ID", referencedColumnName="ID"))
 	@JsonIgnore
-	private List<Movie> availableMovies;
+	private List<Movie> availableMovies = new ArrayList<Movie>();
 	
-	
+	public void addMovie(Movie movie) {
+		this.availableMovies.add(movie);
+		if(!movie.getAvailableShowtimes().contains(this)) {
+			movie.getAvailableShowtimes().add(this);
+		}
+	}	
 	private Date startTime;
 
 

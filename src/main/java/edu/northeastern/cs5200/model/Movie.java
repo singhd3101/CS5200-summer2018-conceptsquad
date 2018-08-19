@@ -32,7 +32,22 @@ public class Movie {
 	joinColumns=@JoinColumn(name="MOVIE_ID", referencedColumnName="ID"),
 	inverseJoinColumns=@JoinColumn(name="THEATRE_ID", referencedColumnName="ID"))
 	@JsonIgnore
-	private List<Theatre> hostingTheatres;
+	private List<Theatre> hostingTheatres = new ArrayList<Theatre>();
+
+	public void addTheatre(Theatre theatre) {
+		this.hostingTheatres.add(theatre);
+		if(!theatre.getMovieshosted().contains(this)) {
+			theatre.getMovieshosted().add(this);
+		}
+	}	
+	
+	public List<Showtime> getAvailableShowtimes() {
+		return availableShowtimes;
+	}
+
+	public void setAvailableShowtimes(List<Showtime> availableShowtimes) {
+		this.availableShowtimes = availableShowtimes;
+	}
 
 	@OneToMany(mappedBy="movie", cascade=CascadeType.ALL)
 	@JsonIgnore
@@ -41,6 +56,13 @@ public class Movie {
 	@ManyToMany(mappedBy="availableMovies", cascade=CascadeType.ALL)
 	@JsonIgnore
 	private List<Showtime> availableShowtimes;
+	
+	public void addShowtimes(Showtime showtime) {
+		this.availableShowtimes.add(showtime);
+		if(!showtime.getAvailableMovies().contains(this)) {
+			showtime.getAvailableMovies().add(this);
+		}
+	}	
 	
 	public void bookedMovie(MovieBooking movieBooking) {
 		this.moviesBooked.add(movieBooking);

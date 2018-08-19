@@ -55,7 +55,14 @@ public class TheatreService {
 	
 	@PostMapping("api/theatre")
 	public Theatre createTheatre(@RequestBody Theatre theatre) {
-		return theatreRepository.save(theatre);
+		Optional<Theatre> optional = theatreRepository.findById(theatre.getId());
+		if(!optional.isPresent()) {
+			
+			return theatreRepository.save(theatre);
+			}
+
+		return null;
+		
 	}
 	
 	@DeleteMapping("/api/theatre/{theatreId}")
