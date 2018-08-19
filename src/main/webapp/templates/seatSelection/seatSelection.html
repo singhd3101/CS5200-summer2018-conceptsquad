@@ -36,10 +36,10 @@
                 <h2>fill the required details below and select your seats</h2>
                 <div class="mr_agilemain">
                     <div class="agileits-left">
-                        <label> Name
+                        <label> Email
                             <span>*</span>
                         </label>
-                        <input type="text" id="Username" required value="{{user.firstName}}">
+                        <input type="text" id="Username" required value="{{user.userName}}">
                     </div>
                     <div class="agileits-right">
                         <label> Number of Seats
@@ -48,7 +48,7 @@
                         <input type="number" id="Numseats" required min="1" onchange="getTotalPrice()">
                     </div>
                     <div class="agileits-right">
-                        <label> Price (Ticket price 10$)
+                        <label> Price is $10 Per Ticket
                             <span></span>
                         </label>
                         
@@ -533,9 +533,10 @@
                 <br>
                 <button class="theme-btn" onclick= "checkout()">Check out</button>
             </div>
-            <div id="cinemaId" type="hidden">{{cinemaId}}</div>
-            <div id="movieId" type="hidden">{{movieId}}</div>
-            <div id="showtimeId" type="hidden">{{showtimeId}}</div>
+            <div id="cinemaId" style="display: none;">{{cinemaId}}</div>
+            <div id="movieId" style="display: none;">{{movieId}}</div>
+            <div id="showtimeId" style="display: none;">{{showtimeId}}</div>
+            <div id="showtimeId" style="display: none;">{{showtimeId}}</div>
             <!-- //details after booking displayed here -->
         </div>
     </div>
@@ -607,13 +608,15 @@
         	var cinemaId = document.getElementById("cinemaId").innerHTML;
         	var movieId = document.getElementById("movieId").innerHTML;
         	var showtimeId = document.getElementById("showtimeId").innerHTML;
+        	var username = document.getElementById("Username").value;
+        	console.log(username);
         	console.log(seats);
         	console.log(totalPrice);
         	console.log(cinemaId);
         	console.log(movieId);
         	console.log(showtimeId);
         	
-        	window.location.href = "#!/payment/:"+seats+"/:"+totalPrice+"/:"+ cinemaId+ "/:"+movieId + "/:"+showtimeId;
+        	window.location.href = "#!/payment/:"+seats+"/:"+totalPrice+"/:"+ cinemaId+ "/:"+movieId + "/:"+showtimeId+ "/:"+username;
         }
         
         /*

@@ -14,16 +14,20 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Booking;
+import edu.northeastern.cs5200.model.Customer;
 import edu.northeastern.cs5200.model.Event;
 import edu.northeastern.cs5200.model.EventBooking;
 import edu.northeastern.cs5200.model.Movie;
 import edu.northeastern.cs5200.model.MovieBooking;
+import edu.northeastern.cs5200.model.Person;
 import edu.northeastern.cs5200.model.Showtime;
 import edu.northeastern.cs5200.repositories.BookingRepository;
+import edu.northeastern.cs5200.repositories.CustomerRepository;
 import edu.northeastern.cs5200.repositories.EventBookingRepository;
 import edu.northeastern.cs5200.repositories.EventRepository;
 import edu.northeastern.cs5200.repositories.MovieBookingRepository;
 import edu.northeastern.cs5200.repositories.MovieRepository;
+import edu.northeastern.cs5200.repositories.PersonRepository;
 
 @RestController
 public class BookingService {
@@ -43,6 +47,9 @@ public class BookingService {
 	@Autowired
 	MovieBookingRepository movieBookingRepository;
 
+	@Autowired
+	CustomerRepository customerRepository;
+	
 	@GetMapping("/api/booking")
 	public List<Booking> findAllBooking(){
 		return (List<Booking>) bookingRepository.findAll();
@@ -139,12 +146,25 @@ public class BookingService {
 	}
 	
 	
-	@PostMapping("api/moviebooking/{movieId}")
+	@PostMapping("api/moviebooking/{movieId}/user/{username}")
 	public MovieBooking createMovieBooking(@RequestBody MovieBooking movieBooking, 
-		@PathVariable("movieId") int movieId){
+		@PathVariable("movieId") int movieId, @PathVariable("username") String username){
 		
 		Optional<Movie> moptional = movieRepository.findById(movieId);
 		movieBooking.setMovie(moptional.get());
+		
+		List<Customer> c =  customerRepository.findCustomerByUsername(username);
+		if(c.isEmpty()) {
+		
+			Customer newCustomer = new Customer();
+			newCustomer.setUserName(username);
+			customerRepository.save(newCustomer);
+			movieBooking.setCustomer(newCustomer);
+			
+		}
+		else {
+			movieBooking.setCustomer(c.get(0));
+		}
 
 		return movieBookingRepository.save(movieBooking);
 	}

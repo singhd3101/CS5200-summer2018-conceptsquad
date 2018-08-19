@@ -50,6 +50,7 @@
                 var seats = ($("#seats").html());
                 var totalPrice = ($("#totalPrice").html());
                 var showtimeId = ($("#showtimeId").html());
+                var username = ($("#username").html());
             	/* var seats = document.getElementById("seatsDisplay").innerHTML;
             	var totalPrice = document.getElementById("totalPrice").innerHTML;
             	var cinemaId = document.getElementById("cinemaId").innerHTML;
@@ -61,7 +62,7 @@
             	console.log(movieId);
             	console.log(showtimeId); */
             	
-            	window.location.href = "#!/success/:"+showtimeId+"/:"+paymentID+"/:"+seats+"/:"+totalPrice;
+            	window.location.href = "#!/success/:"+showtimeId+"/:"+paymentID+"/:"+seats+"/:"+totalPrice+"/:"+username;
 
   
             });
@@ -79,3 +80,5 @@
             <div id="showtimeId" type="hidden" style="display: none;">{{showtimeId}}</div>
             <div id="seats" type="hidden" style="display: none;">{{seats}}</div>
             <div id="totalPrice" type="hidden" style="display: none;">{{totalPrice}}</div>
+            <div id="username" type="hidden" style="display: none;">{{username}}</div>
+            
