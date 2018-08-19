@@ -42,10 +42,12 @@
             		$scope.showtime = res.data.showtime;
             		startAt = res.data.showtime.start_at;
             		$scope.cinema = res.data.cinema;
+            		cinemaId = res.data.cinema.id;
             		theatreName = res.data.cinema.name;
             		$scope.movie = res.data.movie;
 
             		movieName = res.data.movie.title;
+            		movieId = res.data.movie.id;
             		console.log("movieId is "+movieId+ " movie name is "+movieName+"  cinemaId is "+cinemaId +" cinema name is " +theatreName+" showtimeId is "+showtimeId+" show time start at "+startAt)
             	const theatre = {
                         id : cinemaId,
@@ -59,7 +61,7 @@
                                 id : movieId,
                                 name  : movieName   
                         };
-                			$http.post('/api/movie/', movie)
+                			$http.post('/api/movie/theatre/'+cinemaId, movie)
                 			.then(function(response) {
                 				console.log(response);   
                 				console.log("movie posted");
@@ -68,39 +70,12 @@
                                         id : showtimeId,
                                         startTime  : startAt   
                                 };
-                        			$http.post('/api/showtime/', showtime)
+                        			$http.post('/api/showtime/movie/'+movieId, showtime)
                         			.then(function(response) {
                         				console.log(response);  
                         				console.log("showtime posted");
                         				var currentTime = new Date();
-                                    	const booking = {
-                                                noOfTickets : totalPrice/10,
-                                                date  : currentTime,
-                                                totalCost  : totalPrice,
-                                                paymentId : paymentID
-                                        };
-                                			$http.post('/api/moviebooking/', booking)
-                                			.then(function(response) {
-                                				console.log(response);
-                                				mbookingId = response.data.id;
-                                				console.log("booking posted");
-                                				var splitSeats = seats.split(',');
-                                            	for (var i = 0; i < splitSeats.length; i++) { 
-                                            		const seats = {
-                                                            seatNumber : splitSeats[i],
-                                                            showtime  :  showtimeId,
-                                                            mbooking  : mbookingId
-                                                            
-                                                    };
-                                            			$http.post('/api/seats/', seats)
-                                            			.then(function(response) {
-                                            				console.log(response);
-                                            				console.log("seats posted");
-                                            			});
-                                            	}
-                                				
-                                			});
-                				
+                                    	
                 			});
         				
         			});

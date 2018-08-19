@@ -14,13 +14,18 @@ import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Movie;
 import edu.northeastern.cs5200.model.Person;
+import edu.northeastern.cs5200.model.Theatre;
 import edu.northeastern.cs5200.repositories.MovieRepository;
+import edu.northeastern.cs5200.repositories.TheatreRepository;
 
 @RestController
 public class MovieService {
 	
 	@Autowired
 	MovieRepository movieRepository;
+	
+	@Autowired
+	TheatreRepository theatreRepository;
 	
 	@GetMapping("/api/movie")
 	public List<Movie> findAllMovies() {
@@ -39,6 +44,26 @@ public class MovieService {
 	@PostMapping("api/movie")
 	public Movie createMovie(@RequestBody Movie movie) {
 		return movieRepository.save(movie);
+	}
+
+
+	@PostMapping("api/movie/theatre/{theatreId}")
+	public Movie createMovieInTheatre(@RequestBody Movie movie, 
+		@PathVariable("theatreId") int theatreId){
+		Optional<Theatre> toptional = theatreRepository.findById(theatreId);
+
+		Optional<Movie> optional = movieRepository.findById(movie.getId());
+		if(!optional.isPresent()) {
+			
+			movie.addTheatre(toptional.get());
+			toptional.get().hostMovie(movie);
+			theatreRepository.save(toptional.get());
+			return movieRepository.save(movie);
+			}
+			
+		
+		return null;
+		
 	}
 	
 	@PutMapping("/api/movie/{movieId}")

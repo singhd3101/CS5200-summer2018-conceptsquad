@@ -1,5 +1,6 @@
 package edu.northeastern.cs5200.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,9 +23,14 @@ public class Theatre {
 
 	@ManyToMany(mappedBy="hostingTheatres", cascade=CascadeType.ALL)
 	@JsonIgnore
-	private List<Movie> movieshosted;
+	private List<Movie> movieshosted = new ArrayList<Movie>();
 
-
+	public void hostMovie(Movie movie) {
+		this.movieshosted.add(movie);
+		if(!movie.getHostingTheatres().contains(this)) {
+			movie.getHostingTheatres().add(this);
+		}
+	}
 
 	public int getId() {
 		return id;
