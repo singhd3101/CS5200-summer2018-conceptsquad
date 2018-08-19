@@ -42,7 +42,10 @@
 		<input ng-model="options" type="radio" value="theatres" ng-change='model.getTheatre()'/> Theatre
 	</th>
 	<th>
-		<input ng-model="options" type="radio" value="bookings" ng-change='model.getBooking()'/> Booking
+		<input ng-model="options" type="radio" value="mbookings" ng-change='model.getMovieBooking()'/> Movie Booking
+	</th>
+	<th>
+		<input ng-model="options" type="radio" value="ebookings" ng-change='model.getEventBooking()'/> Event Booking
 	</th>
 	
 	</tr>
@@ -293,8 +296,79 @@
 	</table>
  </div>
 
-<div ng-if="options === 'bookings'" class="container">
- 	<h3>Bookings</h3>
+<div ng-if="options === 'mbookings'" class="container">
+ 	<h3>Movie Bookings</h3>
+ 	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Id</th>
+				<th scope="col">Tickets Booked</th>
+				<th scope="col">Date</th>
+				<th scope="col">Price</th>
+				<th scope="col">Status</th>
+				<th scope="col">Historical Booking</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody ng-repeat="booking in allmBookings">
+			<td>{{booking.id}}</td>
+			<td>{{booking.noOfTickets}}</td>
+			<td>{{booking.date.substring(1,10)}}</td>
+			<td>${{booking.totalCost}}</td>
+			<td>{{booking.status}}</td>
+			<td>{{booking.historicalBooking.id}}</td>
+			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteBooking(booking.id)">Delete</button></td>
+		</tbody>
+	</table>
+ </div>
+
+
+<div ng-if="options === 'ebookings'" class="container">
+ 	<h3>Event Bookings</h3> <br/>
+ 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Event Booking</button> <br/>
+	<div class="hideShow" ng-show="isShow">
+    	<div class="align-content-md-center">
+    <form class="form-control" name="eventForm">
+        
+        <label for="name">Name</label>
+        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" required />
+        <p ng-show="eventForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventForm.name.$invalid && !eventForm.name.$pristine" class="help-block">Name is required.</p>
+        
+        <label for="type">Type</label>
+        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[\w -]*$/" required />
+        <p ng-show="eventForm.type.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventForm.type.$invalid && !eventForm.type.$pristine" class="help-block">Type is required.</p>
+        
+        <label for="capacity">Capacity</label>
+        <input name="capacity" id="capacity" ng-model="capacity" class="form-control" type="number" required />
+        <p ng-show="eventForm.capacity.$invalid && !eventForm.capacity.$pristine" class="help-block">Enter a valid number.</p>
+        
+        <label for="description">Description</label>
+        <textarea  name="description" id="description" class="form-control" ng-model="description" class="form-control" type="password" required rows="3"></textarea>
+        <p ng-show="eventForm.description.$invalid && !eventForm.description.$pristine" class="help-block">Description is required.</p>
+        
+        <label for="price">Price per ticket</label>
+        <input name="price" id="price" ng-model="price" class="form-control" type="number" required />
+        <p ng-show="eventForm.price.$invalid && !eventForm.price.$pristine" class="help-block">Enter a valid number.</p>
+        
+        <label for="venue">Venue</label>
+        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[\w -]*$/" required />
+        <p ng-show="eventForm.venue.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventForm.venue.$invalid && !eventForm.venue.$pristine" class="help-block">venue is required.</p>
+        
+        <label for="dateOfEvent">Date</label>
+        <input type="date" name="dateOfEvent" id="dateOfEvent" ng-model="dateOfEvent">
+        
+        <label for="vendor">Vendor</label>
+        <input type="number" name="vendor" id="vendor" ng-model="vendor">
+        
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="eventForm.$invalid" ng-click="model.addEvent(name, type, capacity, description, price, venue, dateOfEvent, vendor)">Add Event</button>
+        
+        <p ng-show="eventForm.$invalid && !eventForm.$pristine" class="help-block">Please enter data in all fields.</p>
+    </form>
+</div>
+  	</div> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
@@ -308,7 +382,7 @@
 				<th></th>
 			</tr>
 		</thead>
-		<tbody ng-repeat="booking in allBookings">
+		<tbody ng-repeat="booking in alleBookings">
 			<td>{{booking.id}}</td>
 			<td>{{booking.noOfTickets}}</td>
 			<td>{{booking.date.substring(1,10)}}</td>
@@ -319,10 +393,6 @@
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteBooking(booking.id)">Delete</button></td>
 		</tbody>
 	</table>
-	<button type="button" class= "btn btn-primary" ng-click="model.createBooking()">Create Booking</button>
  </div>
-
-
-
  
  </div>

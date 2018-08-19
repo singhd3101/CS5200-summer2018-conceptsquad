@@ -17,7 +17,8 @@
         this.getMovie = getMovie;
         this.getEvent = getEvent;
         this.getTheatre = getTheatre;
-        this.getBooking = getBooking;
+        this.getMovieBooking = getMovieBooking;
+        this.getEventBooking = getEventBooking;
         this.getPayment = getPayment;
         this.custDetail = custDetail;
         this.vendorDetail = vendorDetail;
@@ -54,10 +55,18 @@
             });
         }
         
-        function getBooking(){
-        	$http.get("/api/booking/")
+        function getMovieBooking(){
+        	console.log("in movie fetch");
+        	$http.get("/api/moviebooking/")
             .then(function(response) {
-            	$scope.allBookings = response.data;
+            	$scope.allmBookings = response.data;
+            });
+        }
+        
+        function getEventBooking(){
+        	$http.get("/api/eventbooking/")
+            .then(function(response) {
+            	$scope.alleBookings = response.data;
             });
         }
         
