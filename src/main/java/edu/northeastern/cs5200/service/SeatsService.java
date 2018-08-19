@@ -38,6 +38,12 @@ public class SeatsService {
 		return (List<Seats>) seatsRepository.findAll();
 	}
 	
+	@GetMapping("/api/seats/showtimes/{showtimeId}")
+	public List<Seats> findAllSeatsForShowtime(@PathVariable("showtimeId") String showtimeId) {
+		return (List<Seats>) seatsRepository.findSeatsByShowtime(showtimeId);
+	}
+	
+	
 	@PostMapping("api/seats")
 	public Seats createSeats(@RequestBody Seats seat) {
 		return seatsRepository.save(seat);

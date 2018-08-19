@@ -10,6 +10,7 @@
 
     	var seats;
     	var totalPrice;
+    	var seats;
     	this.checkout = checkout;
     	function init() {
     		
@@ -25,7 +26,12 @@
     		$scope.movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
         	movieId = $scope.movieId;
         	
-             
+        	 $http.get("/api/seats/showtimes/"+showtimeId)
+             .then(function(response) {
+               $scope.seatsTaken = response.data;
+               console.log(response);
+               console.log("seats are " +response.data);
+                                          });
             
         };
         init();
