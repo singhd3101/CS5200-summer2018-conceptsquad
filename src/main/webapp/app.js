@@ -49,7 +49,12 @@
                 controller : 'AdminModifyUserController',
                 controllerAs : 'model'
             })
-            .when('/custHome' , {
+            .when('/adminHome/:adminId/adminAddEventBooking/:eventId' , {
+                templateUrl : 'templates/adminHome/adminAddEventBooking.html',
+                controller : 'AdminAddEventBookingController',
+                controllerAs : 'model'
+            })
+           .when('/custHome' , {
                 templateUrl : 'templates/custHome/custHome.html',
                 controller : 'CustHomeController',
                 controllerAs : 'model'
@@ -138,6 +143,11 @@
                 controller : 'EventPaymentController',
                 controllerAs : 'model'
             })
+            .when('/eventPaymentAdmin/:eventId/:noOfTickets/:username/:adminId' , {
+                templateUrl : 'templates/eventPaymentAdmin/payment.html',
+                controller : 'EventPaymentAdminController',
+                controllerAs : 'model'
+            })
             .when('/movieShowtimes/:cinemaId/movies/:movieId' , {
                 templateUrl : 'templates/showtimes/movieShowtime.html',
                 controller : 'MovieShowtimesController',
@@ -162,6 +172,11 @@
             .when('/eventSuccess/:eventId/:paymentID/:noOfTickets/:totalPrice/:username' , {
                 templateUrl : 'templates/success/eventSuccess.html',
                 controller : 'EventSuccessController',
+                controllerAs : 'model'
+        	})
+        	.when('/eventSuccessAdmin/:eventId/:paymentID/:noOfTickets/:totalPrice/:username/:adminId' , {
+                templateUrl : 'templates/success/eventSuccessAdmin.html',
+                controller : 'EventSuccessAdminController',
                 controllerAs : 'model'
         	});
     }

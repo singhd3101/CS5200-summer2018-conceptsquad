@@ -49,8 +49,8 @@
         
         init();
         
-        function addEventBooking(){
-        	
+        function addEventBooking(id){
+        	$location.url('/adminHome/:'+adminId + '/adminAddEventBooking/:'+id);
         }
         
         function getPayment(){
