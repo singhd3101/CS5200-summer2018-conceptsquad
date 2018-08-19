@@ -18,6 +18,7 @@ import edu.northeastern.cs5200.model.Event;
 import edu.northeastern.cs5200.model.EventBooking;
 import edu.northeastern.cs5200.model.Movie;
 import edu.northeastern.cs5200.model.MovieBooking;
+import edu.northeastern.cs5200.model.Showtime;
 import edu.northeastern.cs5200.repositories.BookingRepository;
 import edu.northeastern.cs5200.repositories.EventBookingRepository;
 import edu.northeastern.cs5200.repositories.EventRepository;
@@ -136,5 +137,15 @@ public class BookingService {
 			bookingRepository.save(booking);
 		}
 	}
+	
+	
+	@PostMapping("api/moviebooking/{movieId}")
+	public MovieBooking createMovieBooking(@RequestBody MovieBooking movieBooking, 
+		@PathVariable("movieId") int movieId){
+		
+		Optional<Movie> moptional = movieRepository.findById(movieId);
+		movieBooking.setMovie(moptional.get());
 
+		return movieBookingRepository.save(movieBooking);
+	}
 }
