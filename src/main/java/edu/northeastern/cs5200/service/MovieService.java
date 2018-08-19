@@ -73,12 +73,6 @@ public class MovieService {
 			if(newMovie.getName() != null) {
 				movie.setName(newMovie.getName());
 			}
-			if(newMovie.getRating() != 0.0) {
-				movie.setRating(newMovie.getRating());
-			}
-			if(newMovie.getDuration() != 0.0) {
-				movie.setDuration(newMovie.getDuration());
-			}
 			if(!newMovie.getHostingTheatres().isEmpty()) {
 				movie.setHostingTheatres(newMovie.getHostingTheatres());
 			}

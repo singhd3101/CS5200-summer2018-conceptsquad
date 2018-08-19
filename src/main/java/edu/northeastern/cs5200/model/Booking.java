@@ -43,11 +43,6 @@ public class Booking {
 	
 	private String status = "Active";
 	
-	@OneToOne(fetch = FetchType.EAGER,
-            cascade =  CascadeType.ALL,
-            mappedBy = "booking")
-	@JsonIgnore
-	private Payment bookingPayment;
 	
 	public Booking() {}
 	
@@ -71,14 +66,6 @@ public class Booking {
 				"customer: " + customer +
 				"status: " + status +
 				"paymentID" + paymentId;
-	}
-
-	public Payment getBookingPayment() {
-		return bookingPayment;
-	}
-
-	public void setBookingPayment(Payment bookingPayment) {
-		this.bookingPayment = bookingPayment;
 	}
 
 	public int getId() {
