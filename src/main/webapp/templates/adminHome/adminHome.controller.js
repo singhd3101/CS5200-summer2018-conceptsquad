@@ -34,6 +34,7 @@
         this.deleteTheatre = deleteTheatre;
         this.deleteBooking = deleteBooking;
         this.deletePayment = deletePayment;
+        this.addEventBooking = addEventBooking;
         
         function init(){
         	
@@ -47,6 +48,10 @@
         }
         
         init();
+        
+        function addEventBooking(){
+        	
+        }
         
         function getPayment(){
         	$http.get("/api/ppayment/")
