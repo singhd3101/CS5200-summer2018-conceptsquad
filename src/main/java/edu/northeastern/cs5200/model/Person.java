@@ -3,6 +3,7 @@ package edu.northeastern.cs5200.model;
 import java.sql.Date;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,17 +25,10 @@ public class Person {
 	private Date Dob;
 	private int access;
 	
-	/*@OneToMany(mappedBy="person")
-	private List<Address> addresses;
-	
-	@OneToMany(mappedBy="person")
-	private List<Contact> contacts;
-	*/
-	
-	@OneToOne(mappedBy="person")
+	@OneToOne(mappedBy="person", cascade=CascadeType.ALL)
 	private Address addresses;
 	
-	@OneToOne(mappedBy="person")
+	@OneToOne(mappedBy="person", cascade=CascadeType.ALL)
 	private Contact contacts;
 	
 	@Override
@@ -44,61 +38,21 @@ public class Person {
 				+ ", access= " + access + "]";
 	}
 	
-	
-	/*public List<Contact> getContacts() {
-		return contacts;
-	}
-
-	public void setContacts(List<Contact> contacts) {
-		this.contacts = contacts;
-	}
-	
-	public void contacts(Contact contact) {
-		this.contacts.add(contact);
-		if(contact.getPerson() != this) {
-			contact.setPerson(this);
-		}
-	}
-
-	public void addresses(Address address) {
-		this.addresses.add(address);
-		if(address.getPerson() != this) {
-			address.setPerson(this);
-		}
-	}
-
-	public List<Address> getAddresses() {
-		return addresses;
-	}
-	public void setAddresses(List<Address> addresses) {
-		this.addresses = addresses;
-	}*/
-	
-	
-	
 	public int getId() {
 		return id;
 	}
 	public Address getAddresses() {
 		return addresses;
 	}
-
-
 	public void setAddresses(Address addresses) {
 		this.addresses = addresses;
 	}
-
-
 	public Contact getContacts() {
 		return contacts;
 	}
-
-
 	public void setContacts(Contact contacts) {
 		this.contacts = contacts;
 	}
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
