@@ -366,6 +366,15 @@ input[type=checkbox]:checked:before {
     font-size: 15px;
 }
 
+input[type=checkbox]:disabled {
+    background-color: Red;
+    font-size: 15px;
+}
+
+.smallBox {
+	background-color: Red;
+}
+
 .copy-wthree p {
     color: #fff;
     font-size: 15px;
