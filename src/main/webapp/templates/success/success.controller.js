@@ -15,14 +15,15 @@
     	var mbookingId;
     	var startAt;
     	var username;
-    		
+    	var currentUserId;	
     		
     		//https://api.internationalshowtimes.com/v4/showtimes/5b7235d255e3ba571425832d?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie
     		
     		function init() {
-    			var user = $rootScope.user;
+    			//var user = $rootScope.user;
             	//console.log("pogo " + $rootScope.user.userName);
-            	$scope.user = $rootScope.user;
+            	//$scope.user = $rootScope.user;
+            	//$scope.currentUserId = $rootScope.user.id;
     			console.log("success controller");
     			showtimeId = $scope.showtimeId;
     			$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
@@ -40,6 +41,14 @@
            		paymentID = $scope.paymentID;
            		$scope.username = $routeParams.username.substring(1,$routeParams.username.length);
             	username = $scope.username;
+            	
+            	 $http.get("/api/person?username="+username)
+                 .then(function (response) {
+                	 console.log(response.data[0])
+                	 $scope.currentUserId = response.data[0].id;
+                 });
+            	
+            	
             	$http.get('https://api.internationalshowtimes.com/v4/showtimes/'+ showtimeId +'?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie').
 
             	then(function (res){

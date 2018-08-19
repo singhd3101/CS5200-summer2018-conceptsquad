@@ -44,9 +44,7 @@
 	<th>
 		<input ng-model="options" type="radio" value="bookings" ng-change='model.getBooking()'/> Booking
 	</th>
-	<th>
-		<input ng-model="options" type="radio" value="payments" ng-change='model.getPayment()'/> Payment
-	</th>
+	
 	</tr>
 	</thead>
 </table>
@@ -186,51 +184,18 @@
  
  <div ng-if="options === 'movies'" class="container">
  	<h3>Movies</h3>  <br/>
- 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Movie</button> <br/>
-	<div class="hideShow" ng-show="isShow">
-    	<form class="form-control" name="registerMovie">
-        
-        <label for="movieName">Name</label>
-        <input name="movieName" id="movieName" ng-model="movieName" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" ng-maxlength="20" required />
-        <p ng-show="registerMovie.movieName.$error.pattern" class="help-block">Only alphabats allowed.</p>
-        <p ng-show="registerMovie.movieName.$invalid && !registerMovie.movieName.$pristine" class="help-block">Name is required.</p>
-        <p ng-show="registerMovie.movieName.$error.maxlength" class="help-block">Name should be atmost 20 characters.</p>
-        
-        <label for="movieDuration">Duration</label> hours
-        <input name="movieDuration" id="movieDuration" ng-model="movieDuration" class="form-control" type="number" required />
-        <p ng-show="registerMovie.movieDuration.$error.pattern" class="help-block">Only numbers allowed.</p>
-        <p ng-show="registerMovie.movieDuration.$invalid && !registerMovie.movieDuration.$pristine" class="help-block">Duration is required.</p>
-        
-        <label for="movieRating">Rating</label>
-        <input name="movieRating" id="movieRating" ng-model="movieRating" class="form-control" type="number" required />
-        <p ng-show="registerMovie.movieRating.$error.pattern" class="help-block">Only numbers allowed.</p>
-        <p ng-show="registerMovie.movieRating.$invalid && !registerMovie.movieRating.$pristine" class="help-block">Rating is required.</p>
-        <br/>
-        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="registerMovie.$invalid" ng-click="model.registerMovie(movieName, movieDuration, movieRating)">Create</button>
-        
-        <p ng-show="registerMovie.$invalid && !registerMovie.$pristine" class="help-block">Please enter data in all fields.</p>
-    </form>
-  	</div> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
 				<th scope="col">Name</th>
-				<th scope="col">Rating</th>
-				<th scope="col">Duration</th>
 				<th scope="col">Theatres Hosted</th>
-				<th scope="col">Details</th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="movie in allMovies">
 			<td>{{movie.id}}</td>
 			<td>{{movie.name}}</td>
-			<td>{{movie.rating}}</td>
-			<td>{{movie.duration}}</td>
 			<td>{{movie.theatreId.length}}</td>
-			<td><i class="fas fa-cog" ng-click="model.movieDetail(movie.id)"></i></td>
-			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteMovie(movie.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -313,43 +278,17 @@
  </div>
  
  <div ng-if="options === 'theatres'" class="container">
- 	<h3>Theatres</h3><br/>
- 	<button class="btn btn-primary" ng-click="isShow= !isShow" ng-show="!isShow">Create Theatre</button> <br/>
-	<div class="hideShow" ng-show="isShow">
-    	<div class="align-content-md-center">
-    <form class="form-control" name="theatreForm">
-        
-        <label for="name">Name</label>
-        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" required />
-        <p ng-show="theatreForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
-        <p ng-show="theatreForm.name.$invalid && !theatreForm.name.$pristine" class="help-block">Name is required.</p>
-        
-        <label for="showtimeId">Showtime API Id</label>
-        <input name="showtimeId" id="showtimeId" ng-model="showtimeId" class="form-control" type="number" />
-        <p ng-show="theatreForm.showtimeId.$invalid && !theatreForm.showtimeId.$pristine" class="help-block">Enter a valid number.</p>
-        <br/>
-        <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="theatreForm.$invalid" ng-click="model.addTheatre(name, showtimeId)">Add Theatre</button>
-        
-        <p ng-show="theatreForm.$invalid && !theatreForm.$pristine" class="help-block">Please enter data in all fields.</p>
-    </form>
-</div>
-  	</div> <br/>
+ 	<h3>Theatres</h3> <br/>
  	<table class="table table-hover">
 		<thead>
 			<tr>
 				<th scope="col">Id</th>
 				<th scope="col">Name</th>
-				<th scope="col">ShowTime Id</th>
-				<th scope="col">Details</th>
-				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="theatre in allTheatres">
 			<td>{{theatre.id}}</td>
 			<td>{{theatre.name}}</td>
-			<td>{{theatre.showtimeId}}</td>
-			<td><i class="fas fa-cog" ng-click="model.theatreDetail(theatre.id)"></i></td>
-			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteTheatre(theatre.id)">Delete</button></td>
 		</tbody>
 	</table>
  </div>
@@ -383,30 +322,7 @@
 	<button type="button" class= "btn btn-primary" ng-click="model.createBooking()">Create Booking</button>
  </div>
 
-<div ng-if="options === 'payments'" class="container">
- 	<h3>Payments</h3>
- 	<table class="table table-hover">
-		<thead>
-			<tr>
-				<th scope="col">Id</th>
-				<th scope="col">Amount</th>
-				<th scope="col">Date</th>
-				<th scope="col">Status</th>
-				<th scope="col">Booking</th>
-				<th scope="col">Details</th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody ng-repeat="payment in allPayments">
-			<td>{{payment.id}}</td>
-			<td>${{payment.amount}}</td>
-			<td>{{payment.payDate.substring(1,10)}}</td>
-			<td>{{payment.status}}</td>
-			<td>{{payment.booking.id}}</td>
-			<td><i class="fas fa-cog" ng-click="model.paymentDetail(payment.id)"></i></td>
-			<td><button type="button" class= "btn btn-danger" ng-click="model.deletePayment(payment.id)">Delete</button></td>
-		</tbody>
-	</table>
-	<button type="button" class= "btn btn-primary" ng-click="model.createPayment()">Create Payment</button>
- </div> 
+
+
+ 
  </div>

@@ -25,6 +25,18 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script>
+		function account(){
+			var currentUserId = document.getElementById("currentUserId").innerHTML;
+			alert("currentUserId " + currentUserId)
+			if(currentUserId != undefined){
+				window.location.href = "#!/custHome/:"+currentUserId;
+			} else {
+				window.location.href = "#";
+			}
+		}
+		
+		</script>
 	</head>
 	<body>
 
@@ -46,7 +58,7 @@
 							<button><i class="icofont icofont-search"></i></button>
 						</form>
 						<ul>
-							<li><a href="#">Welcome Guest!</a></li>
+							<li><a href="#">Welcome!</a></li>
 							<li><a href="#!/login">Login</a></li>
 						</ul>
 					</div>
@@ -58,7 +70,7 @@
                                 <li><a  href="#!/cinemas">Theatres</a></li>
                                 <li><a href="#!/movies">Movies</a></li>
                                 <li><a href="#!/displayEvents">Events</a></li>
-                                <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Tickets</a></li>
+                                <li><button class="theme-btn" onclick="account()">Account</button></li>
                             </ul>
 					    </div>
 					</div>
@@ -96,6 +108,18 @@
 		</div>
 		
 		<!-- breadcrumb area start -->
+		
+		<section class="breadcrumb-area">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="breadcrumb-area-content">
+							<h1>Booking Succesfull</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
 		
 		<!-- transformers area start -->
 		<section class="transformers-area">
@@ -161,14 +185,15 @@
 										</div>
 									</li>
 									
-									
 								</ul>
+								
 							</div>
 						</div>
 					</div>
 
 				</div>
 			</div>
+			 <div id="currentUserId" style="display: none;">{{currentUserId}}</div>
 		</section><!-- transformers area end -->
 
 		<!-- footer section start -->
@@ -238,5 +263,9 @@
 		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
 		<!-- main JS -->
 		<script src="templates/assets/js/main.js"></script>
+		<script>
+			
+		
+		</script>
 	</body>
 </html>

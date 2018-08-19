@@ -71,13 +71,6 @@
 	</div>
 	
 	<div ng-if="bType == 'event'">
-		Name: {{event.name}} <br /> 
-		Event Type: {{event.type}} <br />
-		Description: {{event.description}} <br /> 
-		Venue: {{event.venue}} <br />
-		Capacity: {{event.capacity}} <br /> 
-		Price: {{event.price}} <br />
-		Date: {{event.eventDate.substring(0,10)}} <br />
 		<form>
 			<div class="form-group">
 				<label for="eventName">Name</label> 
@@ -85,7 +78,7 @@
 			</div>
 			<div class="form-group">
 				<label for="eventType">Type</label> 
-				<input	type="text" class="form-control" id="eventType"	ng-value="eventType" disabled>
+				<input	type="text" class="form-control" id="eventType"	ng-value="event.type" disabled>
 			</div>
 			<div class="form-group">
 				<label for="eventDescription">Description</label> 
@@ -125,7 +118,9 @@
 		<div class="text-center">
 			<button class="btn btn-primary" ng-click="model.home()">Back</button>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<span ng-if="bType == 'event'">
 			<button class="btn btn-success" ng-click="model.updateBooking(noOfTickets, date)">Modify</button>
+			</span>
 			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-danger" ng-click="model.cancelBooking(booking.id)">Cancel</button>
 		</div>
