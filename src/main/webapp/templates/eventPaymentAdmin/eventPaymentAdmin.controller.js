@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('ShowtimeApp')
-        .controller('EventPaymentController',EventPaymentController);
+        .controller('EventPaymentAdminController',EventPaymentAdminController);
 
-    function EventPaymentController($scope, $location, $http, $routeParams, $rootScope) {   
+    function EventPaymentAdminController($scope, $location, $http, $routeParams, $rootScope) {   
     	var showtimeId;
     	var cinemaId;
     	var movieId;
@@ -30,10 +30,13 @@
         	$scope.username = $routeParams.username.substring(1,$routeParams.username.length);
         	username = $scope.username;
     		
+        	$scope.adminId = $routeParams.adminId.substring(1,$routeParams.adminId.length);
+        	adminId = $scope.adminId;
+        	
         	console.log(eventId);
         	console.log(noOfTickets);
         	console.log(username);
-        	
+        	console.log(adminId);
     		
         	 $http.get("/api/event/"+eventId)
              .then(function(response) {

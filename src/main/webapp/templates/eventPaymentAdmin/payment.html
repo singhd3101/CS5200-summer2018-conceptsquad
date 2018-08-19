@@ -1,0 +1,85 @@
+
+
+<script>
+
+    // Render the PayPal button
+
+    paypal.Button.render({
+
+        // Set your environment
+
+        env: 'sandbox', // sandbox | production
+
+        // Specify the style of the button
+
+        style: {
+            label: 'paypal',
+            size:  'medium',    // small | medium | large | responsive
+            shape: 'rect',     // pill | rect
+            color: 'blue',     // gold | blue | silver | black
+            tagline: false    
+        },
+
+        // PayPal Client IDs - replace with your own
+        // Create a PayPal app: https://developer.paypal.com/developer/applications/create
+
+        client: {
+            sandbox:    'AaVXucUoiUlc_S8xsNz0ellCBfFWolVHtGaWTYPebrodZh4mGSGam13wHuLywt0iUUJOxbHEXwYawBWH',
+            production: '<insert production client id>'
+        },
+
+        payment: function(data, actions) {
+        	var totalPrice = document.getElementById("totalPrice").innerHTML;
+        	console.log(totalPrice);
+            return actions.payment.create({
+                payment: {
+                    transactions: [
+                        {
+                            amount: { total: totalPrice, currency: 'USD' }
+                        }
+                    ]
+                }
+            });
+        },
+
+        onAuthorize: function(data, actions) {
+            return actions.payment.execute().then(function() {
+            	var paymentID = data.paymentID;
+            	console.log(data);
+                window.alert('Payment Complete!');
+                var eventId = ($("#eventId").html());
+                var totalPrice = ($("#totalPrice").html());
+                var noOfTickets = ($("#noOfTickets").html());
+                var username = ($("#username").html());
+                var adminId = ($("#adminId").html());
+                console.log("user name is "+$("#username").html());
+            	/* var seats = document.getElementById("seatsDisplay").innerHTML;
+            	var totalPrice = document.getElementById("totalPrice").innerHTML;
+            	var cinemaId = document.getElementById("cinemaId").innerHTML;
+            	var movieId = document.getElementById("movieId").innerHTML;
+            	var showtimeId = document.getElementById("showtimeId").innerHTML;
+            	console.log(seats);
+            	console.log(totalPrice);
+            	console.log(cinemaId);
+            	console.log(movieId);
+            	console.log(showtimeId); */
+            	
+            	window.location.href = "#!/eventSuccessAdmin/:"+eventId+"/:"+paymentID+"/:"+noOfTickets+"/:"+totalPrice+"/:"+username+"/:"+adminId;
+
+  
+            });
+        }
+
+    }, '#paypal-button-container');
+    
+</script>
+
+<div id="" type="">Click on the button to make an payment of $<p id="totalPrice">{{totalPrice}}</p></div>
+
+<div id="paypal-button-container"></div>
+            <div id="eventId" type="hidden" style="display: none;">{{eventId}}</div>
+            <div id="noOfTickets" type="hidden" style="display: none;">{{noOfTickets}}</div>
+            <div id="totalPrice" type="hidden" style="display: none;">{{totalPrice}}</div>
+            <div id="username" type="hidden" style="display: none;">{{username}}</div>
+            <div id="adminId" type="hidden" style="display: none;">{{adminId}}</div>
+            

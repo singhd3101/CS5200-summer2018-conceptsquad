@@ -25,6 +25,18 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script>
+		function account(){
+			var currentUserId = document.getElementById("currentUserId").innerHTML;
+			alert("currentUserId " + currentUserId)
+			if(currentUserId != undefined){
+				window.location.href = "#!/custHome/:"+currentUserId;
+			} else {
+				window.location.href = "#";
+			}
+		}
+		
+		</script>
 	</head>
 	<body>
 
@@ -58,7 +70,7 @@
                                 <li><a  href="#!/cinemas">Theatres</a></li>
                                 <li><a href="#!/movies">Movies</a></li>
                                 <li><a href="#!/displayEvents">Events</a></li>
-                                <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Tickets</a></li>
+                                <li><button class="theme-btn" onclick="account()">Account</button></li>
                             </ul>
 					    </div>
 					</div>
@@ -217,6 +229,7 @@
 					</div>
 				</div>
 			</div>
+			<div id="currentUserId" style="display: none;">{{currentUserId}}</div>
 		</footer><!-- footer section end -->
 	<script src="templates/assets/js/jquery.min.js"></script>
 		<!-- Bootstrap JS -->
