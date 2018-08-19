@@ -9,6 +9,7 @@
     	var long;
     	var loct;
     	var cinemaId;
+
     	
         function init() {
         	console.log("in find all movies");
@@ -31,5 +32,7 @@
         	  }
         }
         init();
+        
+        
     }
 })();

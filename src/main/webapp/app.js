@@ -133,7 +133,13 @@
                 templateUrl : 'templates/payment/payment.html',
                 controller : 'PaymentController',
                 controllerAs : 'model'
-            }).when('/eventPayment/:eventId/:noOfTickets/:username' , {
+            })
+            .when('/showtimes/:movieId' , {
+                templateUrl : 'templates/onlyShowtimes/onlyShowtime.html',
+                controller : 'OnlyShowtimesController',
+                controllerAs : 'model'
+            })
+            .when('/eventPayment/:eventId/:noOfTickets/:username' , {
                 templateUrl : 'templates/eventPayment/payment.html',
                 controller : 'EventPaymentController',
                 controllerAs : 'model'
