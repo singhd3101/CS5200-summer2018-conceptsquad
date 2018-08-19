@@ -7,7 +7,6 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
 import edu.northeastern.cs5200.model.Booking;
-import edu.northeastern.cs5200.model.Movie;
 
 public interface BookingRepository extends CrudRepository<Booking, Integer>{
 

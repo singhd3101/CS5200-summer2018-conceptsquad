@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Seats;
-import edu.northeastern.cs5200.model.Theatre;
 import edu.northeastern.cs5200.repositories.SeatsRepository;
 
 @RestController

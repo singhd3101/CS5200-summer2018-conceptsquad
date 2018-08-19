@@ -7,12 +7,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Event;
-import edu.northeastern.cs5200.model.Person;
 import edu.northeastern.cs5200.model.Vendor;
 import edu.northeastern.cs5200.repositories.EventRepository;
 import edu.northeastern.cs5200.repositories.VendorRepository;

@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Payment;
-import edu.northeastern.cs5200.model.Theatre;
 import edu.northeastern.cs5200.repositories.PaymentRepository;
-import edu.northeastern.cs5200.repositories.TheatreRepository;
 
 @RestController
 public class PaymentService {

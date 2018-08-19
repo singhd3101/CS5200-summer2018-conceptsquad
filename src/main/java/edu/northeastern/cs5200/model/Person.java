@@ -1,7 +1,6 @@
 package edu.northeastern.cs5200.model;
 
 import java.sql.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
