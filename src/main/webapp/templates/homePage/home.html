@@ -27,7 +27,7 @@
 		<![endif]-->
 	</head>
 	<body class="index-body">
-		<!-- Page loader -->
+				<!-- Page loader -->
 
 		<!-- header section start -->
 		<header class="header">
@@ -65,41 +65,13 @@
 				</div>
 			</div>
 		</header>
-		<div class="login-area">
-			<div class="login-box">
-				<a href="#"><i class="icofont icofont-close"></i></a>
-				<h2>LOGIN</h2>
-				<form action="#">
-					<h6>USERNAME OR EMAIL ADDRESS</h6>
-					<input placeholder="test" type="text" />
-					<h6>PASSWORD</h6>
-					<input type="password" />
-					<div class="login-remember">
-						<input type="checkbox" />
-						<span>Remember Me</span>
-					</div>
-					<div class="login-signup">
-						<span>SIGNUP</span>
-					</div>
-					<a href="#" class="theme-btn">LOG IN</a>
-					<span>Or Via Social</span>
-					<div class="login-social">
-						<a href="#"><i class="icofont icofont-social-facebook"></i></a>
-						<a href="#"><i class="icofont icofont-social-twitter"></i></a>
-						<a href="#"><i class="icofont icofont-social-linkedin"></i></a>
-						<a href="#"><i class="icofont icofont-social-google-plus"></i></a>
-						<a href="#"><i class="icofont icofont-camera"></i></a>
-					</div>
-				</form>
-				
-			</div>
-		</div>
-		<!-- header section end -->		
 		
-		<!-- hero area start -->
+		<h1>HTML HOME  PAGE</h1>
+		
+		
 		<section class="hero-area" id="home" >
 			<div class="container">
-				<div class="hero-area-slider"  ng-repeat="movie in allMovies.movies">
+				<div  ng-repeat="movie in allMovies.movies">
 					<div class="row hero-area-slide">
 						<div class="col-lg-6 col-md-5">
 							<div class="hero-area-content">
@@ -131,80 +103,11 @@
 						</div>
 					</div>					
 				</div>
-				<div class="hero-area-thumb"  ng-repeat="movie in allMovies.movies">
-					<div class="thumb-prev">
-						<div class="row hero-area-slide" >
-							<div class="col-lg-6">
-								<div class="hero-area-content">
-									<img src="{{movie[movie.length-1].poster_image.image_files[3].url}}" alt="about" />
-								</div>
-							</div>
-							<div class="col-lg-6">
-								<div class="hero-area-content pr-50">
-									<h2>{{movie[movie.length-1].title}}</h2>
-									<div class="review">
-											<div class="author-review">
-										<i class="icofont icofont-star">IMDB: {{movie[movie.length-1].ratings.imdb.value}}</i>
-									</div>
-									<h4>{{movie[movie.length-1].ratings.imdb.vote_count}} voters</h4>
-								</div>
-								<p>{{movie[movie.length-1].synopsis}}</p>
-								<h3>Cast:</h3>
-								<div class="slide-cast">
-									<div class="">
-										{{movie[movie.length-1].cast[0].name}},<br/>
-										{{movie[movie.length-1].cast[1].name}},<br/>
-										{{movie[movie.length-1].cast[2].name}},<br/>
-										{{movie[movie.length-1].cast[3].name}},<br/>
-										{{movie[movie.length-1].cast[4].name}}
-									</div>
-								</div>
-								<div class="slide-trailor">
-									<a class="theme-btn theme-btn2" href="{{movie[movie.length-1].trailers[0].trailer_files[0].url}}" class="popup-youtube"><i class="icofont icofont-play"></i>Watch Trailer</a>
-									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-								</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="thumb-next" >
-						<div class="row hero-area-slide">
-						<div class="col-lg-6 col-md-5">
-							<div class="hero-area-content">
-								<img src="{{movie[$index+1].poster_image.image_files[3].url}}" alt="about" />
-							</div>
-						</div>
-						<div class="col-lg-6 col-md-7">
-							<div class="hero-area-content pr-50">
-								<h2>{{movie[$index+1].title}}</h2>
-								<div class="review">
-									<div class="author-review">
-										<i class="icofont icofont-star">IMDB: {{movie[$index+1].ratings.imdb.value}}</i>
-									</div>
-									<h4>{{movie[$index+1].ratings.imdb.vote_count}} voters</h4>
-								</div>
-								<p>{{movie[$index+1].synopsis}}</p>
-								<h3>Cast:</h3>
-								<div class="slide-cast">
-									<div class="">
-										{{movie[$index+1].cast[0].name}},<br/>
-										{{movie[$index+1].cast[1].name}},<br/>
-										{{movie[$index+1].cast[2].name}},<br/>
-										{{movie[$index+1].cast[3].name}},<br/>
-										{{movie[$index+1].cast[4].name}}
-									</div>
-								</div>
-								<div class="slide-trailor">
-									<a class="theme-btn theme-btn2" href="{{movie[$index+1].trailers[0].trailer_files[0].url}}" class="popup-youtube"><i class="icofont icofont-play"></i>Watch Trailer</a>
-									<a class="theme-btn theme-btn2" href="#"><i class="icofont icofont-play"></i> Tickets</a>
-								</div>
-							</div>
-						</div>
-					</div>	
-					</div>
 				</div>
-			</div>
 		</section>
+		
+		
+		
 		<!-- hero area end -->
 		<!-- video section start -->
 		<!-- news section start -->
@@ -272,9 +175,10 @@
 				</div>
 			</div>
 		</footer>
+		
 		<!-- footer section end -->
 		<!-- jquery main JS -->
-		<script src="templates/assets/js/jquery.min.js"></script>
+		
 		<!-- Bootstrap JS -->
 		<script src="templates/assets/js/bootstrap.min.js"></script>
 		<!-- Slick nav JS -->
