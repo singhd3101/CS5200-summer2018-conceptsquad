@@ -47,10 +47,16 @@
                                 			.then(function(response) {
                                 				
                                 				console.log(response);
+                                				 $http.get("/api/event/"+eventId)
+                                	               .then(function(response) {
+                                	                 $scope.event = response.data;
+                                	                 console.log("event response "+response);
+                                	          
+                                });
                 			});
         				
         			  	
-            	
+             
      
     		}
         init();
