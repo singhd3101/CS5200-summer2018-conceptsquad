@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('ProfileController', ProfileController);
 
-    function ProfileController($scope, $location, $http, $window, $routeParams) {
+    function ProfileController($scope, $location, $http, $window, $routeParams, $route) {
     	this.update = update;
     	this.home = home;
     	var user;
@@ -20,29 +20,61 @@
     	
     	init();
     	
-        function update(firstName, lastName, username, password, phone, dob, input){
-        	var m = (parseInt(dob.getMonth()) + 1) + "";
-        	if(m.length === 1){
-        		m = "0" + m;
+        function update(firstName, lastName, userName, password, phone, dob, street1, street2, city, state, zip){
+        	
+        	const contacts = {
+        		phone : phone
         	}
-        	var d = (parseInt(dob.getDate()) + 1) + "";
-        	if(d.length === 1){
-        		d = "0" + d;
-        	}
-        	var formattedDob = dob.getFullYear() + "-" + m + "-" + d;
+        	
         	const userNew = {
-        		firstName : firstName,
-        		lastName : lastName,
-        		userName : username,
-        		dob : formattedDob,
-        		password : password
-        	};
-        	$http.put("/api/person/"+userId, userNew)
-            .then(function (response) {
-            	alert("Profile updated successfully !!");
-            	user = response.data;
-                $scope.user = response.data;
-            })
+            	firstName : firstName,
+            	lastName : lastName,
+            	userName : userName,
+            	dob : dob,
+            	password : password,
+            };
+        	
+        	const add = {
+        		street1 : street1,
+        		street2 : street2,
+        		city : city,
+        		zip : zip,
+        		state : state
+        	}
+        	
+        	if((street1 != null && street1 != undefined) ||
+        		(street2 != null && street2 != undefined) ||	
+        		(city != null && city != undefined) ||
+        		(state != null && state != undefined) ||
+        		(zip != null && zip != undefined)){
+        		
+        		$http.put("/api/person/"+userId + "/personAddresses/" , add)
+                .then(function (response) {
+                	console.log(response.data);
+                })
+        	}  
+        	if(phone != null && phone != undefined){
+        		
+        		$http.put("/api/person/"+userId + "/personContacts/" , contacts)
+                .then(function (response) {
+                	console.log(response.data);
+                })
+        	} 
+        	
+        	if((firstName != null && firstName != undefined) ||
+            	(lastName != null && lastName != undefined) ||
+            	(userName != null && userName != undefined) ||
+            	(dob != null && dob != undefined) ||
+            	(password != null && password != undefined)) {
+            		
+            	$http.put("/api/person/"+userId, userNew)
+                  .then(function (response) {
+                   	   console.log(response.data);
+                })
+            }
+        	
+        	alert("Profile user updated successfully !!");
+        	home();
         }
         
         function home(){

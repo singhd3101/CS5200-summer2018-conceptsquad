@@ -1,9 +1,9 @@
 (function () {
     angular
         .module('ShowtimeApp')
-        .controller('HomeController',HomeController);
+        .controller('HomePageController',HomePageController);
 
-    function HomeController($scope, $location, $http, $routeParams) {    
+    function HomePageController($scope, $location, $http, $routeParams) {    
     	var pos;
     	var lat;
     	var long;

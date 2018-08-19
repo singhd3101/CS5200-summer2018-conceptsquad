@@ -5,8 +5,8 @@
     function Config($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl:'templates/home/home.html',
-                controller:'HomeController',
+                templateUrl:'templates/homePage/home.html',
+                controller:'HomePageController',
                 controllerAs:'model'
             })
             .when('/profile', {
@@ -42,6 +42,11 @@
             .when('/adminHome/:adminId' , {
                 templateUrl : 'templates/adminHome/adminHome.html',
                 controller : 'AdminHomeController',
+                controllerAs : 'model'
+            })
+            .when('/adminHome/:adminId/modifyUser/:userId' , {
+                templateUrl : 'templates/adminHome/adminModifyUser.html',
+                controller : 'AdminModifyUserController',
                 controllerAs : 'model'
             })
             .when('/custHome' , {

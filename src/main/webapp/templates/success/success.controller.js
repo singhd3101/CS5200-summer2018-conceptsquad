@@ -36,6 +36,7 @@
            		paymentID = $scope.paymentID;
             	$http.get('https://api.internationalshowtimes.com/v4/showtimes/'+ showtimeId +'?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie').
 
+
             	then(function (res){
             		console.log(res.data);
             		$scope.showtime = res.data.showtime;
@@ -44,6 +45,7 @@
             		cinemaId = res.data.cinema.id;
             		theatreName = res.data.cinema.name;
             		$scope.movie = res.data.movie;
+
             		movieName = res.data.movie.title;
             		movieId = res.data.movie.id;
             		console.log("movieId is "+movieId+ " movie name is "+movieName+"  cinemaId is "+cinemaId +" cinema name is " +theatreName+" showtimeId is "+showtimeId+" show time start at "+startAt)

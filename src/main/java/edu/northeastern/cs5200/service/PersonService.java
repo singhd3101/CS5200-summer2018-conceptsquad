@@ -88,46 +88,65 @@ public class PersonService {
 		personRepository.deleteById(id);
 	}
 	
-	@PutMapping("/api/person/{personId}/personAddresses/{addressId}")
-	public void personAddresses(
-			@PathVariable("personId") int personId,
-			@PathVariable("addressId") int addressId) {
-		Optional<Person> operson = personRepository.findById(personId);
-		Optional<Address> oaddress   = addressRepository.findById(addressId);
-		if(operson.isPresent() && oaddress.isPresent()) {
-			Person person = operson.get();
-			Address address = oaddress.get();
-			address.setPerson(person);
-			addressRepository.save(address);
-			
-			person.setAddresses(address);
-			personRepository.save(person);
-		}
-	}
-	
-	@GetMapping("/api/person/{addressId}/addressesAdded")
-	public Address findAddressesAdded(@PathVariable("personId") int personId) {
+	@PutMapping("/api/person/{personId}/personAddresses")
+	public void personAddresses(@PathVariable("personId") int personId, @RequestBody Address newAddress) {
+		
+		System.out.println(personId);
+		System.out.println(newAddress);
+		
 		Optional<Person> operson = personRepository.findById(personId);
 		if(operson.isPresent()) {
-			return operson.get().getAddresses();
+			Person person = operson.get();
+			Optional<Address> oaddress = addressRepository.findByPersonId(personId);
+			if(oaddress.isPresent()) {
+				Address address = oaddress.get();
+				if(newAddress.getStreet1() != null) {
+					address.setStreet1(newAddress.getStreet1());
+				}
+				if(newAddress.getStreet2() != null) {
+					address.setStreet2(newAddress.getStreet2());
+				}
+				if(newAddress.getCity() != null) {
+					address.setCity(newAddress.getCity());
+				}
+				if(newAddress.getState() != null) {
+					address.setState(newAddress.getState());
+				}
+				if(newAddress.getZip() != 0) {
+					address.setZip(newAddress.getZip());
+				}
+				addressRepository.save(address);
+			} else {
+				Address address = new Address();
+				address.setPerson(person);
+				address.setStreet1(newAddress.getStreet1());
+				address.setStreet2(newAddress.getStreet2());
+				address.setCity(newAddress.getCity());
+				address.setState(newAddress.getState());
+				address.setZip(newAddress.getZip());
+				addressRepository.save(address);
+			}
 		}
-		return null;
 	}
 	
-	@PutMapping("/api/person/{personId}/personContacts/{contactId}")
-	public void personContacts(
-			@PathVariable("personId") int personId,
-			@PathVariable("contactId") int contactId) {
+	@PutMapping("/api/person/{personId}/personContacts")
+	public void personContacts(@PathVariable("personId") int personId, @RequestBody Contact newContact) {
 		Optional<Person> operson = personRepository.findById(personId);
-		Optional<Contact> ocontact   = contactRepository.findById(contactId);
-		if(operson.isPresent() && ocontact.isPresent()) {
+		if(operson.isPresent()) {
 			Person person = operson.get();
-			Contact contact = ocontact.get();
-			contact.setPerson(person);
-			contactRepository.save(contact);
-			
-			person.setContacts(contact);
-			personRepository.save(person);
+			Optional<Contact> ocontact = contactRepository.findByPersonId(personId);
+			if (ocontact.isPresent()) {
+				Contact contact = ocontact.get();
+				if(newContact.getPhone() != 0) {
+					contact.setPhone(newContact.getPhone());
+				}
+				contactRepository.save(contact);
+			} else {
+				Contact contact = new Contact();
+				contact.setPerson(person);
+				contact.setPhone(newContact.getPhone());
+				contactRepository.save(contact);
+			}
 		}
 	}
 	

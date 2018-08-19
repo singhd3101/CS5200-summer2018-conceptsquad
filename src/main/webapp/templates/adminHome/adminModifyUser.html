@@ -3,32 +3,26 @@
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Theaters</a>
-            </li>
-            <li class="nav-itemn">
-                <a class="nav-link" href="#">Movies</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#!displayEvents">Events</a>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input  class="form-control bg-dark text-white" placeholder="search" ng-model="movieName"/>
-            <button class="btn btn-primary invisible"  ng-click="model.searchMovie(movieName)">Search</button>
-        </form>
-        <span class="text-light">Welcome {{user.firstName}}!</span>
-        <li class="nav-link">
-            <a class="nav-link" href ng-click="model.home()">Home</a>
-        </li>
-        <li class="nav-link">
-            <a class="nav-link"  href="#">Logout</a>
-        </li>
-    </div>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <span class="nav-link">Welcome {{admin.firstName}}! <span class="sr-only">(current)</span></span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.profile()">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
 </nav>
+<h4>
+<p class="text-center">Update Panel</p></h4>
+<div class="container">
 <div class="align-content-md-center">
     <form class="form-control">
         <h1 class="h3 mb-3 font-weight-normal">Profile</h1>
@@ -59,3 +53,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob, street1, street2, city, state, zip)">Update</button>
     </form>
 </div>
+
+</div>
+

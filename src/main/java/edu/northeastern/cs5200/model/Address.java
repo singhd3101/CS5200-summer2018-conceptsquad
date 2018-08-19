@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -22,16 +21,9 @@ public class Address {
 	private String state;
 	private long zip;
 	
-	//private Boolean primaryAdd;
-	
-	/*@ManyToOne
-	@JsonIgnore
-	private Person person;*/
-	
 	@OneToOne
 	@JsonIgnore
 	private Person person;
-	
 	
 	@Override
 	public String toString() {
@@ -83,12 +75,5 @@ public class Address {
 	public void setZip(long zip) {
 		this.zip = zip;
 	}
-/*	public Boolean getPrimaryAdd() {
-		return primaryAdd;
-	}
-	public void setPrimaryAdd(Boolean primaryAdd) {
-		this.primaryAdd = primaryAdd;
-	}
-*/
 
 }
