@@ -90,6 +90,10 @@ public class PersonService {
 	
 	@PutMapping("/api/person/{personId}/personAddresses")
 	public void personAddresses(@PathVariable("personId") int personId, @RequestBody Address newAddress) {
+		
+		System.out.println(personId);
+		System.out.println(newAddress);
+		
 		Optional<Person> operson = personRepository.findById(personId);
 		if(operson.isPresent()) {
 			Person person = operson.get();
@@ -112,6 +116,15 @@ public class PersonService {
 					address.setZip(newAddress.getZip());
 				}
 				addressRepository.save(address);
+			} else {
+				Address address = new Address();
+				address.setPerson(person);
+				address.setStreet1(newAddress.getStreet1());
+				address.setStreet2(newAddress.getStreet2());
+				address.setCity(newAddress.getCity());
+				address.setState(newAddress.getState());
+				address.setZip(newAddress.getZip());
+				addressRepository.save(address);
 			}
 		}
 	}
@@ -127,6 +140,11 @@ public class PersonService {
 				if(newContact.getPhone() != 0) {
 					contact.setPhone(newContact.getPhone());
 				}
+				contactRepository.save(contact);
+			} else {
+				Contact contact = new Contact();
+				contact.setPerson(person);
+				contact.setPhone(newContact.getPhone());
 				contactRepository.save(contact);
 			}
 		}

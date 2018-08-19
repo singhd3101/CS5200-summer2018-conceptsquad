@@ -22,14 +22,6 @@
     	
         function update(firstName, lastName, userName, password, phone, dob, street1, street2, city, state, zip){
         	
-        	//console.log(lastName);
-        	
-        	console.log(street1);
-        	console.log(street2);
-        	console.log(city);
-        	console.log(state);
-        	console.log(zip);
-        	
         	const contacts = {
         		phone : phone
         	}
@@ -56,43 +48,33 @@
         		(state != null && state != undefined) ||
         		(zip != null && zip != undefined)){
         		
-        		console.log("inside address method");
-        		
         		$http.put("/api/person/"+userId + "/personAddresses/" , add)
                 .then(function (response) {
                 	console.log(response.data);
-                	alert("Profile updated successfully !!");
-                	init();
                 })
-        	}        	
-        	
+        	}  
         	if(phone != null && phone != undefined){
+        		
         		$http.put("/api/person/"+userId + "/personContacts/" , contacts)
                 .then(function (response) {
                 	console.log(response.data);
-                	alert("Profile updated successfully !!");
-                	init();
                 })
-                
         	} 
         	
         	if((firstName != null && firstName != undefined) ||
-        		(lastName != null && lastName != undefined) ||
-        		(phone != null && phone != undefined) ||
-        		(userName != null && userName != undefined) ||
-        		(dob != null && dob != undefined) ||
-        		(password != null && password != undefined)) {
-        		
-        		console.log("inside persone check");
-        		
-                $http.put("/api/person/"+userId, userNew)
-                   .then(function (response) {
-                   	alert("Profile updated successfully !!");
-                   	user = response.data;
-                       $scope.user = response.data;
-                       $route.reload();
+            	(lastName != null && lastName != undefined) ||
+            	(userName != null && userName != undefined) ||
+            	(dob != null && dob != undefined) ||
+            	(password != null && password != undefined)) {
+            		
+            	$http.put("/api/person/"+userId, userNew)
+                  .then(function (response) {
+                   	   console.log(response.data);
                 })
-        	}
+            }
+        	
+        	alert("Profile user updated successfully !!");
+        	home();
         }
         
         function home(){
