@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import edu.northeastern.cs5200.model.Movie;
-import edu.northeastern.cs5200.model.Person;
 import edu.northeastern.cs5200.model.Theatre;
 import edu.northeastern.cs5200.repositories.MovieRepository;
 import edu.northeastern.cs5200.repositories.TheatreRepository;

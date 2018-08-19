@@ -7,7 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import edu.northeastern.cs5200.model.Address;
-import edu.northeastern.cs5200.model.Contact;
 
 public interface AddressRepository extends JpaRepository<Address, Integer>{
 
