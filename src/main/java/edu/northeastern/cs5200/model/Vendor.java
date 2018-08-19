@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 @DiscriminatorValue("Vendor")
 public class Vendor extends Person{
 
-	private String type;
+	
 	@OneToMany(mappedBy="vendor")
 	private List<Event> eventsAdded;
 	
@@ -27,7 +27,7 @@ public class Vendor extends Person{
 	}
 	@Override
 	public String toString() {
-		return "Vendor [type=" + type + ", eventsAdded=" + eventsAdded + "]";
+		return "Vendor [eventsAdded=" + eventsAdded + "]";
 	}
 	public List<Event> getEventsAdded() {
 		return eventsAdded;
@@ -38,12 +38,5 @@ public class Vendor extends Person{
 	}
 
 
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
 	
 }

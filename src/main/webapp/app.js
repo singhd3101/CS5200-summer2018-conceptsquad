@@ -140,12 +140,12 @@
                 controllerAs : 'model'
             })
            
-            .when('/payment/:seats/:totalPrice/:cinemaId/:movieId/:showtimeId' , {
+            .when('/payment/:seats/:totalPrice/:cinemaId/:movieId/:showtimeId/:username' , {
                 templateUrl : 'templates/payment/payment.html',
                 controller : 'PaymentController',
                 controllerAs : 'model'
             })
-            .when('/success/:showtimeId/:paymentID/:seats/:totalPrice' , {
+            .when('/success/:showtimeId/:paymentID/:seats/:totalPrice/:username' , {
                 templateUrl : 'templates/success/success.html',
                 controller : 'SuccessController',
                 controllerAs : 'model'

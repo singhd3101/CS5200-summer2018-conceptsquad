@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('SuccessController',SuccessController);
 
-    function SuccessController($scope, $location, $http, $routeParams, $filter) { 
+    function SuccessController($scope, $location, $http, $routeParams, $filter, $rootScope) { 
     	var showtimeId;
     	var cinemaId;
     	var movieId;
@@ -14,11 +14,15 @@
     	var movieName;
     	var mbookingId;
     	var startAt;
+    	var username;
     		
     		
     		//https://api.internationalshowtimes.com/v4/showtimes/5b7235d255e3ba571425832d?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie
     		
     		function init() {
+    			var user = $rootScope.user;
+            	//console.log("pogo " + $rootScope.user.userName);
+            	$scope.user = $rootScope.user;
     			console.log("success controller");
     			showtimeId = $scope.showtimeId;
     			$scope.showtimeId = $routeParams.showtimeId.substring(1,$routeParams.showtimeId.length);
@@ -34,6 +38,8 @@
            		totalPrice = $scope.totalPrice;
            		$scope.paymentID = $routeParams.paymentID.substring(1,$routeParams.paymentID.length);
            		paymentID = $scope.paymentID;
+           		$scope.username = $routeParams.username.substring(1,$routeParams.username.length);
+            	username = $scope.username;
             	$http.get('https://api.internationalshowtimes.com/v4/showtimes/'+ showtimeId +'?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie').
 
             	then(function (res){
@@ -79,7 +85,7 @@
                                                 totalCost  : totalPrice,
                                                 paymentId: paymentID
                                         };
-                                			$http.post('/api/moviebooking/'+movieId, booking)
+                                			$http.post('/api/moviebooking/'+movieId+'/user/'+username, booking)
                                 			.then(function(response) {
                                 				console.log(response);
                                 				mbookingId = response.data.id;

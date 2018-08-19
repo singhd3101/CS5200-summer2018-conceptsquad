@@ -10,6 +10,7 @@
     	var movieId;
     	var seats;
     	var totalPrice;
+    	var username;
     	
     	
     	
@@ -27,6 +28,8 @@
     		cinemaId = $scope.cinemaId;
     		$scope.movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
         	movieId = $scope.movieId;
+        	$scope.username = $routeParams.username.substring(1,$routeParams.username.length);
+        	username = $scope.username;
         }
         init();
         

@@ -21,12 +21,6 @@ public class Customer extends Person {
 		super.setAccess(1);
 	}
 	
-	public int getBooking() {
-		return booking;
-	}
-	public void setBooking(int booking) {
-		this.booking = booking;
-	}
 	public Boolean getRegistered() {
 		return registered;
 	}

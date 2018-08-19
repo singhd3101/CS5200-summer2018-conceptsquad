@@ -21,10 +21,6 @@ public class Movie {
 
 	private String name;
 
-	private float rating;
-
-	private float duration;
-
 	@ManyToMany
 	@JoinTable(name="Movie2Theatre", 
 	joinColumns=@JoinColumn(name="MOVIE_ID", referencedColumnName="ID"),
@@ -83,22 +79,6 @@ public class Movie {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public float getRating() {
-		return rating;
-	}
-
-	public void setRating(float rating) {
-		this.rating = rating;
-	}
-
-	public float getDuration() {
-		return duration;
-	}
-
-	public void setDuration(float duration) {
-		this.duration = duration;
 	}
 
 	public List<Theatre> getTheatreId() {
