@@ -21,21 +21,15 @@
 		<link rel="stylesheet" type="text/css" href="templates/assets/css/style.css" media="all" />
 		<!-- Responsive CSS -->
 		<link rel="stylesheet" type="text/css" href="templates/assets/css/responsive.css" media="all" />
-		
-	
-    
 		<!--[if lt IE 9]>
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
-
 	</head>
 	<body>
-	
-	<!-- Page loader -->
-	 
+
 		<!-- header section start -->
-		<header class="header">
+				<header class="header">
 			<div class="container">
 				<div class="header-area">
 					<div class="logo">
@@ -59,11 +53,11 @@
 					<div class="menu-area">
 						<div class="responsive-menu"></div>
 					    <div class="mainmenu">
-                            <ul id="primary-menu">
-                                <li><a href="#!/">Home</a></li>
-                                <li><a href="#!/cinemas">Theatres</a></li>
+                           <ul id="primary-menu">
+                                <li><a class="active" href="#!/">Home</a></li>
+                                <li><a  href="#!/cinemas">Theatres</a></li>
                                 <li><a href="#!/movies">Movies</a></li>
-                                <li><a class="active" href="#!/displayEvents">Events</a></li>
+                                <li><a href="#!/displayEvents">Events</a></li>
                                 <li><a class="theme-btn" href="#"><i class="icofont icofont-ticket"></i> Tickets</a></li>
                             </ul>
 					    </div>
@@ -71,36 +65,60 @@
 				</div>
 			</div>
 		</header>
-		
-		<!-- header section end -->
-		<!-- breadcrumb area start -->
-		<section class="breadcrumb-area">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="breadcrumb-area-content">
-							<h1>Events Near You</h1>
-						</div>
+		<div class="login-area">
+			<div class="login-box">
+				<a href="#"><i class="icofont icofont-close"></i></a>
+				<h2>LOGIN</h2>
+				<form action="#">
+					<h6>USERNAME OR EMAIL ADDRESS</h6>
+					<input type="text" />
+					<h6>PASSWORD</h6>
+					<input type="text" />
+					<div class="login-remember">
+						<input type="checkbox" />
+						<span>Remember Me</span>
 					</div>
-				</div>
+					<div class="login-signup">
+						<span>SIGNUP</span>
+					</div>
+					<a href="#" class="theme-btn">LOG IN</a>
+					<span>Or Via Social</span>
+					<div class="login-social">
+						<a href="#"><i class="icofont icofont-social-facebook"></i></a>
+						<a href="#"><i class="icofont icofont-social-twitter"></i></a>
+						<a href="#"><i class="icofont icofont-social-linkedin"></i></a>
+						<a href="#"><i class="icofont icofont-social-google-plus"></i></a>
+						<a href="#"><i class="icofont icofont-camera"></i></a>
+					</div>
+				</form>
+
 			</div>
-		</section><!-- breadcrumb area end -->
+		</div>
 		
+		<!-- breadcrumb area start -->
+		
+		<!-- transformers area start -->
 		<section class="transformers-area">
 			<div class="container">
-				<div class="transformers-box" ng-repeat="event in allEvents">
+				<div class="transformers-box">
 					<div class="row flexbox-center">
-						<div class="col-lg-5 text-lg-left text-center" >
-							<div class="transformers-content">
-							<img src="templates/assets/img/map.jpg"/>
-							<a href="https://www.google.com/maps/dir/?q={{event.venue}}" class="popup-youtube">Click here for the location</a>
-							</div>							
+						<div class="col-lg-5 text-lg-left text-center">
+							
 						</div>
 						<div class="col-lg-7">
-							<div class="transformers-content mtr-30">
-								<h2>{{event.name}}</h2>
-								<button class="theme-btn" ng-click="model.enterSeats(event.id)">Ticket</button>								
+							<div class="transformers-content">
+								<h2>Here are your Event details</h2>
+
 								<ul>
+									
+									<li>
+										<div class="transformers-left">
+											Event:
+										</div>
+										<div class="transformers-right">
+											{{event.name}}
+										</div>
+									</li>
 									<li>
 										<div class="transformers-left">
 											Address:
@@ -114,32 +132,38 @@
 											Date:
 										</div>
 										<div class="transformers-right">
-											{{event.eventDate}}
+											{{event.eventDate | date:"MM/dd/yyyy" }}
 										</div>
 									</li>
+									
 									<li>
 										<div class="transformers-left">
-											Price
+											Price:
 										</div>
 										<div class="transformers-right">
-											{{event.price}}
+											$ {{totalPrice}}
 										</div>
 									</li>
+									
 									<li>
 										<div class="transformers-left">
-											Description
+											PaymentID:
 										</div>
 										<div class="transformers-right">
-											{{event.description}}
+											{{paymentID}}
 										</div>
 									</li>
+									
+									
 								</ul>
 							</div>
 						</div>
 					</div>
+
 				</div>
 			</div>
 		</section><!-- transformers area end -->
+
 		<!-- footer section start -->
 		<footer class="footer">
 			<div class="container">
@@ -194,8 +218,7 @@
 				</div>
 			</div>
 		</footer><!-- footer section end -->
-		<!-- jquery main JS -->
-		<script src="templates/assets/js/jquery.min.js"></script>
+	<script src="templates/assets/js/jquery.min.js"></script>
 		<!-- Bootstrap JS -->
 		<script src="templates/assets/js/bootstrap.min.js"></script>
 		<!-- Slick nav JS -->
@@ -208,4 +231,5 @@
 		<script src="templates/assets/js/isotope.pkgd.min.js"></script>
 		<!-- main JS -->
 		<script src="templates/assets/js/main.js"></script>
-</body></html>
+	</body>
+</html>

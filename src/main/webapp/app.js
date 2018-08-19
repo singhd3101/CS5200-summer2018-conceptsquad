@@ -84,6 +84,11 @@
                 controller : 'DisplayEventsController',
                 controllerAs : 'model'
             })
+            .when('/selectTickets' , {
+                templateUrl : 'templates/displayEvents/selectTickets.html',
+                controller : 'DisplayEventsController',
+                controllerAs : 'model'
+            })
             .when('/eventDetails' , {
                 templateUrl : 'templates/eventDetails/eventDetails.html',
                 controller : 'EventDetailsController',
@@ -128,6 +133,10 @@
                 templateUrl : 'templates/payment/payment.html',
                 controller : 'PaymentController',
                 controllerAs : 'model'
+            }).when('/eventPayment/:eventId/:noOfTickets/:username' , {
+                templateUrl : 'templates/eventPayment/payment.html',
+                controller : 'EventPaymentController',
+                controllerAs : 'model'
             })
             .when('/movieShowtimes/:cinemaId/movies/:movieId' , {
                 templateUrl : 'templates/showtimes/movieShowtime.html',
@@ -150,11 +159,10 @@
                 controller : 'SuccessController',
                 controllerAs : 'model'
             })
-        	.when('/pay/success?paymentId=:paymentId&token=:token&PayerID=:PayerID' , {
-            //.when('/pay/success/pay/success' , {
-            templateUrl : 'templates/payment/success.html',
-            controller :  	'PaymentController',
-            controllerAs : 'model'
+            .when('/eventSuccess/:eventId/:paymentID/:noOfTickets/:totalPrice/:username' , {
+                templateUrl : 'templates/success/eventSuccess.html',
+                controller : 'EventSuccessController',
+                controllerAs : 'model'
         	});
     }
 })();

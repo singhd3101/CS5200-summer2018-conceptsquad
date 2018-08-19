@@ -168,4 +168,27 @@ public class BookingService {
 
 		return movieBookingRepository.save(movieBooking);
 	}
+	
+	@PostMapping("api/eventbooking/{eventId}/user/{username}")
+	public EventBooking createEventBooking(@RequestBody EventBooking eventBooking, 
+		@PathVariable("eventId") int eventId, @PathVariable("username") String username){
+		
+		Optional<Event> eoptional = eventRepository.findById(eventId);
+		eventBooking.setEvent(eoptional.get()); 
+		
+		List<Customer> c =  customerRepository.findCustomerByUsername(username);
+		if(c.isEmpty()) {
+		
+			Customer newCustomer = new Customer();
+			newCustomer.setUserName(username);
+			customerRepository.save(newCustomer);
+			eventBooking.setCustomer(newCustomer);
+			
+		}
+		else {
+			eventBooking.setCustomer(c.get(0));
+		}
+
+		return eventBookingRepository.save(eventBooking);
+	}
 }

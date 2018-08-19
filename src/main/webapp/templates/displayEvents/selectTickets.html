@@ -28,6 +28,28 @@
 		  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 		<![endif]-->
+		<script>
+		
+		function enterTickets() {
+			var noOfTickets = document.getElementById("noOfTickets").value;
+			var username = document.getElementById("username").value;
+			var eventId = document.getElementById("eventId").innerHTML;
+			console.log("event id is "+eventId);	
+			if(noOfTickets == ""){
+				alert("Please enter number of tickets");
+				window.location.href = "/#!/selectTickets";
+				
+			}
+			if(username == "") {
+				alert("Please enter your email");
+				window.location.href = "/#!/selectTickets";
+			}
+			else {
+				
+				window.location.href = "/#!/eventPayment/:"+eventId+"/:"+noOfTickets+"/:"+username;
+			}
+		}
+		</script>
 
 	</head>
 	<body>
@@ -90,53 +112,21 @@
 			<div class="container">
 				<div class="transformers-box" ng-repeat="event in allEvents">
 					<div class="row flexbox-center">
-						<div class="col-lg-5 text-lg-left text-center" >
-							<div class="transformers-content">
-							<img src="templates/assets/img/map.jpg"/>
-							<a href="https://www.google.com/maps/dir/?q={{event.venue}}" class="popup-youtube">Click here for the location</a>
-							</div>							
-						</div>
-						<div class="col-lg-7">
-							<div class="transformers-content mtr-30">
-								<h2>{{event.name}}</h2>
-								<button class="theme-btn" ng-click="model.enterSeats(event.id)">Ticket</button>								
-								<ul>
-									<li>
-										<div class="transformers-left">
-											Address:
+						
+						<div class="col-lg-4">
+											<div class="select-container">
+												<input id = "noOfTickets" type="number" required placeholder="Number of tickets"/> 
+													
+												<div id="eventId" style="display: none;">{{eventId}}</div>
+											</div>
+											<div class="col-lg-12">
+											<div class="textarea-container">
+												<input id = "username" type="text" required placeholder="Enter your email here" value="{{user.userName}}"/>
+												<a class="theme-btn" onclick="enterTickets()">Proceed to Payment</a>
+											</div>
 										</div>
-										<div class="transformers-right">
-											{{event.venue}}
-										</div>
-									</li>
-									<li>
-										<div class="transformers-left">
-											Date:
-										</div>
-										<div class="transformers-right">
-											{{event.eventDate}}
-										</div>
-									</li>
-									<li>
-										<div class="transformers-left">
-											Price
-										</div>
-										<div class="transformers-right">
-											{{event.price}}
-										</div>
-									</li>
-									<li>
-										<div class="transformers-left">
-											Description
-										</div>
-										<div class="transformers-right">
-											{{event.description}}
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
 					</div>
+					
 				</div>
 			</div>
 		</section><!-- transformers area end -->
