@@ -1,0 +1,58 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Its Showtime</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <span class="nav-link">Welcome {{admin.firstName}}! <span class="sr-only">(current)</span></span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.profile()">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h4>
+<p class="text-center">Update Panel</p></h4>
+<div class="container">
+<div class="align-content-md-center">
+    <form class="form-control">
+        <h1 class="h3 mb-3 font-weight-normal">Profile</h1>
+        <label for="firstName">First Name</label>
+        <input id="firstName" ng-model="firstName" name="firstName" class="form-control" required="" autofocus="" type="text" ng-value="user.firstName">
+        <label for="lastName">Last Name</label>
+        <input id="lastName" ng-model="lastName" class="form-control" required="" type="text" ng-value="user.lastName">
+        <label for="username">Username/Email</label>
+        <input id="username" ng-model="username" class="form-control" required="" type="text" ng-value="user.userName">
+        <label for="password">Password</label>
+        <input id="password" ng-model="password" class="form-control" required="" type="password" ng-value="user.password">
+  		<label for="phone">Mobile</label>
+        <input id="phone" ng-model="phone" class="form-control" required="" type="number" ng-value="user.contacts.phone"><br/>
+        <label for="dob">Date of Birth</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input type="date" name="dob" id="dob" ng-model="dob" ng-value="user.dob"><br/><br/>
+        <label for="street1">Street 1</label>
+        <input id="street1" ng-model="street1" name="street1" class="form-control" autofocus="" type="text" ng-value="user.addresses.street1">
+        <label for="street2">Street 2</label>
+        <input id="street2" ng-model="street2" name="street2" class="form-control" autofocus="" type="text" ng-value="user.addresses.street2">
+        <label for="city">City</label>
+        <input id="city" ng-model="city" name="city" class="form-control" autofocus="" type="text" ng-value="user.addresses.city">
+        <label for="state">State</label>
+        <input id="state" ng-model="state" name="state" class="form-control" autofocus="" type="text" ng-value="user.addresses.state">
+        <label for="zip">Zip Code</label>
+        <input id="zip" ng-model="zip" name="zip" class="form-control" autofocus="" type="number" ng-value="user.addresses.zip"/>        
+        
+        <br/>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="model.update(firstName, lastName, username, password, phone, dob, street1, street2, city, state, zip)">Update</button>
+    </form>
+</div>
+
+</div>
+

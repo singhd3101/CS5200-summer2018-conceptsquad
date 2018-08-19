@@ -1,44 +1,36 @@
 (function () {
     angular
         .module('ShowtimeApp')
-        .controller('AdminHomeController', AdminHomeController);
+        .controller('AdminModifyUserController', AdminModifyUserController);
 
-    function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
-    	var adminId;
+    function AdminModifyUserController($scope, $location, $http, $window, $routeParams, $route) {
     	
-    	this.addTheatre = addTheatre;
-    	this.addEvent = addEvent;
-    	this.registerMovie = registerMovie;
-    	this.register = register;
+    	var adminId;
+    	var userId;
+    	var admin;
+    	var user;
+    	
     	this.profile = profile;
-        this.home = home;
-        this.getVendor = getVendor;
-        this.getCustomer = getCustomer;
-        this.getMovie = getMovie;
-        this.getEvent = getEvent;
-        this.getTheatre = getTheatre;
-        this.getBooking = getBooking;
-        this.getPayment = getPayment;
-        this.custDetail = custDetail;
-        this.vendorDetail = vendorDetail;
-        this.movieDetail = movieDetail;
-        this.eventDetail = eventDetail;
-        this.theatreDetail = theatreDetail;
-        this.paymentDetail = paymentDetail;
-        this.bookingDetail = bookingDetail;
-        this.deleteCust = deleteCust;
-        this.deleteVendor = deleteVendor;
-        this.deleteMovie = deleteMovie;
-        this.deleteEvent = deleteEvent;
-        this.deleteTheatre = deleteTheatre;
-        this.deleteBooking = deleteBooking;
-        this.deletePayment = deletePayment;
-        
+    	this.home = home;
+    	this.update = update;
+    	
         function init(){
         	
+        	console.log("in mod user");
+        	
         	adminId = $routeParams.adminId.substring(1,$routeParams.adminId.length);
+        	userId = $routeParams.userId.substring(1,$routeParams.userId.length);
+        	
+        	console.log(adminId);
+        	console.log(userId);
         	
     		$http.get("/api/person/" + adminId)
+            .then(function(response) {
+            	$scope.admin = response.data;
+            	admin = response.data;
+            });
+    		
+    		$http.get("/api/person/" + userId)
             .then(function(response) {
             	$scope.user = response.data;
             	user = response.data;
@@ -47,7 +39,71 @@
         
         init();
         
-        function getPayment(){
+        function profile() {            
+        	$location.url('/profile/:'+adminId);
+        }
+        
+        function home() {
+        	$location.url('/adminHome/:'+adminId);
+        }
+        
+        function update(firstName, lastName, userName, password, phone, dob, street1, street2, city, state, zip) {
+        	const contacts = {
+            		phone : phone
+            	}
+            	
+            	const userNew = {
+                	firstName : firstName,
+                	lastName : lastName,
+                	userName : userName,
+                	dob : dob,
+                	password : password,
+                };
+            	
+            	const add = {
+            		street1 : street1,
+            		street2 : street2,
+            		city : city,
+            		zip : zip,
+            		state : state
+            	}
+            	
+            	if((street1 != null && street1 != undefined) ||
+            		(street2 != null && street2 != undefined) ||	
+            		(city != null && city != undefined) ||
+            		(state != null && state != undefined) ||
+            		(zip != null && zip != undefined)){
+            		
+            		$http.put("/api/person/"+userId + "/personAddresses/" , add)
+                    .then(function (response) {
+                    	console.log(response.data);
+                    })
+            	}  
+            	if(phone != null && phone != undefined){
+            		
+            		$http.put("/api/person/"+userId + "/personContacts/" , contacts)
+                    .then(function (response) {
+                    	console.log(response.data);
+                    })
+            	} 
+            	
+            	if((firstName != null && firstName != undefined) ||
+                	(lastName != null && lastName != undefined) ||
+                	(userName != null && userName != undefined) ||
+                	(dob != null && dob != undefined) ||
+                	(password != null && password != undefined)) {
+                		
+                	$http.put("/api/person/"+userId, userNew)
+                      .then(function (response) {
+                       	   console.log(response.data);
+                    })
+                }
+            	
+            	alert("Profile user updated successfully !!");
+            	home();
+        }
+        
+        /*function getPayment(){
         	$http.get("/api/ppayment/")
             .then(function(response) {
             	$scope.allPayments = response.data;
@@ -117,19 +173,11 @@
         }
         
         function custDetail(id){
-        	$location.url('/adminHome/:'+adminId + '/modifyUser/:'+id);
+        	alert("customer details for id: " + id);
         }
         
         function vendorDetail(id){
-        	$location.url('/adminHome/:'+adminId + '/modifyUser/:'+id);
-        }
-                
-        function profile() {            
-        	$location.url('/profile/:'+adminId);
-        }
-        
-        function home() {
-        	$location.url('/adminHome/:'+adminId);
+        	alert("vendor details for id: " + id);
         }
         
         function deletePayment(id){
@@ -307,6 +355,6 @@
 			})
         	
         	
-        }
+        }*/
     }
 })();
