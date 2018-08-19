@@ -23,17 +23,18 @@
 <h4>
 <p class="text-center">Vendor Panel</p></h4> 
  <div class="container">
+ 	
+ 	<div class="align-content-md-center text-center">
  	<h3>Modify Event</h3>
- 	<div class="align-content-md-center">
     <form class="form-control" name="eventEditForm">
         
         <label for="name">Name</label>
-        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-value="event.name" required />
+        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.name" required />
         <p ng-show="eventEditForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventEditForm.name.$invalid && !eventEditForm.name.$pristine" class="help-block">Name is required.</p>
         
         <label for="type">Type</label>
-        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-value="event.type" required />
+        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.type" required />
         <p ng-show="eventEditForm.type.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventEditForm.type.$invalid && !eventEditForm.type.$pristine" class="help-block">Type is required.</p>
         
@@ -50,13 +51,13 @@
         <p ng-show="eventEditForm.price.$invalid && !eventEditForm.price.$pristine" class="help-block">Enter a valid number.</p>
         
         <label for="venue">Venue</label>
-        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[a-zA-Z]+$/" ng-value="event.venue" required />
+        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.venue" required />
         <p ng-show="eventEditForm.venue.$error.pattern" class="help-block">Only alphabats allowed.</p>
         <p ng-show="eventEditForm.venue.$invalid && !eventEditForm.venue.$pristine" class="help-block">venue is required.</p>
-        
-        <label for="dateOfEvent">Date</label>
+        <br/>
+        <label for="dateOfEvent">Date</label>  &nbsp;&nbsp;&nbsp;
         <input type="date" name="dateOfEvent" id="dateOfEvent" ng-model="dateOfEvent" ng-value="event.eventDate">
-        
+        <br/><br/>
         <button class="btn btn-lg btn-primary btn-block" type="button" ng-disabled="eventEditForm.$invalid" ng-click="model.updateEvent(name, type, capacity, description, price, venue, dateOfEvent)">Update</button>
         
         <p ng-show="eventEditForm.$invalid && !eventEditForm.$pristine" class="help-block">Please enter data in all fields.</p>

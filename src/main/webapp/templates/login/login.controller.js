@@ -4,10 +4,23 @@
        .module('ShowtimeApp')
        .controller('LoginController', LoginController);
 
-   function LoginController($scope, $rootScope, $location, $http, $window) {
+   function LoginController($scope, $rootScope, $location, $http, $window, $rootScope) {
        this.login = login;
+       var user;
       
        var baseUrl = new $window.URL($location.absUrl()).origin + "/#!";
+       
+       /*function init(){
+    	   if($rootScope.user != undefined){
+				user = $rootScope.user;
+				alert("user defined");
+			
+			} else {
+				alert("user not defined");
+			}
+			
+       }
+       init();*/
 
        function login(username, password) {  
             $http.get("/api/person?username="+username+"&password="+password)
