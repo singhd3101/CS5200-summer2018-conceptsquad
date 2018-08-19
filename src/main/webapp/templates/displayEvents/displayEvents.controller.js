@@ -5,6 +5,7 @@
 
     function DisplayEventsController($scope, $location, $http, $routeParams) {    
     	this.eventDetails = eventDetails;
+    	this.book = book;
     
         function init() {
             $http.get("/api/event")
@@ -17,5 +18,9 @@
         function eventDetails(eventId) {
         	 $location.url('/eventDetails/:'+eventId);
         };
+        
+        function book(){
+        	console.log("inside event book");
+        }
     }
 })();

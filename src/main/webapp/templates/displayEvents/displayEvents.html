@@ -93,13 +93,13 @@
 						<div class="col-lg-5 text-lg-left text-center" >
 							<div class="transformers-content">
 							<img src="templates/assets/img/map.jpg"/>
-							<a href="http://maps.google.com/maps?z=12&t=m&q={{cinema.location.lat}},{{cinema.location.lon}}" class="popup-youtube">Click here for the location</a>
+							<a href="https://www.google.com/maps/dir/?q={{event.venue}}" class="popup-youtube">Click here for the location</a>
 							</div>							
 						</div>
 						<div class="col-lg-7">
 							<div class="transformers-content mtr-30">
 								<h2>{{event.name}}</h2>
-								<button class="theme-btn" ng-click="model.bookTicket(event.id)">Ticket</button>								
+								<button class="theme-btn" ng-click="model.book(event.id)">Ticket</button>								
 								<ul>
 									<li>
 										<div class="transformers-left">
@@ -123,6 +123,14 @@
 										</div>
 										<div class="transformers-right">
 											{{event.price}}
+										</div>
+									</li>
+									<li>
+										<div class="transformers-left">
+											Description
+										</div>
+										<div class="transformers-right">
+											{{event.description}}
 										</div>
 									</li>
 								</ul>
