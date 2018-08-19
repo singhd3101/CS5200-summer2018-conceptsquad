@@ -73,7 +73,20 @@
                         				console.log(response);  
                         				console.log("showtime posted");
                         				var currentTime = new Date();
-                                    	
+                                    	const booking = {
+                                                noOfTickets : totalPrice/10,
+                                                date  : currentTime,
+                                                totalCost  : totalPrice
+                                        };
+                                			$http.post('/api/moviebooking/'+movieId, booking)
+                                			.then(function(response) {
+                                				console.log(response);
+                                				mbookingId = response.data.id;
+                                				console.log("booking posted");
+                                				
+                                				
+                                			});
+                				
                 			});
         				
         			});
