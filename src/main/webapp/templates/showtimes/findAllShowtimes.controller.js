@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('FindAllShowtimesController',FindAllShowtimesController);
 
-    function FindAllShowtimesController($scope, $location, $http, $routeParams, $filter) {    
+    function FindAllShowtimesController($scope, $location, $http, $routeParams, $filter, $rootScope) {    
     	var pos;
     	var lat;
     	var long;
@@ -20,6 +20,10 @@
     	var count;
     	
         function init() {
+        	var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
         	cinemaId = $routeParams.cinemaId.substring(1,$routeParams.cinemaId.length);
         	var url1 = 'https://api.internationalshowtimes.com/v4/movies/?countries=US&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';
         	var url2 = 'https://api.internationalshowtimes.com/v4/cinemas/?'+loct+'&limit=10&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5';

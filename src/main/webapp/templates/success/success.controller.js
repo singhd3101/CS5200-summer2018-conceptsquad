@@ -20,6 +20,10 @@
     		//https://api.internationalshowtimes.com/v4/showtimes/5b7235d255e3ba571425832d?apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5&append=cinema,movie
     		
     		function init() {
+    			var user = $rootScope.user;
+            	//console.log("pogo " + $rootScope.user.userName);
+            	$scope.user = $rootScope.user;
+            	console.log("user is "+user);
     			//var user = $rootScope.user;
             	//console.log("pogo " + $rootScope.user.userName);
             	//$scope.user = $rootScope.user;
