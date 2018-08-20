@@ -29,11 +29,12 @@ public class ShowtimeService {
 
 		Optional<Showtime> optional = showtimeRepository.findById(showtime.getId());
 		if(!optional.isPresent()) {
-			
+			if(moptional != null) {
 			showtime.addMovie(moptional.get()); 
 			moptional.get().addShowtimes(showtime);
 			movieRepository.save(moptional.get());
 			return showtimeRepository.save(showtime);
+			}
 
 			}
 			
