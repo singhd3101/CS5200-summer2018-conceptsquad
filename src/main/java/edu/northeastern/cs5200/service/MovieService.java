@@ -52,16 +52,13 @@ public class MovieService {
 		Optional<Theatre> toptional = theatreRepository.findById(theatreId);
 
 		Optional<Movie> optional = movieRepository.findById(movie.getId());
-		if(!optional.isPresent()) {
-			
-			movie.addTheatre(toptional.get());
+
 			toptional.get().hostMovie(movie);
+			movie.addTheatre(toptional.get());
+			
 			theatreRepository.save(toptional.get());
 			return movieRepository.save(movie);
-			}
-			
-		
-		return null;
+
 		
 	}
 	
