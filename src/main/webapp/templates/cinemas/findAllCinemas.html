@@ -30,22 +30,22 @@
 		<![endif]-->
 
 <script>
-$(document).ready(function() {
+$(window).load(function() {
 	var w = document.getElementById("welcomeUser");
-	var welcome = document.getElementById("welcomeUser").innerHTML;
+	var welcome = document.getElementById("welcomeUser").value;
 	console.log("hi from showhide "+welcome);
 	var login = document.getElementById("doLogin");
 	
-	if(welcome == "{{user.firstName}}") {
+	if(typeof welcome === "undefined") {
 		
-	
 		login.style.display = "block";
 	}
-	
-	else {
-		
-		w.style.display = "block";
+	if(typeof welcome != "undefined")  {
+
+		document.getElementById("welcomeUser").innerHTML = welcome;
 	}
+	
+	
 });
 
 </script>
@@ -71,7 +71,7 @@ $(document).ready(function() {
 							<button><i class="icofont icofont-search"></i></button>
 						</form>
 						<ul>
-							<li>Welcome <span id="welcomeUser" style="display: none;">{{user.firstName}}</span></li>
+							<li>Welcome <span id="welcomeUser" value={{user.firstName}}></span></li>
 							<li><a href="#!/login"><span id="doLogin" style="display: none;">Login</span></a></li>
 							
 						</ul>
