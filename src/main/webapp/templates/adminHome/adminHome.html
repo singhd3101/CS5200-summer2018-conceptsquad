@@ -261,6 +261,7 @@
 				<th scope="col">Date</th>
 				<th scope="col">Booking</th>
 				<th></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody ng-repeat="event in allEvents">
@@ -272,6 +273,7 @@
 			<td>{{event.capacity}}</td>
 			<td>{{event.price}}</td>
 			<td>{{event.eventDate}}</td>
+			<td><i class="fas fa-cog" ng-click="model.updateEvent(event.id)"></i></td>
 			<td><button type="button" class= "btn btn-success" ng-click="model.addEventBooking(event.id)">Create Booking</button></td>
 			<td><button type="button" class= "btn btn-danger" ng-click="model.deleteEvent(event.id)">Delete</button></td>
 		</tbody>

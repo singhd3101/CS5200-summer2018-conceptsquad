@@ -1,0 +1,69 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Its Showtime</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <span class="nav-link">Welcome {{admin.firstName}}! <span class="sr-only">(current)</span></span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.profile()">Profile</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href ng-click="model.home()">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h4>
+<p class="text-center">Update Panel</p></h4>
+<div class="container">
+ <div class="container">
+ 	
+ 	<div class="align-content-md-center text-center">
+ 	<h3>Modify Event</h3>
+    <form class="form-control" name="eventEditForm">
+        
+        <label for="name">Name</label>
+        <input name="name" id="name" ng-model="name" class="form-control" autofocus="" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.name" required />
+        <p ng-show="eventEditForm.name.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventEditForm.name.$invalid && !eventEditForm.name.$pristine" class="help-block">Name is required.</p>
+        
+        <label for="type">Type</label>
+        <input name="type" id="type" ng-model="type" class="form-control" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.type" required />
+        <p ng-show="eventEditForm.type.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventEditForm.type.$invalid && !eventEditForm.type.$pristine" class="help-block">Type is required.</p>
+        
+        <label for="capacity">Capacity</label>
+        <input name="capacity" id="capacity" ng-model="capacity" class="form-control" type="number" ng-value="event.capacity" required />
+        <p ng-show="eventEditForm.capacity.$invalid && !eventEditForm.capacity.$pristine" class="help-block">Enter a valid number.</p>
+        
+        <label for="description">Description</label>
+        <textarea  name="description" id="description" class="form-control" ng-model="description" class="form-control" ng-value="event.description" required rows="3"></textarea>
+        <p ng-show="eventEditForm.description.$invalid && !eventEditForm.description.$pristine" class="help-block">Description is required.</p>
+        
+        <label for="price">Price per ticket</label>
+        <input name="price" id="price" ng-model="price" class="form-control" type="number" ng-value="event.price" required />
+        <p ng-show="eventEditForm.price.$invalid && !eventEditForm.price.$pristine" class="help-block">Enter a valid number.</p>
+        
+        <label for="venue">Venue</label>
+        <input name="venue" id="venue" ng-model="venue" class="form-control" type="text" ng-pattern="/^[\w -]*$/" ng-value="event.venue" required />
+        <p ng-show="eventEditForm.venue.$error.pattern" class="help-block">Only alphabats allowed.</p>
+        <p ng-show="eventEditForm.venue.$invalid && !eventEditForm.venue.$pristine" class="help-block">venue is required.</p>
+        <br/>
+        <label for="dateOfEvent">Date</label>  &nbsp;&nbsp;&nbsp;
+        <input type="date" name="dateOfEvent" id="dateOfEvent" ng-model="dateOfEvent" ng-value="event.eventDate">
+        <br/><br/>
+        <button class="btn btn-lg btn-primary btn-block" type="button" ng-click="model.update(name, type, capacity, description, price, venue, dateOfEvent)">Update</button>
+        
+       
+    </form>
+</div>
+
+</div>
+

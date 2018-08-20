@@ -1,82 +1,94 @@
 (function () {
     angular
         .module('ShowtimeApp')
-        .controller('AdminHomeController', AdminHomeController);
+        .controller('AdminModifyEventController', AdminModifyEventController);
 
-    function AdminHomeController($scope, $location, $http, $window, $routeParams, $route) {
-    	var adminId;
+    function AdminModifyEventController($scope, $location, $http, $window, $routeParams, $route) {
     	
-    	this.updateEvent = updateEvent;
-    	this.addTheatre = addTheatre;
-    	this.addEvent = addEvent;
-    	this.registerMovie = registerMovie;
-    	this.register = register;
+    	var adminId;
+    	var eventId;
+    	var admin;
+    	var event;
+    	
     	this.profile = profile;
-        this.home = home;
-        this.getVendor = getVendor;
-        this.getCustomer = getCustomer;
-        this.getMovie = getMovie;
-        this.getEvent = getEvent;
-        this.getTheatre = getTheatre;
-        this.getMovieBooking = getMovieBooking;
-        this.getEventBooking = getEventBooking;
-        this.getPayment = getPayment;
-        this.custDetail = custDetail;
-        this.vendorDetail = vendorDetail;
-        this.movieDetail = movieDetail;
-        this.eventDetail = eventDetail;
-        this.theatreDetail = theatreDetail;
-        this.paymentDetail = paymentDetail;
-        this.bookingDetail = bookingDetail;
-        this.deleteCust = deleteCust;
-        this.deleteVendor = deleteVendor;
-        this.deleteMovie = deleteMovie;
-        this.deleteEvent = deleteEvent;
-        this.deleteTheatre = deleteTheatre;
-        this.deleteBooking = deleteBooking;
-        this.deletePayment = deletePayment;
-        this.addEventBooking = addEventBooking;
-        
+    	this.home = home;
+    	this.update = update;
+    	
         function init(){
         	
+        	console.log("in mod event");
+        	
         	adminId = $routeParams.adminId.substring(1,$routeParams.adminId.length);
+        	eventId = $routeParams.eventId.substring(1,$routeParams.eventId.length);
+        	
+        	console.log(adminId);
+        	console.log(eventId);
         	
     		$http.get("/api/person/" + adminId)
             .then(function(response) {
-            	$scope.user = response.data;
-            	user = response.data;
+            	$scope.admin = response.data;
+            	admin = response.data;
+            	console.log(admin);
+            });
+    		
+    		$http.get("/api/event/" + eventId)
+            .then(function(response) {
+            	$scope.event = response.data;
+            	event = response.data;
             });
         }
         
         init();
         
-        function updateEvent(id){
-        	$location.url('/adminHome/:'+adminId + '/adminModifyEventBooking/:'+id);
+        function profile() {            
+        	$location.url('/profile/:'+adminId);
         }
         
-        function addEventBooking(id){
-        	$location.url('/adminHome/:'+adminId + '/adminAddEventBooking/:'+id);
+        function home() {
+        	$location.url('/adminHome/:'+adminId);
         }
         
-        function getPayment(){
+        function update(name, type, capacity, description, price, venue, eventDate) {            
+			eventNew = {
+					name : name,
+					type : type,
+					description : description,
+					venue : venue,
+					capacity : capacity,
+					price : price,
+					eventDate : eventDate
+        	};
+        	if((eventNew.name != null && eventNew.name != undefined) ||
+        			(eventNew.type != null && eventNew.type != undefined) ||
+        			(eventNew.capacity != null && eventNew.capacity != undefined) ||
+        			(eventNew.description != null && eventNew.description != undefined) ||
+        			(eventNew.price != null && eventNew.price != undefined) ||
+        			(eventNew.venue != null && eventNew.name != undefined) ||
+        			(eventNew.eventDate != null && eventNew.eventDate != undefined)){
+        		$http.put("/api/event/" + eventId, eventNew)
+                .then(function (response) {
+                	alert("Event updated successfully !!");
+                });
+        	}
+        	
+        	alert("Event updated successfully !!");
+        	home();
+		}
+            	
+            	
+        
+        
+        /*function getPayment(){
         	$http.get("/api/ppayment/")
             .then(function(response) {
             	$scope.allPayments = response.data;
             });
         }
         
-        function getMovieBooking(){
-        	console.log("in movie fetch");
-        	$http.get("/api/moviebooking/")
+        function getBooking(){
+        	$http.get("/api/booking/")
             .then(function(response) {
-            	$scope.allmBookings = response.data;
-            });
-        }
-        
-        function getEventBooking(){
-        	$http.get("/api/eventbooking/")
-            .then(function(response) {
-            	$scope.alleBookings = response.data;
+            	$scope.allBookings = response.data;
             });
         }
         
@@ -136,19 +148,11 @@
         }
         
         function custDetail(id){
-        	$location.url('/adminHome/:'+adminId + '/modifyUser/:'+id);
+        	alert("customer details for id: " + id);
         }
         
         function vendorDetail(id){
-        	$location.url('/adminHome/:'+adminId + '/modifyUser/:'+id);
-        }
-                
-        function profile() {            
-        	$location.url('/profile/:'+adminId);
-        }
-        
-        function home() {
-        	$location.url('/adminHome/:'+adminId);
+        	alert("vendor details for id: " + id);
         }
         
         function deletePayment(id){
@@ -326,6 +330,6 @@
 			})
         	
         	
-        }
+        }*/
     }
 })();
