@@ -36,8 +36,9 @@ $(document).ready(function() {
 	console.log("hi from showhide "+welcome);
 	var login = document.getElementById("doLogin");
 	
-	if(welcome == "") {
+	if(welcome == "{{user.firstName}}") {
 		
+	
 		login.style.display = "block";
 	}
 	
@@ -49,7 +50,7 @@ $(document).ready(function() {
 
 </script>
 	</head>
-	<body onload="showHide()">
+	<body>
 		<!-- Page loader -->
 	 
 		<!-- header section start -->

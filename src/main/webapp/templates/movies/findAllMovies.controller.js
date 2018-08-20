@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('FindAllMoviesController',FindAllMoviesController);
 
-    function FindAllMoviesController($scope, $location, $http, $routeParams) {    
+    function FindAllMoviesController($scope, $location, $http, $routeParams, $rootScope) {    
     	var pos;
     	var lat;
     	var long;
@@ -12,6 +12,10 @@
 
     	
         function init() {
+        	var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
         	console.log("in find all movies");
         	if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){

@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('OnlyShowtimesController',OnlyShowtimesController);
 
-    function OnlyShowtimesController($scope, $location, $http, $routeParams, $filter) { 
+    function OnlyShowtimesController($scope, $location, $http, $routeParams, $filter, $rootScope) { 
     
     	this.date = new Date();
         var m1 = (parseInt(this.date.getMonth()) + 1) + "";
@@ -33,6 +33,10 @@
      	this.selectSeats = selectSeats;
     	
      	function init() {
+     		var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
         	movieId = $routeParams.movieId.substring(1,$routeParams.movieId.length);
         	$http.get('https://api.internationalshowtimes.com/v4/showtimes/?location=42.3605,-71.0596&append=movies,cinemas&movie_id='+ movieId +'&time_to='+ dateTo +'&limit=10&movie_fields=ratings,trailers,id,title,poster_image&apikey=7n4LklKRw0IXbF6fm4aTSF1NqmRPeSZ5').
         	then(function(response) {

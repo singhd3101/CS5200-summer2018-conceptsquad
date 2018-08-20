@@ -8,6 +8,10 @@
 
     	var eventId;
         function init() {
+        	var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
         
         	if($rootScope.eventId != undefined) {
         		$scope.eventId = $rootScope.eventId;
