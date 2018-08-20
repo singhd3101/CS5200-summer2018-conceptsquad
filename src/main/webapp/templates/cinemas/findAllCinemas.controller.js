@@ -3,7 +3,7 @@
         .module('ShowtimeApp')
         .controller('FindAllCinemasController',FindAllCinemasController);
 
-    function FindAllCinemasController($scope, $location, $http) {    
+    function FindAllCinemasController($scope, $location, $http, $rootScope) {    
     	var pos;
     	var lat;
     	var long;
@@ -14,7 +14,10 @@
     	this.moviesAtCinema = moviesAtCinema;
     	
     	function init() {
-    		
+    		var user = $rootScope.user;
+        	//console.log("pogo " + $rootScope.user.userName);
+        	$scope.user = $rootScope.user;
+        	console.log("user is "+user);
     		if (navigator.geolocation) {
         	    navigator.geolocation.getCurrentPosition(function(position){
         	      $scope.$apply(function(){
