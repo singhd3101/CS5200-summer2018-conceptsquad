@@ -49,6 +49,11 @@
                 controller : 'AdminModifyUserController',
                 controllerAs : 'model'
             })
+            .when('/adminHome/:adminId/adminModifyEventBooking/:eventId' , {
+                templateUrl : 'templates/adminHome/adminModifyEvent.html',
+                controller : 'AdminModifyEventController',
+                controllerAs : 'model'
+            })
             .when('/adminHome/:adminId/adminAddEventBooking/:eventId' , {
                 templateUrl : 'templates/adminHome/adminAddEventBooking.html',
                 controller : 'AdminAddEventBookingController',

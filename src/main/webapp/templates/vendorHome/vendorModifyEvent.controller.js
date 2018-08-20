@@ -42,7 +42,13 @@
 					price : price,
 					eventDate : eventDate
         	};
-        	if(eventNew.name != null && eventNew.name != undefined){
+        	if((eventNew.name != null && eventNew.name != undefined) ||
+        			(eventNew.type != null && eventNew.type != undefined) ||
+        			(eventNew.capacity != null && eventNew.capacity != undefined) ||
+        			(eventNew.description != null && eventNew.description != undefined) ||
+        			(eventNew.price != null && eventNew.price != undefined) ||
+        			(eventNew.venue != null && eventNew.name != undefined) ||
+        			(eventNew.eventDate != null && eventNew.eventDate != undefined)){
         		$http.put("/api/event/" + eventId, eventNew)
                 .then(function (response) {
                 	alert("Event updated successfully !!");
