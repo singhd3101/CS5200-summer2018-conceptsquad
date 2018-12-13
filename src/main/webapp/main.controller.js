@@ -6,7 +6,6 @@
         this.search=search;
         
         function init() {
-        	console.log("in init");
             $location.url("/displayAll/")
         };
         
